@@ -202,7 +202,7 @@ ${sec(`${shead('루틴')}<div class="gp-grid gp-grid--2 gp-grid--g32">${[['아�
 ${sec(`${shead('관련 제품')}${productItems(F, prods)}`)}
 ${sec(`${shead('관련 성분')}${ingCards(F, [['판테놀', '보습과 진정을 돕는 성분'], ['세라마이드', '피부 장벽을 이루는 지질 성분'], ['히알루론산', '수분을 머금는 성분']])}`, { bg: 'mint' })}
 ${sec(`${shead('관련 콘텐츠')}<div class="gp-xlinks"><a href="${rel(F, 'seasonal-care/winter-moisture')}">계절별 관리 → 겨울 보습</a><a href="${rel(F, 'expert-videos')}">전문의 영상 → 세안 후 당김</a><a href="${rel(F, KNOW_SLUG)}">피부 상식 → 보습의 기본</a></div>`, { pt: 48, pb: 48 })}
-${sec(`<div class="gp-guide"><h2>이 고민의 변화를 기록해 보세요</h2>${btn('G:ROW 시작하기', rel(F, 'grow'), 'gp-btn--white')}</div>`, { bg: 'mint', pt: 56, pb: 80 })}`;
+`;
   write(F, '건조하고 당김 | 고민별 관리', body, '세안 후 피부가 당기거나 쉽게 건조해지는 고민의 관리 방법.');
 }
 
