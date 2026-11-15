@@ -146,7 +146,7 @@ const KNOW_SLUG = 'skin-knowledge/dry-skin-care';
 
   const body = `
 <section class="gp-hero">
-<img src="${img(F, 'homepage-banner-3.jpg')}" alt="">
+<img src="assets/photos/hero_home.jpg" alt="">
 <div class="gp-hero__msg">
 <span class="gp-eyebrow" style="color:#fff">DR.G · SKIN CARE HUB</span>
 <h1>피부과학으로 이해하고,<br>건강한 변화를 만듭니다.</h1>

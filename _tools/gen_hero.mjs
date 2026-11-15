@@ -1,0 +1,10 @@
+import fs from 'node:fs';import path from 'node:path';import {spawn} from 'node:child_process';
+const REF='C:/Users/sksml/AppData/Local/Temp/claude/e19926f534626da1/208ddfd7-7934-4ce4-ab07-5e5f375fe1c6/images/7.png';
+const OUT=path.resolve('../site/assets/photos');const GEN=path.join(process.env.USERPROFILE,'.codex','generated_images');
+const prompt='첨부한 참고 이미지의 분위기를 그대로 살려, 홈페이지 메인 배너용 실사 배경 이미지를 1장 만들어줘(이미지 생성 도구 사용). 구성: 민트·청록색 연구실 톤 배경, 오른쪽에 유리 플라스크·비커·스포이드 앰플 병과 흰색 크림 용기 제품들이 입체적으로 놓인 화장품 연구소 정물 사진, 왼쪽 40%는 글자를 올릴 수 있도록 비교적 비어 있고 부드럽게 흐린 영역. 글자·워터마크 없음, 가로로 매우 넓은 21:9 비율. 만들 수 없으면 추측하지 말고 못 만들었다고 말해줘';
+const t0=Date.now();
+const c=spawn('codex',['exec','--skip-git-repo-check','--disable','apps','-i',REF,'-'],{cwd:OUT,shell:true});
+let out='';c.stdout.on('data',d=>out+=d);c.stderr.on('data',d=>out+=d);c.stdin.end(prompt);
+c.on('close',()=>{const r=[];(function w(d){for(const f of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,f.name);f.isDirectory()?w(p):/\.(png|jpg|webp)$/i.test(f.name)&&fs.statSync(p).mtimeMs>=t0-2000&&r.push(p)}})(GEN);
+ r.sort((a,b)=>fs.statSync(b).mtimeMs-fs.statSync(a).mtimeMs);
+ if(r.length){fs.copyFileSync(r[0],path.join(OUT,'hero_home.png'));console.log('ok')}else console.log('FAIL',out.slice(-300))});
