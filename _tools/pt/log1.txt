@@ -1,0 +1,685 @@
+OpenAI Codex v0.166.0
+--------
+workdir: C:\Users\sksml\Desktop\닥터지\_tools\pt
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 01a1dfdf-403e-7a63-9596-16675bd9817e
+--------
+user
+아래 JSON 파일(in1.json)은 한국 스킨케어 브랜드 닥터지(Dr.G) 제품 상세 페이지의 문장 배열입니다. 영어를 기계 번역해서 어색한 한국어(번역투, 어색한 1인칭 '나는', 뜻이 이상한 표현)가 섞여 있습니다.
+각 항목을 뜻, 숫자, 제품명, 성분명, 별표(*) 각주 표시를 그대로 유지하면서 자연스러운 한국어 쇼핑몰 문장으로 다듬어 주세요. 후기 문장은 실제 고객이 쓴 듯 자연스러운 구어체('~해요', '~좋아요')로, 이모지는 유지해도 됩니다. 이미 자연스러우면 그대로 두세요. HTML 태그나 따옴표 형태를 바꾸지 말고, 항목 수와 순서를 정확히 유지하세요.
+결과는 같은 길이의 JSON 문자열 배열 하나만 최종 답변으로 출력하세요(설명·코드블록 없이 JSON만). 파일을 못 읽었으면 추측하지 말고 못 읽었다고 말하세요.
+
+codex
+파일을 읽고 항목 수와 순서를 유지해 문장을 다듬겠습니다.
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -LiteralPath 'C:\\Users\\sksml\\.codex\\RTK.md'; Get-Content -LiteralPath 'C:\\Users\\sksml\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\using-superpowers\\SKILL.md'; Get-Content -LiteralPath 'in1.json' -Raw" in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ succeeded in 304ms:
+<!-- rtk-owned: written by `rtk init --codex`, removed by `rtk init --codex --uninstall` -->
+
+# Command output
+
+Command output here is condensed to save tokens, keeping every signal and
+dropping costly noise. Treat it as the complete result: run commands
+normally, and batch related commands into one call to avoid extra turns.
+Truncated results state their recovery path in their own output. Re-run a
+command as `rtk bypass <cmd>` only when its result is unusable: empty when
+output was clearly expected, contradicting its exit code, or garbled.
+---
+name: using-superpowers
+description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, ignore this skill.
+</SUBAGENT-STOP>
+
+<EXTREMELY-IMPORTANT>
+If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+
+IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+
+This is not negotiable. You cannot rationalize your way out of this.
+</EXTREMELY-IMPORTANT>
+
+## The Rule
+
+**Invoke relevant or requested skills BEFORE any response or action** ??including clarifying questions, exploring the codebase, or checking files. If it turns out wrong for the situation, you don't have to use it.
+
+**Before entering plan mode:** if you haven't already brainstormed, invoke the brainstorming skill first.
+
+Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
+
+## Skill Priority
+
+When multiple skills apply, process skills come first ??they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Superpowers' most common process skills, but the rule holds for any of them.
+
+- "Let's build X" ??superpowers:brainstorming first, then implementation skills.
+- "Fix this bug" ??superpowers:systematic-debugging first, then domain skills.
+
+## Red Flags
+
+These thoughts mean STOP?�you're rationalizing:
+
+| Thought | Reality |
+|---------|---------|
+| "This is just a simple question" | Questions are tasks. Check for skills. |
+| "I need more context first" | Skill check comes BEFORE clarifying questions. |
+| "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
+| "I can check git/files quickly" | Files lack conversation context. Check for skills. |
+| "Let me gather information first" | Skills tell you HOW to gather information. |
+| "This doesn't need a formal skill" | If a skill exists, use it. |
+| "I remember this skill" | Skills evolve. Read current version. |
+| "This doesn't count as a task" | Action = task. Check for skills. |
+| "The skill is overkill" | Simple things become complex. Use it. |
+| "I'll just do this one thing first" | Check BEFORE doing anything. |
+| "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
+| "I know what that means" | Knowing the concept ??using the skill. Invoke it. |
+
+## Platform Adaptation
+
+If your harness appears here, read its reference file for special instructions:
+
+- Claude Code: `references/claude-code-tools.md`
+- Codex: `references/codex-tools.md`
+- Pi: `references/pi-tools.md`
+- Antigravity: `references/antigravity-tools.md`
+- Hermes Agent: `references/hermes-tools.md`
+- Muse: `references/muse-tools.md`
+
+## User Instructions
+
+User instructions (CLAUDE.md, AGENTS.md, GEMINI.md, etc, direct requests) take precedence over skills, which in turn override default behavior. Only skip skill workflows or instructions when your human partner has explicitly told you to.
+[
+"?�팽???�림�??�께 ?�용?�면 ?��?가 매우 부?�러?��????�낌???�어???�말 좋아??!!!!",
+"?�?????�럼??�?�??�안 ?�용???�고, ?��????�는 ?�낌??가볍고 ?�틴 같�? ?�낌???�말 마음???�었?�니?? ?�용감도 매우 부?�러?�서 붉어짐이???��??�???�껴지지 ?�았?�니?? ?�는 밤에 ?�럼 ?�계�?3�?루틴???�게 ?�함?�켰?�니?? ?�실??계속 ?�용?�고 ?�도??�?것을 권장?�니?? ",
+". ?�티?�이�?케?��? ?�께 주름 개선???��???줍니??",
+"- ?�이?�록?�피?�콜�??�티?�에?�트, ?�티???�로?�오?�이?? ?�어 ?�티?�, 150Da ?�분자 콜라겐이 ?�유???�팽???�티?�+ 1.0%�??�유???�주름과 주름??최소?�하�??��? ?�력???�찾??4D 리프???�과�??�사?�니??",
+"- 매끄?�운 질감?�로 ?�적???�이 ?�뜻??마무리감???�사?�며, ?��???빠르�??�수?�어 ?�극??최소?�하면서 ?��? ?�벽??강화?�줍?�다.",
+"- ?�당?�을 ?��???바르�?가볍게 ?�드???�수?�켜 줍니??\"",
+"?�이?�록?�피?�콜�??�티?�에?�트, ?�티?�프로피?�네?�트, ?�어 ?�티?�, 150Da ?�분자 콜라겐이 ?�유???�팽???�티?�+ 1.0%�??�유???�주름과 주름??최소?�하�??��? ?�력???�찾??4D 리프???�과�??�사?�니??",
+"?�이?�록?�피?�콜�??�티?�에?�트, ?�티?�프로피?�네?�트, ?�어 ?�티?�, 150Da ?�분자 콜라겐이 ?�유???�팽???�티?�+ 1.0%�??�유?�여 ?�주름과 주름??최소?�하�??��? ?�력???�찾?�줍?�다. ",
+"- ?�당?�을 ?��???바르�?가볍게 ?�드???�수?�켜 줍니??",
+"블랙?�네??링클 리프??마스??28ml 1piece",
+"?�력, 리프?? 광채�??�한 10�?집중 케???�트 마스?�입?�다. ?�?�극 ",
+"???�어 ?�어 민감???��??�도 ?�용?�기 좋습?�다.",
+"?�자?�인 ?�분?�로 강력??리프?�과 광채�??�사?�는 ?�트 마스??",
+", ??10�?만에 ?�상?�으�??�증???�화 방�? 결과�??�공?�는 ?�시??민감???��??�도 충분???�함???��??�니??",
+" 링클 마스?�는 초극???�장지�?결합??것입?�다 ??",
+" 머리카락 ??가?�보???��? ?�축???�중 리포좀 ?�플-???�림 ?�스처로 ?�성 ?�분???��? 깊숙??침투?�여 빠르�??�에 ?�는 결과�??�사?�니??",
+"?�주름�???깊�? 주름까�? 5가지 주요 주름 부?��? 집중?�으�??�겟하??종합?�인 리프?�과 ?�무??케?��? ?�공?�는 ?��? ?�트?�니??",
+" 깊�? 주름??즉각?�으�?케?�해주는 ?�팽?�점?�여과물�?",
+" ??�??�용?�로 즉각?�인 깊�? 주름 개선 ?�과�??�사?�니?? ",
+", ?�이?�록?�피?�콜�??�티?�에?�트, ?�팽?�점?�여과물, ?�이?�신?��???�?",
+" ?�에 ?�는 주름 케?��? ?��? ?�력???��?줍니??",
+" 초극?�사 ?�트가 ?��? 굴곡??밀착되?�록 ?�계?�어, 바르???�안 밀???��? ?�플 ?�센?��? ?�굴??고르�??�도�??��?줍니??",
+" ?�에 ?�는 리프???�과?� ?��???매끄?�고 밀착되???�낌?�로 ?��?가 즉시 매끄?�워지�??�력 ?�는 ?�낌??받습?�다.",
+" 베개 ?�국??줄이�?깊�? 주름??개선?�니??",
+" 주름 ?�화 �?리프???�과가 지?�되�?깊�? 주름???�에 ?�게 개선?�니?? ",
+" ?�문조사??참여???�용??�??�분, ?�력, 질감, ?��? ?�태 �?깊�? 주름??개선?�었?�고 보고?�습?�다.***",
+" 민감???��??�도 ?�용??가?�하?�록 ?��??�극 ?�스?��? 진행?��??�니??",
+"*지?�된 ?�구 조건?�서 ?��? ?�상 �??�비???�스?��? 바탕?�로 ??결과?�니?? **?�상 ?�구(PNK-24513-K3R, 24/05/13~24/05/24; P&amp;K), 20~59???�성. ***",
+"1?�계: ?�안 ???�너�??��?�??�돈????초극???�핑 ?�트 마스?��? 꺼냅?�다.",
+" 부?�럽�??�서 ?�굴 ?�체??고르�???발라주면 초극???�트가 ?????��?처럼 곡선??감싸줍니??",
+" ?��????�플-???�림 ?��??��? ?��? 깊숙???�며?�는 ?�안 ??10분만 ?�식??취해 보세??",
+" 마스?��? ?�어?�고 ?��? ?��??��? ?��???가볍게 ?�드??광채�??��??�세??",
+"Ideal for anyone dealing with dryness, loss of firmness, or wrinkles. 모든 ?��?, ?�히 ?�과?�인 집중 ?�티?�이�?케?��? ?�하??민감???��?�??�해 고안???�?�극 ?�티?� ?�이??마스?�입?�다.",
+"?�양???��???블랙?�네?�과 ?�한 ?�티?�??결합??1.5�???강력???�티?�이�??�워�??�달?�며, 첨단 ?�블 리포???�스?�을 ?�용???��? 깊숙???�력???�달?�다.",
+"10분만 ?�아?�면 ?�기?� ?�력???�치???��? 변?��? ?�인?�실 ???�습?�다.",
+"머리카락 굵기??1/100??불과??초극???�핑 ?�트가 ?????��?처럼 ?�굴???�안?�게 감싸 ?�수?�을 극�??�해줍니??",
+"??마스?�는 ?�떤 ?�정 ?��? 문제�??�결?�니�?",
+"5�?구역???�주름과 주름??줄여주며, ?�력 ?�고 ?�래 지?�되???�력??3???�안 ?��??�줍?�다.",
+"?�????마스?��? ?�무 좋아?�서 친한 친구?�과 공유?�려�???많이 ?�구매했?�니??",
+"?��?가 ?�말 촉촉?�고 매끈?��????�?�운 보습?�이?�요 ",
+"?��? �??????�어 보이�?만들?�요. ?�극 추천?�니??! ",
+"???��? ?�한 ?�일�??�티?�이�??�너?�니?? 깊고 ?�래가???�분�??�탱???��?결을 ?�사?�니??",
+"?��?�??�탱?�고 ?�력?�고 ?�뜻?�게 가꾸어 주는 깊�? ?�분 공급 ?�일�??�너?�니??",
+"�? ???�분???��????��??�는 지?�적???�분 공급???�공?�는 ?�시????매끄?�고 ?�탄??보이???�색???��??�는 ???��???줍니??",
+"부?�러?�면?�도 ?�과?�인 ???�품?� 매일???�안?�과 ?�에 ?�는 ?�화 징후???�??집중?�인 관리�? ?�께 ?�공?�니??",
+" ?�너??촘촘?�고 쿠션�??�는 ?�터 ?�스처�? ?��???부?�럽�?미끄?��???발리�?무겁거나 ?�적?�는 ?�낌 ?�이 ?�안?�게 ?�수?�는 것이 ?�징?�니??",
+"?�킨케??�??�계부???�분??채워주어 ?�음 ?�계�??�한 촉촉??베이?��? 만들?�줍?�다.",
+" 깊�? ?�분??공급?�여 ?��?�?부?�럽�??�안?�게 가꿔주�? 건강??보이??광채?� ?�께 ?�에 ?�게 ?�통?�집?�다.",
+" ?��? ?�력�?밀?��? 개선?�여 ?�욱 ?�탄???��?�?가꾸는???��???줍니??",
+"?�탱?�고 ?�력 ?�는 ?��?�??�한 깊�? ?�분 공급 -",
+"*?�킨메드(SkinMed)?�서 진행??4주간???�상 ?�구??근거??",
+" 2023??5??15?��???6??14?�까지 30~60???�성 21명을 ?�?�으�??�터�??�영?�습?�다. ",
+"촘촘?�고 쿠션�??�는 ?�터 ?�스처�? 부?�럽�?발리�??�적???�이 ?�안?�게 ?�수?�는 ?�일�??�너?�니?? ?�바?�이???�장?�을 ?�용?�여 바르�? 건조??부?�에 겹겹??발라 ?�분 공급???�욱 강화?�세??",
+"건조?? 칙칙???�는 ?�력 ?�실??경험?�는 ?��????�상?�이�??��????�분??공급?�고 부?�럽�??�통?�며 ?�쾌??보입?�다.",
+"블랙?�네??뮤신???��?�??�탄?�게 가꾸는???��???주며, 5가지 ?�조추출물이 ?�분??채워줍니?? ?�이?�신?�마?�드?� ?�데?�신?� 고르지 못한 ?��? ?�과 ?�에 ?�는 ?�화 징후�?케?�하?????��???줍니??",
+"?? ?�분???��????��??��? ?�분??보충?�고 ?�분 ?�벽??강화?�여 ?��?�?부?�럽�??�안?�며 ?�력?�게 만들?�줍?�다.",
+"촘촘?�고 쿠션�??�는 ?�센???�터 ?�스처�? ?��???부?�럽�?미끄?��?�?무겁거나 ?�적?�는 ?�낌 ?�이 ?�안?�게 ?�수?�어 ?��?�?촉촉?�고 부?�러?�며 ?�뜻?�게 가꾸어줍니??",
+"?�안 ???�바?�이???�장?�을 ?�용??발라줍니?? 부?�럽�??�드???�수�??�고, 건조??부?�에 ?�발???�분????공급?�세?? ?�킨케??루틴???�음 ?�계�??�르?�요.",
+"?�는 ???�품??매우 좋아?�는?? ?��?가 ?�연?�고 ?�쾌?��????�낌??줍니?? ?�??지금까지 ?��? ?�옥?��? ?�았?�니?? ?�이 ?�어???�껴지지 ?�고 ?�이 좋고 ?��? 불쾌?��? ?�습?�다.",
+" 마일??고마�??�링 ?�루?�입?�다. 미세?�고 묵�? 각질??부?�럽�??�거?�고 ",
+"??지�? 메이?�업????받는 맑고 ?�기 ?�는 ?��?�?가꿔줍?�다.",
+", 칙칙???��????�쾌?�을 ?�사?�고 부?�럽�?촉촉?�며 빛나???�색??지?�하?�록 고안???�한 ?�국???�이??각질 ?�거?�입?�다.",
+" ?��? ?�벽??강화?�고 ?�극?�로부??보호?�는 ???��???줍니??",
+" 즉각?�인 브라?�트???�과�??�사?�며, ?�물 ?�분???�극 ?�이 ?�과?�인 각질 ?�거�??��?줍니??",
+"?�상?�으�?죽�? ?��?�?감소?�키??것으�??��??�습?�다. ",
+", 고르지 못한 ?��? 결을 개선?�는 ?�시???�용 ???��?가 ?�에 ?�게 부?�럽�??�기 ?�게 ?��??�니??",
+" 최상??결과�??�해. 부?�러??각질 ?�거?� 가벼운 ?�분???�하??칙칙?�거??고르지 못한 ?��????�상?�입?�다.",
+" 각질??부?�럽�??�거?�고 ?�?�극?�로 ?�욱 부?�럽�?균일???��?결을 ?�사?�는 ?�국??고마�??�???�링 ??,
+" ?�분??가?�어 ?�용 ???��???깊�? ?�분??공급?�고 ?�에 ?�게 매끄?�워지???�낌??줍니??",
+" 즉각?�으�?브라?�트???�과�?주어 ?�욱 ?�사???��?�??�출?�는???��???줍니??",
+" ?�극?�로부???��? ?�벽??보호?�는 ???��???주며, ?�물???�물 ?�분�?결합?�여 부?�러??각질 ?�거�??��?줍니??",
+"?�터지 ??KOREA'S NO. 1 ?�킨케??브랜??*",
+" 25?????��?�??�문???�건???�장???�립???�터지???�격???��?과학??바탕?�로 ?�생?�습?�다. 모든 ?�분?� 과학?�으�?검증되???��? ?�극??최소?�하�??�제?�이�??�에 ?�는 결과�??�공?�니?? *?�니?? ?�?��?�??�모코스메틱 1??",
+" P&amp;K ?��??�구?�에??2021??11??9?��???11??11?�까지 ?�인 ?��? 22명을 ?�?�으�??�시?�습?�다. 결과??개인별로 ?��? ???�습?�다.",
+" 부?�러??고마�??�스?�을 ?�해 미세?�고 ?�고??각질??부?�럽�?롤링?�고 ?�어 ?�려주는 ?�양???�기???�룰로?�스 ?�자가 ?�징?�니??",
+" 마찰??최소?�하면서 ?�과?�이�?매우 부?�러??물리??각질 ?�거�??�공?�여 민감???��?�??�극?��? ?�고 매끄?�운 ?��? 질감??보장?�니??",
+" ?�링 과정 중과 ?�후???��????�분 ?�벽???�극?�으�?관리하�?지?�합?�다.",
+" 취약???�분 ?�벽??보호, 강화, 강화?�켜 각질 ?�거 ?�에??건강?�고 균형?�힌 ?��? ?�태�??��??�는???��???줍니??",
+"1?�계: ?��? ?��????�전 ?�기만큼 ?�어 ??발라줍니??",
+" ?��??� ?��?�??�해 1�??�내�??�을 그리??부?�럽�?마사지??주세??",
+" ?�주?�에 1~2???�용?�면 ?��?�?매끄?�고 ?�사?�게 ?��??�여 결점 ?�는 메이?�업???�한 ?�벽??준�??�태�??��??????�습?�다.",
+"???�한 ?�링 ?��? 민감???��??� ?�러블성 ?��?�??�함??모든 ?��? ?�?�에 ?�합?�니?? ?�?�극 ?��??�로 ?�자?�되???�극 ?�이 부?�럽�?각질???�거?�고 ?��? 분들?�게 ?�상?�입?�다.",
+"?�링?��? ?�마???�주 ?�용?�야 ?�나?? 매일 ?�용?�도 ?�나??",
+"최상??결과�??�으?�면 ?�주?�에 1~2???�용?�는 것이 좋습?�다. 과도??각질 ?�거???��? ?�벽??무너?�릴 ???�으므�?매일 ?�용?�는 것�? 권장?��? ?�습?�다.",
+"각질???�과?�으�??�거?�주??멀???�이�??�룰로?�스?� 깊�? 보습�?브라?�트??케?��? ?�한 8�??�알루론??amp;비�?민C, ?��? ?�벽??보호?�고 강화?�주???�쿠???�라마이?��? ?�유???�한 ?��??�입?�다.",
+"?�니?? ?��?가 건조?�을 ?�끼지 ?�을 것입?�다! 8가지 ?�알루론?�과 ?�쿠???�라마이?��? ?�유?�어 ?��? ??깊�? 곳까지 ?�분??공급?�고 ?�벽??보호?�줍?�다. 게다가 ?��?가 건조?��?�??�제�?고마�??�링?????�게 ?�어?�기 ?�문??죽�? ?��? ?�포�??�거?�는 ???��????�니??"
+]
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -LiteralPath 'in1.json' -Raw -Encoding utf8" in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ succeeded in 290ms:
+[
+"������ ũ���� �Բ� ����ϸ� �Ǻΰ� �ſ� �ε巯������ ������ ���� ���� ���ƿ�!!!!!",
+"���� �� ������ �� �� ���� ����� �԰�, �Ǻο� ��� ������ ������ ��ƾ ���� ������ ���� ������ ������ϴ�. ��밨�� �ſ� �ε巯���� �Ӿ����̳� ������ �������� �ʾҽ��ϴ�. ���� �㿡 ���� �ܰ�� 3�� ��ƾ�� ���� ���Խ��׽��ϴ�. Ȯ���� ��� ����ϰ� �õ��� �� ���� �����մϴ�. ",
+". ��Ƽ����¡ �ɾ�� �Բ� �ָ� ������ ������ �ݴϴ�.",
+"- ���̵�Ͻ��ǳ��ݷ� ��Ƽ�뿡��Ʈ, ��Ƽ�� �����ǿ�����Ʈ, ǻ�� ��Ƽ��, 150Da ������ �ݶ���� ������ ������ ��Ƽ��+ 1.0%�� ������ ���ָ��� �ָ��� �ּ�ȭ�ϰ� �Ǻ� ź���� ��ã�� 4D ������ ȿ���� �����մϴ�.",
+"- �Ų����� �������� ������ ���� ����� ���������� �����ϸ�, �Ǻο� ������ �����Ǿ� �ڱ��� �ּ�ȭ�ϸ鼭 �Ǻ� �庮�� ��ȭ���ݴϴ�.",
+"- ���緮�� �Ǻο� �ٸ��� ������ �ε�� �������� �ݴϴ�.\"",
+"���̵�Ͻ��ǳ��ݷ� ��Ƽ�뿡��Ʈ, ��Ƽ�������ǿ�����Ʈ, ǻ�� ��Ƽ��, 150Da ������ �ݶ���� ������ ������ ��Ƽ��+ 1.0%�� ������ ���ָ��� �ָ��� �ּ�ȭ�ϰ� �Ǻ� ź���� ��ã�� 4D ������ ȿ���� �����մϴ�.",
+"���̵�Ͻ��ǳ��ݷ� ��Ƽ�뿡��Ʈ, ��Ƽ�������ǿ�����Ʈ, ǻ�� ��Ƽ��, 150Da ������ �ݶ���� ������ ������ ��Ƽ��+ 1.0%�� �����Ͽ� ���ָ��� �ָ��� �ּ�ȭ�ϰ� �Ǻ� ź���� ��ã���ݴϴ�. ",
+"- ���緮�� �Ǻο� �ٸ��� ������ �ε�� �������� �ݴϴ�.",
+"���������� ��Ŭ ������ ����ũ 28ml 1piece",
+"ź��, ������, ��ä�� ���� 10�� ���� �ɾ� ��Ʈ ����ũ�Դϴ�. ���ڱ� ",
+"�� ��� �־� �ΰ��� �Ǻο��� ����ϱ� �����ϴ�.",
+"�������� �������� ������ �����ð� ��ä�� �����ϴ� ��Ʈ ����ũ ",
+", �� 10�� ���� �ӻ������� ������ ��ȭ ���� ����� �����ϴ� ���ÿ� �ΰ��� �Ǻο��� ����� ������ �����մϴ�.",
+" ��Ŭ ����ũ�� �ʱؼ� �������� ������ ���Դϴ� ? ",
+" �Ӹ�ī�� �� ���ں��� ���� ����� ���� ������ ����-��-ũ�� �ؽ�ó�� Ȱ�� ������ �Ǻ� ������ ħ���Ͽ� ������ ���� ��� ����� �����մϴ�.",
+"���ָ����� ���� �ָ����� 5���� �ֿ� �ָ� ������ ���������� Ÿ���Ͽ� �������� �����ð� ������ �ɾ �����ϴ� �̱� ��Ʈ�Դϴ�.",
+" ���� �ָ��� �ﰢ������ �ɾ����ִ� ���������׿������� ",
+" �� �� ������� �ﰢ���� ���� �ָ� ���� ȿ���� �����մϴ�. ",
+", ���̵�Ͻ��ǳ��ݷ� ��Ƽ�뿡��Ʈ, ���������׿�����, ���̾ƽžƹ̵� �� ",
+" ���� ��� �ָ� �ɾ�� �Ǻ� ź���� �����ݴϴ�.",
+" �ʱؼ��� ��Ʈ�� �Ǻ� ��� �����ǵ��� ����Ǿ�, �ٸ��� ���� �е� ���� ���� �������� �󱼿� ������ �굵�� �����ݴϴ�.",
+" ���� ��� ������ ȿ���� �Ǻο� �Ų����� �����Ǵ� �������� �Ǻΰ� ��� �Ų��������� ź�� �ִ� ������ �޽��ϴ�.",
+" ���� �ڱ��� ���̰� ���� �ָ��� �����մϴ�.",
+" �ָ� ��ȭ �� ������ ȿ���� ���ӵǸ� ���� �ָ��� ���� ��� �����˴ϴ�. ",
+" �������翡 ������ ����� �� ����, ź��, ����, �Ǻ� ���� �� ���� �ָ��� �����Ǿ��ٰ� �����߽��ϴ�.***",
+" �ΰ��� �Ǻο��� ����� �����ϵ��� �Ǻ��ڱ� �׽�Ʈ�� �����Ͽ����ϴ�.",
+"*������ ���� ���ǿ��� ���� �ӻ� �� �Һ��� �׽�Ʈ�� �������� �� ����Դϴ�. **�ӻ� ����(PNK-24513-K3R, 24/05/13~24/05/24; P&amp;K), 20~59�� ����. ***",
+"1�ܰ�: ���� �� ��ʷ� �Ǻθ� ������ �� �ʱؼ� ���� ��Ʈ ����ũ�� �����ϴ�.",
+" �ε巴�� �켭 �� ��ü�� ������ �� �߶��ָ� �ʱؼ� ��Ʈ�� ��2�� �Ǻ�ó�� ��� �����ݴϴ�.",
+" ǳ���� ����-��-ũ�� ���ķ��� �Ǻ� ������ ������ ���� �� 10�и� �޽��� ���� ������.",
+" ����ũ�� ����� ���� ���ķ��� �Ǻο� ������ �ε�� ��ä�� �����ϼ���.",
+"Ideal for anyone dealing with dryness, loss of firmness, or wrinkles. ��� �Ǻ�, Ư�� ȿ������ ���� ��Ƽ����¡ �ɾ ���ϴ� �ΰ��� �Ǻθ� ���� ���ȵ� ���ڱ� ��Ƽ�� ���̼� ����ũ�Դϴ�.",
+"������ ǳ���� ���������ϰ� ���� ��Ƽ���� ������ 1.5�� �� ������ ��Ƽ����¡ �Ŀ��� �����ϸ�, ÷�� ���� ������ �ý����� ����� �Ǻ� ������ Ȱ���� �����Ѵ�.",
+"10�и� ���Ƶθ� ����� ź���� ��ġ�� �Ǻ� ��ȭ�� Ȯ���Ͻ� �� �ֽ��ϴ�.",
+"�Ӹ�ī�� ������ 1/100�� �Ұ��� �ʱؼ� ���� ��Ʈ�� ��2�� �Ǻ�ó�� ���� �����ϰ� ���� �������� �ش�ȭ���ݴϴ�.",
+"�� ����ũ�� � Ư�� �Ǻ� ������ �ذ��մϱ�?",
+"5�� ������ ���ָ��� �ָ��� �ٿ��ָ�, ź�� �ְ� ���� ���ӵǴ� ź���� 3�� ���� �������ݴϴ�.",
+"���� �� ����ũ�� �ʹ� �����ؼ� ģ�� ģ����� �����Ϸ��� �� ���� �籸���߽��ϴ�.",
+"�Ǻΰ� ���� �����ϰ� �Ų������� ���� �������̿��� ",
+"���� �� �� �� ���� ���̰� ������. ���� ��õ�մϴ�!! ",
+"�� ���� ���� ���ϸ� ��Ƽ����¡ ����Դϴ�. ���� �������� ���а� ������ �Ǻΰ��� �����մϴ�.",
+"�Ǻθ� �����ϰ� ź���ְ� ����ϰ� ���پ� �ִ� ���� ���� ���� ���ϸ� ����Դϴ�.",
+"��, �� ������ ǳ���� ���ķ��� �������� ���� ������ �����ϴ� ���ÿ� �� �Ų����� źź�� ���̴� �Ȼ��� �����ϴ� �� ������ �ݴϴ�.",
+"�ε巯��鼭�� ȿ������ �� ��ǰ�� ������ �����԰� ���� ��� ��ȭ ¡�Ŀ� ���� �������� ������ �Բ� �����մϴ�.",
+" ��ʴ� �����ϰ� ���ǰ� �ִ� ���� �ؽ�ó�� �Ǻο� �ε巴�� �̲������� �߸��� ���̰ų� �����̴� ���� ���� �����ϰ� �����Ǵ� ���� Ư¡�Դϴ�.",
+"��Ų�ɾ� ù �ܰ���� ������ ä���־� ���� �ܰ踦 ���� ������ ���̽��� ������ݴϴ�.",
+" ���� ������ �����Ͽ� �Ǻθ� �ε巴�� �����ϰ� �����ָ�, �ǰ��� ���̴� ��ä�� �Բ� ���� ��� ���������ϴ�.",
+" �Ǻ� ź�°� �е��� �����Ͽ� ���� źź�� �Ǻθ� ���ٴµ� ������ �ݴϴ�.",
+"�����ϰ� ź�� �ִ� �Ǻθ� ���� ���� ���� ���� -",
+"*��Ų�޵�(SkinMed)���� ������ 4�ְ��� �ӻ� ������ �ٰ��� ",
+" 2023�� 5�� 15�Ϻ��� 6�� 14�ϱ��� 30~60�� ���� 21���� ������� ���͸� ��߽��ϴ�. ",
+"�����ϰ� ���ǰ� �ִ� ���� �ؽ�ó�� �ε巴�� �߸��� ������ ���� �����ϰ� �����Ǵ� ���ϸ� ����Դϴ�. �չٴ��̳� ȭ����� ����Ͽ� �ٸ���, ������ ������ ����� �߶� ���� ������ ���� ��ȭ�ϼ���.",
+"������, ĢĢ�� �Ǵ� ź�� ����� �����ϴ� �Ǻο� �̻����̸� �Ǻο� ������ �����ϰ� �ε巴�� �����ϸ� ������ ���Դϴ�.",
+"���������� �½��� �Ǻθ� źź�ϰ� ���ٴµ� ������ �ָ�, 5���� �������⹰�� ������ ä���ݴϴ�. ���̾ƽžƸ��̵�� �Ƶ������ ������ ���� �Ǻ� ��� ���� ��� ��ȭ ¡�ĸ� �ɾ��ϴ� �� ������ �ݴϴ�.",
+"��, ������ ǳ���� ���ķ��� ������ �����ϰ� ���� �庮�� ��ȭ�Ͽ� �Ǻθ� �ε巴�� �����ϸ� ź���ְ� ������ݴϴ�.",
+"�����ϰ� ���ǰ� �ִ� ������-���� �ؽ�ó�� �Ǻο� �ε巴�� �̲������� ���̰ų� �����̴� ���� ���� �����ϰ� �����Ǿ� �Ǻθ� �����ϰ� �ε巯��� ����ϰ� ���پ��ݴϴ�.",
+"���� �� �չٴ��̳� ȭ����� �̿��� �߶��ݴϴ�. �ε巴�� �ε�� ������ ����, ������ ������ ���߶� ������ �� �����ϼ���. ��Ų�ɾ� ��ƾ�� ���� �ܰ踦 ��������.",
+"���� �� ��ǰ�� �ſ� �����ϴµ�, �Ǻΰ� �����ϰ� ���������� ������ �ݴϴ�. ���� ���ݱ��� ���� Ż������ �ʾҽ��ϴ�. ���� �־ �������� �ʰ� ���� ���� ���� �������� �ʽ��ϴ�.",
+" ���ϵ� ������ �ʸ� �ַ���Դϴ�. �̼��ϰ� ���� ������ �ε巴�� �����ϰ� ",
+"�� ����, ����ũ���� �� �޴� ���� ���� �ִ� �Ǻη� �����ݴϴ�.",
+", ĢĢ�� �Ǻο� �������� �����ϰ� �ε巴�� �����ϸ� ������ �Ȼ��� �����ϵ��� ���ȵ� ���� �ѱ��� ���̼� ���� �������Դϴ�.",
+" �Ǻ� �庮�� ��ȭ�ϰ� �ڱ����κ��� ��ȣ�ϴ� �� ������ �ݴϴ�.",
+" �ﰢ���� �����Ʈ�� ȿ���� �����ϸ�, �Ĺ� ������ �ڱ� ���� ȿ������ ���� ���Ÿ� �����ݴϴ�.",
+"�ӻ������� ���� �Ǻθ� ���ҽ�Ű�� ������ ��Ÿ�����ϴ�. ",
+", ������ ���� �Ǻ� ���� �����ϴ� ���ÿ� ��� �� �Ǻΰ� ���� ��� �ε巴�� ���� �ְ� �����˴ϴ�.",
+" �ֻ��� ����� ����. �ε巯�� ���� ���ſ� ������ ������ ���ϴ� ĢĢ�ϰų� ������ ���� �Ǻο� �̻����Դϴ�.",
+" ������ �ε巴�� �����ϰ� ���ڱ����� ���� �ε巴�� ������ �Ǻΰ��� �����ϴ� �ѱ��� ������ Ÿ�� �ʸ� ��",
+" ������ ���ξ� ��� �� �Ǻο� ���� ������ �����ϰ� ���� ��� �Ų��������� ������ �ݴϴ�.",
+" �ﰢ������ �����Ʈ�� ȿ���� �־� ���� ȭ���� �Ǻθ� �����ϴµ� ������ �ݴϴ�.",
+" �ڱ����κ��� �Ǻ� �庮�� ��ȣ�ϴ� �� ������ �ָ�, �Ĺ��� �Ĺ� ���а� �����Ͽ� �ε巯�� ���� ���Ÿ� �����ݴϴ�.",
+"������ ? KOREA'S NO. 1 ��Ų�ɾ� �귣��:*",
+" 25�� �� �Ǻΰ� ������ �Ȱǿ� ������ ������ �������� ������ �Ǻΰ����� �������� ź���߽��ϴ�. ��� ������ ���������� �����Ǿ� �Ǻ� �ڱ��� �ּ�ȭ�ϰ� �������̰� ���� ��� ����� �����մϴ�. *�ƴϿ�. ���ѹα� �����ڽ���ƽ 1��.",
+" P&amp;K �Ǻο����ҿ��� 2021�� 11�� 9�Ϻ��� 11�� 11�ϱ��� ���� ���� 22���� ������� �ǽ��߽��ϴ�. ����� ���κ��� �ٸ� �� �ֽ��ϴ�.",
+" �ε巯�� ������ �ý����� ���� �̼��ϰ� �ϰ��� ������ �ε巴�� �Ѹ��ϰ� ��� �÷��ִ� �پ��� ũ���� ����ο��� ���ڰ� Ư¡�Դϴ�.",
+" ������ �ּ�ȭ�ϸ鼭 ȿ�����̰� �ſ� �ε巯�� ������ ���� ���Ÿ� �����Ͽ� �ΰ��� �Ǻθ� �ڱ����� �ʰ� �Ų����� �Ǻ� ������ �����մϴ�.",
+" �ʸ� ���� �߰� ���Ŀ� �Ǻ��� ���� �庮�� ���������� �����ϰ� �����մϴ�.",
+" ����� ���� �庮�� ��ȣ, ��ȭ, ��ȭ���� ���� ���� �Ŀ��� �ǰ��ϰ� �������� �Ǻ� ���¸� �����ϴµ� ������ �ݴϴ�.",
+"1�ܰ�: ���� �Ǻο� ���� ũ�⸸ŭ ���� �� �߶��ݴϴ�.",
+" ������ �԰��� ���� 1�� �̳��� ���� �׸��� �ε巴�� �������� �ּ���.",
+" �����Ͽ� 1~2ȸ ����ϸ� �Ǻθ� �Ų����� ȭ���ϰ� �����Ͽ� ���� ���� ����ũ���� ���� �Ϻ��� �غ� ���¸� ������ �� �ֽ��ϴ�.",
+"�� ���� �ʸ� ���� �ΰ��� �Ǻο� Ʈ������ �Ǻθ� ������ ��� �Ǻ� Ÿ�Կ� �����մϴ�. ���ڱ� ���ķ��� �����εǾ� �ڱ� ���� �ε巴�� ������ �����ϰ� ���� �е鿡�� �̻����Դϴ�.",
+"�ʸ����� �󸶳� ���� ����ؾ� �ϳ���? ���� ����ص� �ǳ���?",
+"�ֻ��� ����� �������� �����Ͽ� 1~2ȸ ����ϴ� ���� �����ϴ�. ������ ���� ���Ŵ� �Ǻ� �庮�� ���ʶ߸� �� �����Ƿ� ���� ����ϴ� ���� �������� �ʽ��ϴ�.",
+"������ ȿ�������� �������ִ� ��Ƽ ������ ����ο����� ���� ������ �����Ʈ�� �ɾ ���� 8�� ���˷�л�&amp;��Ÿ��C, �Ǻ� �庮�� ��ȣ�ϰ� ��ȭ���ִ� ������ �����̵尡 ������ ���� ���ķ��Դϴ�.",
+"�ƴϿ�, �Ǻΰ� �������� ������ ���� ���Դϴ�! 8���� ���˷�л�� ������ �����̵尡 �����Ǿ� �Ǻ� �� ���� ������ ������ �����ϰ� �庮�� ��ȣ���ݴϴ�. �Դٰ� �Ǻΰ� ���������� ������ ������ �ʸ��� �� ���� �Ͼ�� ������ ���� �Ǻ� ������ �����ϴ� �� ������ �˴ϴ�."
+]
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "python -c \"import pathlib,json; s=pathlib.Path('in1.json').read_bytes().decode('cp949'); a=json.loads(s); print(len(a)); print(json.dumps(a,ensure_ascii=True))\"" in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ exited 1 in 2435ms:
+python : 'python' �� cmdlet, �Լ�, ��ũ��Ʈ ���� �Ǵ� ������ �� �ִ� ���α׷� �̸����� �νĵ��� �ʽ��ϴ�. �̸��� ��
+Ȯ���� Ȯ���ϰ� ��ΰ� ���Ե� ��� ��ΰ� �ùٸ��� ������ ���� �ٽ� �õ��Ͻʽÿ�.
+��ġ ��:2 ����:1
++ python -c "import pathlib,json; s=pathlib.Path('in1.json').read_bytes ...
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (python:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $s = [System.IO.File]::ReadAllText((Join-Path (Get-Location) '"'in1.json'), [System.Text.Encoding]::GetEncoding(949)); "'$a = ConvertFrom-Json $s; $a.Count; for ($i=0; $i -lt $a.Count; $i++) { Write-Output (('"'{0}: ' -f ("'$i+1)) + $a[$i]) }' in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ succeeded in 418ms:
+�Ӽ��� ������ �� �����ϴ�. �Ӽ� ������ �� ��� ����� �ٽ� ������ ���ؼ��� �����˴ϴ�.
+��ġ ��:2 ����:1
++ [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $s = [Syste ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : PropertySetterNotSupportedInConstrainedLanguage
+ 
+�޼��带 ȣ���� �� �����ϴ�. �޼��� ȣ���� �� ��� ����� �ٽ� ������ ���ؼ��� �����˴ϴ�.
+��ġ ��:2 ����:59
++ ... ing]::UTF8; $s = [System.IO.File]::ReadAllText((Join-Path (Get-Locati ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage
+ 
+ConvertFrom-Json : 'InputObject' �Ű� ������ null�̹Ƿ� �μ��� �ش� �Ű� ������ ���ε��� �� �����ϴ�.
+��ġ ��:2 ����:198
++ ... m.Text.Encoding]::GetEncoding(949)); $a = ConvertFrom-Json $s; $a.Cou ...
++                                                                ~~
+    + CategoryInfo          : InvalidData: (:) [ConvertFrom-Json], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ConvertFrom 
+   JsonCommand
+ 
+0
+
+exec
+"C:\\WINDOWS\\system32\\cmd.exe" /c "chcp 65001 > nul & powershell -NoProfile -Command \"Get-Content -LiteralPath 'in1.json' -Raw -Encoding Default\"" in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ succeeded in 116ms:
+Get-Content -LiteralPath 'in1.json' -Raw -Encoding Default
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$s = Get-Content -LiteralPath '"'in1.json' -Raw -Encoding Default; "'$out = foreach ($c in $s.ToCharArray()) { if ([int]$c -gt 127) { '"'\\u{0:x4}' -f [int]"'$c } else { [string]$c } }; $out -join '"''" in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ succeeded in 323ms:
+[
+"?\u044b\ub67a???\u0449\u251d\u6028??\u2463\ud361 ?\u044a\uc29c?\uc10e\u3203 ?\uc1f0?\u5a9b\u0080 \uf9cd\u317c\uc2a6 \u907a\u0080?\uc495\uc72d?\ub6af????\uba2e\uad66???\u317c\ubf31???\ubea3\ucb5a \u91ab\ub5ed\ube18??!!!!",
+"?\u0080?????\uba83\uc746??\uf9cf?\u4e8c??\uc208\ube1e ?\u044a\uc29c???\ubdbd\ud02c, ?\uc1f0????\uc6a9\ub497 ?\uba2e\uad66??\u5a9b\u0080\u8e42\ub77b\ud02c ?\ub34a\ub59e \u5a9b\uc208? ?\uba2e\uad66???\ubea3\ucb5a \uf9cd\ub349\uc4ec???\u317c\ubfc0?\ub4ec\ub572?? ?\u044a\uc29c\u5a9b\uba2e\ub8c4 \uf9cd\u317c\uc2a6 \u907a\u0080?\uc495\uc72d?\ub6af\uaf4c \u907a\ub431\ubf31\uf9de\uba2f\uc520???\uaccc??\u0080???\uba2d\ubea8\uf9de\u0080\uf9de\u0080 ?\ub506\ube2f?\ub4ec\ub572?? ?\uc10e\ub497 \u8adb\u317c\ubfc9 ?\uba83\uc746 ?\u2463\ud00e\u6fe1?3\u8e30?\u7337\u2466\ub59e???\uc384\ucfb6 ?\u044b\ube3f?\uc496\uc11f?\ub4ec\ub572?? ?\ubea4\ub58e??\u6028\uafa9\ub0fd ?\u044a\uc29c?\uc10d\ud02c ?\uc495\ub8c4??\u8e42?\u5bc3\uaecb\uc4e3 \u6c85\ub6af\uc623?\u2478\ub572?? ",
+". ?\ub34a\ub59a?\uba2f\uc520\uf9de?\u8033\u0080?\ub301? ?\u2463\ud361 \u4e8c\uc1f0\ucaeb \u5a9b\uc496\uaf51???\uafa9???\u4ee5\ub77e\ub572??",
+"- ?\uc10f\uc520?\uc495\uc909?\uc497\ubd7e?\uc10f\ud433\u6fe1??\ub34a\ub59a?\uba84\ubfc9?\ub304\ub4c3, ?\ub34a\ub59a???\uafa8\uc908?\uc1f1\uc0a4?\u317c\uc520?? ?\u2465\ubf31 ?\ub34a\ub59a?\u0080, 150Da ?\u0080\u907a\uafa9\uc604 \u8084\uc495\uc52a\u5bc3\uba2f\uc520 ?\u2465\uc440???\u044b\ub67a???\ub34a\ub59a?\u0080+ 1.0%\u745c??\u2465\uc440???\ubdbf\uff1c\u7531\uafa7\ub0b5 \u4e8c\uc1f0\ucaeb??\uf9e4\uc496\ub0fc?\ubdc0\ube2f\u6028??\uc1f0? ?\uafa8\uc830???\uc10f\uac3c??4D \u7531\u044b\ubd3d???\u2463\ub0b5\u745c??\uc88e\uad97?\u2478\ub572??",
+"- \uf9cd\u317b\uac5a?\u044a\uc2ab \uf9de\ub347\ucee7?\uc1f0\uc908 ?\ub349\uc7fb???\ub181\uc520 ?\uacd5\uc45c??\uf9cd\ub348\u0422\u7531\u0448\ucee7???\uc88e\uad97?\uc10e\u0149, ?\uc1f0???\u936e\uc88a\u2164\u5bc3??\u226a\ub2d4?\uc10f\ubf31 ?\uba2d\ub808??\uf9e4\uc496\ub0fc?\ubdc0\ube2f\uf9ce\ub301\uaf4c ?\uc1f0? ?\u03bb\uaf0d??\u5a9b\ubea5\uc195?\ub301\uca33?\ub348\ub58e.",
+"- ?\uacf7\ub5a6?\ub431\uc4e3 ?\uc1f0???\u8adb\ubdbe\u2164\u6028?\u5a9b\u0080\u8e42\ub77b\ucfb6 ?\uba2e\ubc76???\u226a\ub2d4?\uc496\ud3d2 \u4ee5\ub77e\ub572??\"",
+"?\uc10f\uc520?\uc495\uc909?\uc497\ubd7e?\uc10f\ud433\u6fe1??\ub34a\ub59a?\uba84\ubfc9?\ub304\ub4c3, ?\ub34a\ub59a?\uba30\ubd3d\u6fe1\uc497\ubd7e?\u317b\uaf55?\ub304\ub4c3, ?\u2465\ubf31 ?\ub34a\ub59a?\u0080, 150Da ?\u0080\u907a\uafa9\uc604 \u8084\uc495\uc52a\u5bc3\uba2f\uc520 ?\u2465\uc440???\u044b\ub67a???\ub34a\ub59a?\u0080+ 1.0%\u745c??\u2465\uc440???\ubdbf\uff1c\u7531\uafa7\ub0b5 \u4e8c\uc1f0\ucaeb??\uf9e4\uc496\ub0fc?\ubdc0\ube2f\u6028??\uc1f0? ?\uafa8\uc830???\uc10f\uac3c??4D \u7531\u044b\ubd3d???\u2463\ub0b5\u745c??\uc88e\uad97?\u2478\ub572??",
+"?\uc10f\uc520?\uc495\uc909?\uc497\ubd7e?\uc10f\ud433\u6fe1??\ub34a\ub59a?\uba84\ubfc9?\ub304\ub4c3, ?\ub34a\ub59a?\uba30\ubd3d\u6fe1\uc497\ubd7e?\u317b\uaf55?\ub304\ub4c3, ?\u2465\ubf31 ?\ub34a\ub59a?\u0080, 150Da ?\u0080\u907a\uafa9\uc604 \u8084\uc495\uc52a\u5bc3\uba2f\uc520 ?\u2465\uc440???\u044b\ub67a???\ub34a\ub59a?\u0080+ 1.0%\u745c??\u2465\uc440?\uc10f\ubfec ?\ubdbf\uff1c\u7531\uafa7\ub0b5 \u4e8c\uc1f0\ucaeb??\uf9e4\uc496\ub0fc?\ubdc0\ube2f\u6028??\uc1f0? ?\uafa8\uc830???\uc10f\uac3c?\uafa9\uca33?\ub348\ub58e. ",
+"- ?\uacf7\ub5a6?\ub431\uc4e3 ?\uc1f0???\u8adb\ubdbe\u2164\u6028?\u5a9b\u0080\u8e42\ub77b\ucfb6 ?\uba2e\ubc76???\u226a\ub2d4?\uc496\ud3d2 \u4ee5\ub77e\ub572??",
+"\u91c9\ubdbe\uc613?\u317b\uaf55??\uf9cd\uacf9\uaca2 \u7531\u044b\ubd3d??\uf9cd\ub349\ub4aa??28ml 1piece",
+"?\uafa8\uc830, \u7531\u044b\ubd3d?? \u613f\ubb12\ucf48\u745c??\uafaa\ube33 10\u907a?\uf9de\ubb12\uca37 \u8033\u0080???\uc497\ub4c3 \uf9cd\ub349\ub4aa?\u044a\uc5ef?\ub348\ub58e. ?\u0080?\uba2d\ub808 ",
+"???\u317c\ubf31 ?\ub349\ubf31 \u8a98\uc1e8\ucee7???\uc1f0??\uba2e\ub8c4 ?\u044a\uc29c?\uc10d\ub9b0 \u91ab\ub5ed\ub4bf?\ub348\ub58e.",
+"?\ub086\uc604?\uacf8\uc524 ?\uae45\ud147?\uc1f0\uc908 \u5a9b\ubea3\uc830??\u7531\u044b\ubd3d?\ub083\ub0b5 \u613f\ubb12\ucf48\u745c??\uc88e\uad97?\uc10e\ub497 ?\uc497\ub4c3 \uf9cd\ub349\ub4aa??",
+", ??10\u907a?\uf9cd\ub6af\ubfc9 ?\uafa9\uae3d?\uacf8\uc45d\u6fe1??\ub086\ucb06???\uba85\uc195 \u8adb\u2479? \u5bc3\uaccc\ub0b5\u745c??\uc493\ub0ac?\uc10e\ub497 ?\uc208\ub586??\u8a98\uc1e8\ucee7???\uc1f0??\uba2e\ub8c4 \u7570\u2478\ud147???\uc497\ube3f???\uc88e??\u2478\ub572??",
+" \uf9cd\uacf9\uaca2 \uf9cd\ub349\ub4aa?\u0449\ub497 \u73e5\ub347\ub808???\u044a\uc623\uf9de\u0080\u745c?\u5bc3\uace0\ube40??\u5bc3\uaecb\uc5ef?\ub348\ub58e ??",
+" \u7652\uba83\u2501\u79fb\ub300\uc52b ??\u5a9b\u0080?\u03bb\ub0ab???\ub257? ?\ub77f\ud15e???\ub301\uca37 \u7531\u044b\ub8f7\u91ab\u0080 ?\uace0\ubd46-???\u0449\u251d ?\ub77f\ub4aa\uf9e3\uc10e\uc908 ?\uc496\uaf66 ?\uae45\ud147???\uc1f0? \u6e90\ub506\ub2d5??\u79fb\u2466\ub2fe?\uc10f\ubfec \u936e\uc88a\u2164\u6028??\ub349\ubfc9 ?\uafa8\ub497 \u5bc3\uaccc\ub0b5\u745c??\uc88e\uad97?\u2478\ub572??",
+"?\ubdbf\uff1c\u7531\uafa8???\u6e90\ub506? \u4e8c\uc1f0\ucaeb\u6e90\ub6af? 5\u5a9b\u0080\uf9de\u0080 \u4e8c\uc1f1\uc282 \u4e8c\uc1f0\ucaeb \u907a\u0080?\uafa8? \uf9de\ubb12\uca37?\uacf8\uc45d\u6fe1??\u0080\u5bc3\uc79c\ube2f??\u91ab\ub087\ube40?\uacf8\uc524 \u7531\u044b\ubd3d?\ub083\ub0b5 ?\u317b\u0422??\u8033\u0080?\ub300? ?\uc493\ub0ac?\uc10e\ub497 ?\uae43? ?\uc497\ub4c3?\ub085\ub572??",
+" \u6e90\ub506? \u4e8c\uc1f0\ucaeb??\uf9dd\ub42f\uced6?\uacf8\uc45d\u6fe1?\u8033\u0080?\ub304\ube50\u4e8c\uc1f0\ub497 ?\u044b\ub67a?\ub301\uc80f?\u226a\ubfec\u6028\uc1f0\u042a\u6028?",
+" ??\u8e30??\u044a\uc29c?\uc1f0\uc908 \uf9dd\ub42f\uced6?\uacf8\uc524 \u6e90\ub506? \u4e8c\uc1f0\ucaeb \u5a9b\uc496\uaf51 ?\u2463\ub0b5\u745c??\uc88e\uad97?\u2478\ub572?? ",
+", ?\uc10f\uc520?\uc495\uc909?\uc497\ubd7e?\uc10f\ud433\u6fe1??\ub34a\ub59a?\uba84\ubfc9?\ub304\ub4c3, ?\u044b\ub67a?\ub301\uc80f?\u226a\ubfec\u6028\uc1f0\u042a, ?\uc10f\uc520?\uafa9\ub58a?\uafa8???\u8adb?",
+" ?\ub349\ubfc9 ?\uafa8\ub497 \u4e8c\uc1f0\ucaeb \u8033\u0080?\ub301? ?\uc1f0? ?\uafa8\uc830???\uafa9?\u4ee5\ub77e\ub572??",
+" \u73e5\ub347\ub808?\uba84\uad97 ?\uc497\ub4c3\u5a9b\u0080 ?\uc1f0? \u63f4\ub2ff\ub05d??\u8adb\u0080\uf9e1\u2478\ub9ba?\uafa8\uc909 ?\u317a\ud00e?\uc10f\ubf31, \u8adb\ubdbe\u2164???\uc208\ube1e \u8adb\u0080???\ubbea? ?\uace0\ubd46 ?\uba2f\uaf71?\u317a? ?\uc1e8\ub3ac??\u6028\uc88a\u2164\u5bc3??\uc6a9\ub8c4\u6fe1??\uafa9?\u4ee5\ub77e\ub572??",
+" ?\ub349\ubfc9 ?\uafa8\ub497 \u7531\u044b\ubd3d???\u2463\ub0b5?\u0080 ?\uc1f0???\uf9cd\u317b\uac5a?\uc384\ud02c \u8adb\u0080\uf9e1\u2478\ub9ba???\uba2e\uad66?\uc1f0\uc908 ?\uc1f0?\u5a9b\u0080 \uf9dd\ub431\ub586 \uf9cd\u317b\uac5a?\u044a\uc359\uf9de\u0080\u6028??\uafa8\uc830 ?\ub348\ub497 ?\uba2e\uad66??\u8adb\uc3c6\ub4bf?\ub348\ub58e.",
+" \u8e30\uc889\ucefb ?\uba2d\ub385??\u4ee5\uafa9\uc520\u6028?\u6e90\ub506? \u4e8c\uc1f0\ucaeb??\u5a9b\uc496\uaf51?\u2478\ub572??",
+" \u4e8c\uc1f0\ucaeb ?\uafaa\uc195 \u8adb?\u7531\u044b\ubd3d???\u2463\ub0b5\u5a9b\u0080 \uf9de\u0080?\ub77e\ub9ba\uf9ce?\u6e90\ub506? \u4e8c\uc1f0\ucaeb???\ub349\ubfc9 ?\uafa7\ucfb6 \u5a9b\uc496\uaf51?\u2478\ub572?? ",
+" ?\u317b\u0426\u8b70\uacd7\uad97??\uf9e1\uba84\ubfec???\u044a\uc29c??\u4ee5??\uc10e\ud147, ?\uafa8\uc830, \uf9de\ub347\ucee7, ?\uc1f0? ?\uacf9\uae6d \u8adb?\u6e90\ub506? \u4e8c\uc1f0\ucaeb??\u5a9b\uc496\uaf51?\uc10f\ubfc0?\u317a\ud02c \u8e42\ub2ff\ud02c?\ub349\ub4bf?\ub348\ub58e.***",
+" \u8a98\uc1e8\ucee7???\uc1f0??\uba2e\ub8c4 ?\u044a\uc29c??\u5a9b\u0080?\u03bd\ube2f?\uafa8\uc909 ?\uc1f0??\uba2d\ub808 ?\ub6af\ub4aa?\uba83? \uf9de\uafaa\ubefe?\uc10f??\ub4ec\ub572??",
+"*\uf9de\u0080?\ubea3\ub9c2 ?\uaccc\ub384 \u8b70\uaccc\uad54?\uba2f\uaf4c ?\ub300? ?\uafa9\uae3d \u8adb??\ub6ae\ud26c???\ub6af\ub4aa?\uba83? \u8adb\ubdc0\uae62?\uc1f0\uc908 ??\u5bc3\uaccc\ub0b5?\ub085\ub572?? **?\uafa9\uae3d ?\uaccc\ub384(PNK-24513-K3R, 24/05/13~24/05/24; P&amp;K), 20~59???\u044a\uaf66. ***",
+"1?\u2463\ud00e: ?\uba84\ube1e ???\uc88a\uaf2b\u6fe1??\uc1f0?\u745c??\ubea3\ub8c9????\u73e5\ub347\ub808???\u247a\ube28 ?\uc497\ub4c3 \uf9cd\ub349\ub4aa?\u0449? \u7230\uc1f0\uae44?\ub348\ub58e.",
+" \u907a\u0080?\uc495\uc747\u5bc3??\ub301\uaf4c ?\uc1e8\ub3ac ?\uafa9\uaedc??\u6028\uc88a\u2164\u5bc3???\u8adb\uc495\uc52a\u4e8c\uc1f0\u3203 \u73e5\ub347\ub808???\uc497\ub4c3\u5a9b\u0080 ?????\uc1f0?\uf9e3\uc10e\uc746 \u6028\u226a\uaf51??\u5a9b\uba2f\ub5a5\u4ee5\ub77e\ub572??",
+" ?\ub77e????\uace0\ubd46-???\u0449\u251d ?\u0449??\u0448? ?\uc1f0? \u6e90\ub506\ub2d5???\u317b\u0149?\uc495\ub497 ?\uc208\ube1e ??10\u907a\uafa8\ucb54 ?\ub301\ub587??\u75cd\u2466\ube50 \u8e42\ub301\uaf6d??",
+" \uf9cd\ub349\ub4aa?\u0449? ?\uc1f1\ubf31?\ub2ff\ud02c ?\u2465? ?\u0449??\u0449? ?\uc1f0???\u5a9b\u0080\u8e42\ub77b\ucfb6 ?\uba2e\ubc76??\u613f\ubb12\ucf48\u745c??\uc88e??\uc10f\uaf6d??",
+"Ideal for anyone dealing with dryness, loss of firmness, or wrinkles. \uf9cf\u2464\ubc7a ?\uc1f0?, ?\ubc41\uc5f3 ?\u2463\ub0b5?\uacf8\uc524 \uf9de\ubb12\uca37 ?\ub34a\ub59a?\uba2f\uc520\uf9de?\u8033\u0080?\ub300? ?\uba30\ube2f??\u8a98\uc1e8\ucee7???\uc1f0?\u745c??\uafaa\ube50 \u6028\uc88e\ube1e???\u0080?\uba2d\ub808 ?\ub34a\ub59a?\u0080 ?\uc10f\uc520??\uf9cd\ub349\ub4aa?\u044a\uc5ef?\ub348\ub58e.",
+"?\uacf8\ubf07???\ub77e???\u91c9\ubdbe\uc613?\u317b\uaf55?\uc1e8\ub0b5 ?\uc497\ube33 ?\ub34a\ub59a?\u0080??\u5bc3\uace0\ube40??1.5\u8adb???\u5a9b\ubea3\uc830???\ub34a\ub59a?\uba2f\uc520\uf9de??\ub6af\uc359\u745c??\uafa8\ub596?\uc10e\u0149, \uf9e3\u2464\ub592 ?\ubdbe\ud21d \u7531\u044b\ub8f7???\uc496\ub4aa?\uc496\uc4e3 ?\u044a\uc29c???\uc1f0? \u6e90\ub506\ub2d5???\uc495\uc830???\uafa8\ub596?\uc495\ub58e.",
+"10\u907a\uafa8\ucb54 ?\ubce6\ube18?\uba2e\u3203 ?\u317a\ub9b0?\u0080 ?\uafa8\uc830???\uc10f\ud282???\uc1f0? \u8e42\u0080?\ubdbe? ?\ubea4\uc524?\uc10f\ub58e ???\ub349\ub4bf?\ub348\ub58e.",
+"\u7652\uba83\u2501\u79fb\ub300\uc52b \u63f4\ub4e6\ub9b0??1/100??\u907a\ub347\ub0b5??\u73e5\ub347\ub808???\u247a\ube28 ?\uc497\ub4c3\u5a9b\u0080 ?????\uc1f0?\uf9e3\uc10e\uc746 ?\uc1e8\ub3ac???\uba84\ube1e?\uc10d\ucfb6 \u5a9b\uba2f\ub5a5 ?\u226a\ub2d4?\u03bc\uc4e3 \u6d39\ubc38??\ubdc0\ube50\u4ee5\ub77e\ub572??",
+"??\uf9cd\ub349\ub4aa?\u0449\ub497 ?\ub300\ubf21 ?\ubc40\uc819 ?\uc1f0? \u81fe\uba84\uc823\u745c??\ub2ff\uaed0?\u2478\ub572\u6e90?",
+"5\u5a9b?\u63f4\u044a\ubfed???\ubdbf\uff1c\u7531\uafa7\ub0b5 \u4e8c\uc1f0\ucaeb??\u4ee5\uafa9\ubfec\u4e8c\uc1f0\u0149, ?\uafa8\uc830 ?\ub347\ud02c ?\u317b\uc612 \uf9de\u0080?\ub77e\ub9ba???\uafa8\uc830??3???\uc208\ube1e ?\uc88e??\ub301\uca33?\ub348\ub58e.",
+"?\u0080????\uf9cd\ub349\ub4aa?\u0449? ?\ub348\u0422 \u91ab\ub5ed\ube18?\ub301\uaf4c \u79fb\uc497\ube33 \u79fb\uc493\ub384?\u317a\ub0b5 \u6028\ub4ed\uc440?\uc10e\uc82e\u6028???\uf9cd\ub86e\uc520 ?\u0448\ub384\uf9cd\u317d\ubefd?\ub4ec\ub572??",
+"?\uc1f0?\u5a9b\u0080 ?\ubea3\ucb5a \u73e5\ub431\ud07a?\uc10d\ud02c \uf9cd\u317b\uac5f?\ub301????\u0080?\uc1f1\uc2ab \u8e42\ub301\ub4bf?\u2479\uc520?\uba2f\uc282 ",
+"?\uc10e? \uf9cf??????\ub506\ubf31 \u8e42\ub301\uc520\u5bc3?\uf9cd\ub6ae\ubc7e?\ub301\uc282. ?\uacf4\ub808 \u7570\ubdbf\ucfc7?\u2478\ub572??! ",
+"???\ub301? ?\uc497\ube33 ?\uacd7\uc52a\u7531??\ub34a\ub59a?\uba2f\uc520\uf9de??\uc88a\uaf2b?\ub085\ub572?? \u6e90\ub504\ud02c ?\u317b\uc612\u5a9b\u0080???\uc10e\ud147\u6028??\uae4a\uae8a???\uc1f0?\u5bc3\uacd7\uc4e3 ?\uc88e\uad97?\u2478\ub572??",
+"?\uc1f0?\u745c??\uae4a\uae8a?\uc10d\ud02c ?\uafa8\uc830?\ub347\ud02c ?\uacd5\uc45c?\uc10d\ucfb6 \u5a9b\u0080\u8881\uba84\ubf31 \u4e8c\uc1f0\ub497 \u6e90\ub506? ?\uc10e\ud147 \u6028\ub4e6\ud212 ?\uacd7\uc52a\u7531??\uc88a\uaf2b?\ub085\ub572??",
+"\uf9dd? ???\uc10e\ud147???\ub77e????\u0449??\u0449\ub497 \uf9de\u0080?\ub77f\uc7fb???\uc10e\ud147 \u6028\ub4e6\ud212???\uc493\ub0ac?\uc10e\ub497 ?\uc208\ub586????\uf9cd\u317b\uac5a?\uc384\ud02c ?\uafaa\uae42??\u8e42\ub301\uc520???\ub349\uae4b???\uc88e??\uc10e\ub497 ???\uafa9???\u4ee5\ub77e\ub572??",
+"\u907a\u0080?\uc495\uc72d?\uacd5\u3203?\uc495\ub8c4 ?\u2463\ub0b5?\uacf8\uc524 ???\uc497\ubb79?\u0080 \uf9cd\u317c\uc52a???\uba84\ube1e?\u2463\ub0b5 ?\ub349\ubfc9 ?\uafa8\ub497 ?\uba85\uc195 \uf9de\ubea5\uc351???\u0080??\uf9de\ubb12\uca37?\uacf8\uc524 \u613f\u0080\u7531\u0449? ?\u2463\ud361 ?\uc493\ub0ac?\u2478\ub572??",
+" ?\uc88a\uaf2b??\u73e5\uc10f\ud08c?\uc10d\ud02c \u8351\uc88e\ub021\u5a9b??\ub348\ub497 ?\ub6b0\uaf63 ?\ub77f\ub4aa\uf9e3\uc10d? ?\uc1f0???\u907a\u0080?\uc495\uc747\u5bc3?\u8a98\uba83\uac5a?\u044a???\u8adb\uc495\u2501\uf9ce?\u81fe\ub2ff\ucfaa\u5ac4\uacd5\uad79 ?\ub349\uc7fb?\ub300\ub497 ?\uba2e\uad66 ?\ub181\uc520 ?\uba84\ube1e?\uc10d\ucfb6 ?\u226a\ub2d4?\uc10e\ub497 \u5bc3\uaecb\uc520 ?\ubc40\ucb60?\ub085\ub572??",
+"?\u317d\uad93\u8033\u0080??\uf9e3??\u2463\ud00e\u907a\u0080???\uc10e\ud147??\uf9e2\uafa9\uc359\u4e8c\uc1f1\ubf31 ?\u317c\uc4ec ?\u2463\ud00e\u745c??\uafaa\ube33 \u73e5\ub431\ud07a??\u8e30\uc88e\uc520?\u317b? \uf9cd\ub6ae\ubc7e?\ub301\uca33?\ub348\ub58e.",
+" \u6e90\ub506? ?\uc10e\ud147??\u6028\ub4e6\ud212?\uc10f\ubfec ?\uc1f0?\u745c?\u907a\u0080?\uc495\uc747\u6028??\uba84\ube1e?\uc10d\ucfb6 \u5a9b\u0080\u8f45\ubdbf\uff1c\uf9ce? \u5ac4\ub2ff\uceef??\u8e42\ub301\uc520??\u613f\ubb12\ucf48?\u0080 ?\u2463\ud361 ?\ub349\ubfc9 ?\uafa7\ucfb6 ?\ub4ef\ub13b?\ub301\ucb5b?\ub348\ub58e.",
+" ?\uc1f0? ?\uafa8\uc830\u6028?\u8adb\u0080?\uafa8? \u5a9b\uc496\uaf51?\uc10f\ubfec ?\ubdbf\uc2a7 ?\uafaa\uae42???\uc1f0?\u745c?\u5a9b\u0080\u8881\uba83\ub497???\uafa9???\u4ee5\ub77e\ub572??",
+"?\uae4a\uae8a?\uc10d\ud02c ?\uafa8\uc830 ?\ub348\ub497 ?\uc1f0?\u745c??\uafaa\ube33 \u6e90\ub506? ?\uc10e\ud147 \u6028\ub4e6\ud212 -",
+"*?\u317d\uad93\uf9ce\ubdbe\ubc76(SkinMed)?\uba2f\uaf4c \uf9de\uafaa\ubefe??4\u4e8c\uc1e8\uced9???\uafa9\uae3d ?\uaccc\ub384??\u6d39\uc1e8\uad45??",
+" 2023??5??15?\uc1f0???6??14?\uc1e8\ud274\uf9de\u0080 30~60???\u044a\uaf66 21\uf9cf\ub086\uc4e3 ?\u0080?\uacf8\uc45d\u6fe1??\uc1f3\uaf63\u745c??\ub301\uc07a?\ub349\ub4bf?\ub348\ub58e. ",
+"\u73e5\uc10f\ud08c?\uc10d\ud02c \u8351\uc88e\ub021\u5a9b??\ub348\ub497 ?\ub6b0\uaf63 ?\ub77f\ub4aa\uf9e3\uc10d? \u907a\u0080?\uc495\uc747\u5bc3?\u8adb\uc495\u2501\u6028??\ub349\uc7fb???\ub181\uc520 ?\uba84\ube1e?\uc10d\ucfb6 ?\u226a\ub2d4?\uc10e\ub497 ?\uacd7\uc52a\u7531??\uc88a\uaf2b?\ub085\ub572?? ?\uba2e\uceee?\u03bc\uc520???\ubdbf\uc623?\uc496\uc4e3 ?\u044a\uc29c?\uc10f\ubfec \u8adb\ubdbe\u2164\u6028? \u5ac4\ub301\u201c??\u907a\u0080?\uafa9\ubfc9 \u5bc3\ubc34\uaef8??\u8adb\uc495\uc52a ?\uc10e\ud147 \u6028\ub4e6\ud212???\ubdbf\uc2a7 \u5a9b\ubea5\uc195?\uc10f\uaf6d??",
+"\u5ac4\ub301\u201c?? \u79fb\uc208\ud283???\uba2e\ub497 ?\uafa8\uc830 ?\uacf8\ub58e??\u5bc3\uc3c0\ubfd5?\uc10e\ub497 ?\uc1f0????\ub301\uae3d?\uacf8\uc520\uf9ce??\uc1f0????\uc10e\ud147??\u6028\ub4e6\ud212?\uc10d\ud02c \u907a\u0080?\uc495\uc747\u6028??\ub4ef\ub13b?\uc10e\u0149 ?\uacf8\ud484??\u8e42\ub301\uc5ef?\ub348\ub58e.",
+"\u91c9\ubdbe\uc613?\u317b\uaf55??\u88d5\u317c\ub58a???\uc1f0?\u745c??\uafaa\uae42?\uc10d\ucfb6 \u5a9b\u0080\u8881\uba83\ub497???\uafa9???\u4e8c\uc1f0\u0149, 5\u5a9b\u0080\uf9de\u0080 ?\ub301\u201c\u7570\ubdbf\ud167\u81fe\uc1f1\uc520 ?\uc10e\ud147??\uf9e2\uafa9\uc359\u4ee5\ub77e\ub572?? ?\uc10f\uc520?\uafa9\ub58a?\uafa8\ucb4f?\ub300\ubc76?\u0080 ?\uafa8\ub732?\uba84\ub58a?\u0080 \u6028\uc88a\u2164\uf9de\u0080 \uf9cf\uc0b5\ube33 ?\uc1f0? ?\u317a\ub0b5 ?\ub349\ubfc9 ?\uafa8\ub497 ?\uba85\uc195 \uf9de\ubea5\uc351\u745c?\u8033\u0080?\ub304\ube2f?????\uafa9???\u4ee5\ub77e\ub572??",
+"?? ?\uc10e\ud147???\ub77e????\u0449??\u0448? ?\uc10e\ud147??\u8e42\ub301\ub550?\uc10d\ud02c ?\uc10e\ud147 ?\u03bb\uaf0d??\u5a9b\ubea5\uc195?\uc10f\ubfec ?\uc1f0?\u745c?\u907a\u0080?\uc495\uc747\u6028??\uba84\ube1e?\uc10e\u0149 ?\uafa8\uc830?\ub347\ucfb6 \uf9cd\ub6ae\ubc7e?\ub301\uca33?\ub348\ub58e.",
+"\u73e5\uc10f\ud08c?\uc10d\ud02c \u8351\uc88e\ub021\u5a9b??\ub348\ub497 ?\uba2f\uaf71???\ub6b0\uaf63 ?\ub77f\ub4aa\uf9e3\uc10d? ?\uc1f0???\u907a\u0080?\uc495\uc747\u5bc3?\u8a98\uba83\uac5a?\u044a?\uf9ce?\u81fe\ub2ff\ucfaa\u5ac4\uacd5\uad79 ?\ub349\uc7fb?\ub300\ub497 ?\uba2e\uad66 ?\ub181\uc520 ?\uba84\ube1e?\uc10d\ucfb6 ?\u226a\ub2d4?\uc10f\ubf31 ?\uc1f0?\u745c?\u73e5\ub431\ud07a?\uc10d\ud02c \u907a\u0080?\uc495\uc72d?\uacd5\u0149 ?\uacd5\uc45c?\uc10d\ucfb6 \u5a9b\u0080\u8881\uba84\ubf31\u4ee5\ub77e\ub572??",
+"?\uba84\ube1e ???\uba2e\uceee?\u03bc\uc520???\ubdbf\uc623?\uc496\uc4e3 ?\ub301\uc29c??\u8adb\uc495\uc52a\u4ee5\ub77e\ub572?? \u907a\u0080?\uc495\uc747\u5bc3??\uba2e\ubc76???\u226a\ub2d4\u745c??\ubea2\ud02c, \u5ac4\ub301\u201c??\u907a\u0080?\uafa9\ubfc9 ?\u33d3\ucefb???\uc10e\ud147????\u6028\ub4e6\ud212?\uc10f\uaf6d?? ?\u317d\uad93\u8033\u0080??\u7337\u2466\ub59e???\u317c\uc4ec ?\u2463\ud00e\u745c??\uacd5\u2164?\uba84\uc282.",
+"?\uc10e\ub497 ???\uc497\ubb79??\uf9cd\u317c\uc2a6 \u91ab\ub5ed\ube18?\uc10e\ub497?? ?\uc1f0?\u5a9b\u0080 ?\uc88e\ubff0?\uc10d\ud02c ?\uacf8\ud484?\ub301????\uba2e\uad66??\u4ee5\ub77e\ub572?? ?\u0080??\uf9de\u0080\u6e72\ub347\ud274\uf9de\u0080 ?\uafaa? ?\ub349\uc0a6?\uc10f? ?\ub506\ube2f?\ub4ec\ub572?? ?\u03bc\uc520 ?\ub349\ubf31???\uba2d\ubea8\uf9de\u0080\uf9de\u0080 ?\ub504\ud02c ?\u03bc\uc520 \u91ab\ub5ea\ud02c ?\uafaa? \u907a\ub349\ud484?\uc10f? ?\ub506\ub4bf?\ub348\ub58e.",
+" \uf9cd\ub349\uc52a??\u6028\uc88a\ucb4f\u4e8c??\uafa8\ucb45 ?\ubdbe\uff08?\uc10f\uc5ef?\ub348\ub58e. \u8a98\uba84\uaf6d?\uc10d\ud02c \u81fe\ub4ed? \u5a9b\uacf8\ucb4f??\u907a\u0080?\uc495\uc747\u5bc3??\uc493\uad45?\uc10d\ud02c ",
+"??\uf9de\u0080\u8033? \uf9ce\ubdbf\uc520?\u044a\ubfbd????\u8adb\uc3c5\ub497 \uf9cd\ubb0e\ud02c ?\u317a\ub9b0 ?\ub348\ub497 ?\uc1f0?\u6fe1?\u5a9b\u0080\u8f45\ubdbf\uca33?\ub348\ub58e.",
+", \u79fb\uc208\ud283???\uc1f0????\uacf8\ud484?\u2465\uc4e3 ?\uc88e\uad97?\uc10d\ud02c \u907a\u0080?\uc495\uc747\u6028?\u73e5\ub431\ud07a?\uc10e\u0149 \u936e\uc3c5\uad79???\ub349\uae4b??\uf9de\u0080?\uba30\ube2f?\uafa8\uc909 \u6028\uc88e\ube1e???\uc497\ube33 ?\uc493\ub385???\uc10f\uc520??\u5a9b\uacf8\ucb4f ?\uc493\uad45?\uc496\uc5ef?\ub348\ub58e.",
+" ?\uc1f0? ?\u03bb\uaf0d??\u5a9b\ubea5\uc195?\uc10d\ud02c ?\uba2d\ub808?\uc1f0\uc908\u907a\u0080??\u8e42\ub304\uc0c7?\uc10e\ub497 ???\uafa9???\u4ee5\ub77e\ub572??",
+" \uf9dd\ub42f\uced6?\uacf8\uc524 \u91c9\ub6ae\uc52a?\ub304\ub4c3???\u2463\ub0b5\u745c??\uc88e\uad97?\uc10e\u0149, ?\uc578\u042a ?\uae45\ud147???\uba2d\ub808 ?\ub181\uc520 ?\u2463\ub0b5?\uacf8\uc524 \u5a9b\uacf8\ucb4f ?\uc493\uad45\u745c??\uafa9?\u4ee5\ub77e\ub572??",
+"?\uafa9\uae3d?\uacf8\uc45d\u6fe1?\u4e8c\uc38c? ?\uc1f0?\u745c?\u5a9b\uba2f\ub0fc?\uc497\uad8e??\u5bc3\uaecb\uc45d\u6fe1??\uc111??\u044a\ub4bf?\ub348\ub58e. ",
+", \u6028\uc88a\u2164\uf9de\u0080 \uf9cf\uc0b5\ube33 ?\uc1f0? \u5bc3\uacd7\uc4e3 \u5a9b\uc496\uaf51?\uc10e\ub497 ?\uc208\ub586???\u044a\uc29c ???\uc1f0?\u5a9b\u0080 ?\ub349\ubfc9 ?\uafa7\ucfb6 \u907a\u0080?\uc495\uc747\u6028??\u317a\ub9b0 ?\ub347\ucfb6 ?\uc88e??\u2478\ub572??",
+" \uf9e4\uc496\uae3d??\u5bc3\uaccc\ub0b5\u745c??\uafaa\ube50. \u907a\u0080?\uc495\uc72d??\u5a9b\uacf8\ucb4f ?\uc493\uad45?\u0080 \u5a9b\u0080\u8e30\uc1f1\uc2ab ?\uc10e\ud147???\uba30\ube2f??\u79fb\uc208\ud283?\uc10d\uad45??\u6028\uc88a\u2164\uf9de\u0080 \uf9cf\uc0b5\ube33 ?\uc1f0????\ub301\uae3d?\uacf8\uc5ef?\ub348\ub58e.",
+" \u5a9b\uacf8\ucb4f??\u907a\u0080?\uc495\uc747\u5bc3??\uc493\uad45?\uc10d\ud02c ?\u0080?\uba2d\ub808?\uc1f0\uc908 ?\ubdbf\uc2a7 \u907a\u0080?\uc495\uc747\u6028?\u6d39\uc88e\uc52a???\uc1f0?\u5bc3\uacd7\uc4e3 ?\uc88e\uad97?\uc10e\ub497 ?\uc493\ub385??\u6028\uc88a\ucb4f\u4e8c??\u0080???\uafa8\ucb45 ??,
+" ?\uc10e\ud147??\u5a9b\u0080?\uba2f\ubf31 ?\u044a\uc29c ???\uc1f0???\u6e90\ub506? ?\uc10e\ud147??\u6028\ub4e6\ud212?\uc10d\ud02c ?\ub349\ubfc9 ?\uafa7\ucfb6 \uf9cd\u317b\uac5a?\u044a\uc359\uf9de\u0080???\uba2e\uad66??\u4ee5\ub77e\ub572??",
+" \uf9dd\ub42f\uced6?\uacf8\uc45d\u6fe1?\u91c9\ub6ae\uc52a?\ub304\ub4c3???\u2463\ub0b5\u745c?\u4e8c\uc1f1\ubf31 ?\ubdbf\uc2a7 ?\ubdbf\uad97???\uc1f0?\u745c??\uacd7\ud167?\uc10e\ub497???\uafa9???\u4ee5\ub77e\ub572??",
+" ?\uba2d\ub808?\uc1f0\uc908\u907a\u0080???\uc1f0? ?\u03bb\uaf0d??\u8e42\ub304\uc0c7?\uc10e\ub497 ???\uafa9???\u4e8c\uc1f0\u0149, ?\uc578\u042a???\uc578\u042a ?\uae45\ud147\u6028?\u5bc3\uace0\ube40?\uc10f\ubfec \u907a\u0080?\uc495\uc72d??\u5a9b\uacf8\ucb4f ?\uc493\uad45\u745c??\uafa9?\u4ee5\ub77e\ub572??",
+"?\u03bd\uaf63\uf9de\u0080 ??KOREA'S NO. 1 ?\u317d\uad93\u8033\u0080??\u91c9\ub6ae\uc616??*",
+" 25?????\uc1f0?\u6028??\uafa8\u0426???\ub347\uad54???\uba2f\uc623???\u317b\u2530???\u03bd\uaf63\uf9de\u0080???\uafa7\uaebd???\uc1f0?\u6028\uc1f3\ube30??\u8adb\ubdc0\uae62?\uc1f0\uc908 ?\uafa9\uae6e?\ub349\ub4bf?\ub348\ub58e. \uf9cf\u2464\ubc7a ?\uae45\ud147?\u0080 \u6028\uc1f3\ube30?\uacf8\uc45d\u6fe1?\u5bc3\u0080\uf9dd\uc578\ub9ba???\uc1f0? ?\uba2d\ub808??\uf9e4\uc496\ub0fc?\ubdc0\ube2f\u6028??\u317c\uc823?\uacf8\uc520\u6028??\ub349\ubfc9 ?\uafa8\ub497 \u5bc3\uaccc\ub0b5\u745c??\uc493\ub0ac?\u2478\ub572?? *?\uafa8\ub572?? ?\u0080?\uc495?\u63f4??\ubdbe\u3048\u8084\ubdbf\ub4aa\uf9ce\ubdc0\ub59b 1??",
+" P&amp;K ?\uc1f0??\uaccc\ub384?\ub6af\ubfc9??2021??11??9?\uc1f0???11??11?\uc1e8\ud274\uf9de\u0080 ?\uae46\uc524 ?\u2464? 22\uf9cf\ub086\uc4e3 ?\u0080?\uacf8\uc45d\u6fe1??\u317c\ub586?\ub349\ub4bf?\ub348\ub58e. \u5bc3\uaccc\ub0b5??\u5a9b\uc496\uc524\u8e42\uafa8\uc908 ?\u317b? ???\ub349\ub4bf?\ub348\ub58e.",
+" \u907a\u0080?\uc495\uc72d??\u6028\uc88a\ucb4f\u4e8c??\uc496\ub4aa?\uc496\uc4e3 ?\ub4ef\ube50 \u8a98\uba84\uaf6d?\uc10d\ud02c ?\uafa7\ud02c??\u5a9b\uacf8\ucb4f??\u907a\u0080?\uc495\uc747\u5bc3?\u6fe1\u317b\ucb45?\uc10d\ud02c ?\u317c\ubf31 ?\u0449\uc82e\u4e8c\uc1f0\ub497 ?\u317c\ubf07???\u0448\ub9b0???\u0080\u7337\uacd5\uc908?\u317c\ub4aa ?\ub086\uc604\u5a9b\u0080 ?\ubc40\ucb60?\ub085\ub572??",
+" \uf9cd\ub349\uac19??\uf9e4\uc496\ub0fc?\ubdc0\ube2f\uf9ce\ub301\uaf4c ?\u2463\ub0b5?\uacf8\uc520\u6028?\uf9cd\u317c\uc2a6 \u907a\u0080?\uc495\uc72d??\u81fe\uc1f0\u2501??\u5a9b\uacf8\ucb4f ?\uc493\uad45\u745c??\uc493\ub0ac?\uc10f\ubfec \u8a98\uc1e8\ucee7???\uc1f0?\u745c??\uba2d\ub808?\uc10f? ?\ub504\ud02c \uf9cd\u317b\uac5a?\u044a\uc2ab ?\uc1f0? \uf9de\ub347\ucee7??\u8e42\ub301\uc623?\u2478\ub572??",
+" ?\uafa8\ucb45 \u6028\uc1f1\uc819 \u4ee5\ubb0e\ub0b5 ?\ub304\uc351???\uc1f0????\uc10e\ud147 ?\u03bb\uaf0d???\uacf4\ub808?\uacf8\uc45d\u6fe1?\u613f\u0080\u7531\u044b\ube2f\u6028?\uf9de\u0080?\uba30\ube40?\ub348\ub58e.",
+" \u75cd\u2465\ube5f???\uc10e\ud147 ?\u03bb\uaf0d??\u8e42\ub304\uc0c7, \u5a9b\ubea5\uc195, \u5a9b\ubea5\uc195?\uc496\ud3d2 \u5a9b\uacf8\ucb4f ?\uc493\uad45 ?\uafa9\ubfc9??\u5ac4\ub2ff\uceef?\uc10d\ud02c \u6d39\uc88f\uc08e?\u226b\uc5fa ?\uc1f0? ?\uacf9\uae6d\u745c??\uc88e??\uc10e\ub497???\uafa9???\u4ee5\ub77e\ub572??",
+"1?\u2463\ud00e: ?\ubf70? ?\uc1f0????\uc208\uc7fe ?\u0448\ub9b0\uf9cd\ub6b0\uacae ?\uc496\ubf31 ??\u8adb\uc495\uc52a\u4ee5\ub77e\ub572??",
+" ?\ub347??\u0080 ?\ub083?\u745c??\uc1f3\ube50 1\u907a??\ub300\uada1\u6fe1??\uba2f\uc4e3 \u6d39\uba83\u2501??\u907a\u0080?\uc495\uc747\u5bc3?\uf9cd\ub349\uad97\uf9de\u0080??\u4e8c\uc1f1\uaf6d??",
+" ?\uc1f1\uff1c?\uc1f1\ubfc9 1~2???\u044a\uc29c?\uc10e\u3203 ?\uc1f0?\u745c?\uf9cd\u317b\uac5a?\uc384\ud02c ?\ubdbf\uad97?\uc10d\ucfb6 ?\uc88e??\uc10f\ubfec \u5bc3\uacd7\uc80f ?\ub17f\ub497 \uf9ce\ubdbf\uc520?\u044a\ubfbd???\uafaa\ube33 ?\uafa8\uaf0d??\u4ee5\u0080\u936e??\uacf9\uae6d\u745c??\uc88e??????\ub349\ub4bf?\ub348\ub58e.",
+"???\uc497\ube33 ?\uafa8\ucb45 ?\u317c? \u8a98\uc1e8\ucee7???\uc1f0??\u0080 ?\uba83\uc72d\u91c9\ubdbf\uaf66 ?\uc1f0?\u745c??\u044b\ube3f??\uf9cf\u2464\ubc7a ?\uc1f0? ?\u0080?\ub086\ubfc9 ?\uacf9\ube40?\u2478\ub572?? ?\u0080?\uba2d\ub808 ?\u0449??\u0449\uc908 ?\ubdbf\uc604?\uba83\ub9ba???\uba2d\ub808 ?\ub181\uc520 \u907a\u0080?\uc495\uc747\u5bc3?\u5a9b\uacf8\ucb4f???\uc493\uad45?\uc10d\ud02c ?\ub760? \u907a\uafa8\ubc7e?\uba2d\ucfb6 ?\ub301\uae3d?\uacf8\uc5ef?\ub348\ub58e.",
+"?\uafa8\ucb45?\u317c? ?\uc1f0\ucb4f???\uba2f\uff1c ?\u044a\uc29c?\ub301\ube5e ?\uc10e\uad79?? \uf9cd\u317c\uc52a ?\u044a\uc29c?\ub300\ub8c4 ?\uc10e\uad79??",
+"\uf9e4\uc496\uae3d??\u5bc3\uaccc\ub0b5\u745c??\uc0b4\uc45d?\u317b\u3203 ?\uc1f1\uff1c?\uc1f1\ubfc9 1~2???\u044a\uc29c?\uc10e\ub497 \u5bc3\uaecb\uc520 \u91ab\ub5ed\ub4bf?\ub348\ub58e. \u6028\uc1f0\ub8c4??\u5a9b\uacf8\ucb4f ?\uc493\uad45???\uc1f0? ?\u03bb\uaf0d??\u81fe\ub300\uaf2b?\u2464\u252b ???\ub349\uc45d\u8a98\u0080\u6fe1?\uf9cd\u317c\uc52a ?\u044a\uc29c?\uc10e\ub497 \u5bc3\uaecb? \u6c85\ub6af\uc623?\uc10f? ?\ub506\ub4bf?\ub348\ub58e.",
+"\u5a9b\uacf8\ucb4f???\u2463\ub0b5?\uacf8\uc45d\u6fe1??\uc493\uad45?\ub301\uff1c??\uf9ce\u0080???\u044a\uc520\uf9dd??\u0080\u7337\uacd5\uc908?\u317c\ub4aa?\u0080 \u6e90\ub506? \u8e42\ub301\ub4bf\u6028?\u91c9\ub6ae\uc52a?\ub304\ub4c3??\u8033\u0080?\ub300? ?\uafaa\ube33 8\u91ab??\ub349\ube23\u7337\u2464\uc90e??amp;\u936e\uafaa?\u8a98\ud36c, ?\uc1f0? ?\u03bb\uaf0d??\u8e42\ub304\uc0c7?\uc10d\ud02c \u5a9b\ubea5\uc195?\ub301\uff1c???\uafa9\ud4fc???\uba83\uc52a\uf9cd\ub349\uc520?\uc493? ?\u2465\uc440???\uc497\ube33 ?\u0449??\u044a\uc5ef?\ub348\ub58e.",
+"?\uafa8\ub572?? ?\uc1f0?\u5a9b\u0080 \u5ac4\ub301\u201c?\u2465\uc4e3 ?\uba2e\uacae\uf9de\u0080 ?\ub506\uc4e3 \u5bc3\uaecb\uc5ef?\ub348\ub58e! 8\u5a9b\u0080\uf9de\u0080 ?\ub349\ube23\u7337\u2464\uc90e?\uaccc\ub0b5 ?\uafa9\ud4fc???\uba83\uc52a\uf9cd\ub349\uc520?\uc493? ?\u2465\uc440?\uc10f\ubf31 ?\uc1f0? ??\u6e90\ub506? \u6028\ub160\ud274\uf9de\u0080 ?\uc10e\ud147??\u6028\ub4e6\ud212?\uc10d\ud02c ?\u03bb\uaf0d??\u8e42\ub304\uc0c7?\ub301\uca33?\ub348\ub58e. \u5bc3\ub6ae\ub58e\u5a9b\u0080 ?\uc1f0?\u5a9b\u0080 \u5ac4\ub301\u201c?\ub301?\uf9ce??\u317c\uc823\u6fe1?\u6028\uc88a\ucb4f\u4e8c??\uafa8\ucb45?????\uc384\ucfb6 ?\uc1f1\ubf31?\uc10d\ub9b0 ?\ub6ae\u0426??\u4e8c\uc38c? ?\uc1f0? ?\uba85\ub8f7\u745c??\uc493\uad45?\uc10e\ub497 ???\uafa9????\u2478\ub572??"
+]
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command '$s = Get-Content -LiteralPath '"'in1.json' -Raw -Encoding UTF8; "'$out = foreach ($c in $s.ToCharArray()) { if ([int]$c -gt 127) { '"'\\u{0:x4}' -f [int]"'$c } else { [string]$c } }; $out -join '"''" in C:\Users\sksml\Desktop\닥터지\_tools\pt
+ succeeded in 289ms:
+[
+"\ub2ec\ud33d\uc774 \ud06c\ub9bc\uacfc \ud568\uaed8 \uc0ac\uc6a9\ud558\uba74 \ud53c\ubd80\uac00 \ub9e4\uc6b0 \ubd80\ub4dc\ub7ec\uc6cc\uc9c0\ub294 \ub290\ub08c\uc774 \ub4e4\uc5b4\uc694 \uc815\ub9d0 \uc88b\uc544\uc694!!!!!",
+"\uc800\ub294 \uc774 \uc138\ub7fc\uc744 \uba87 \uc8fc \ub3d9\uc548 \uc0ac\uc6a9\ud574 \uc654\uace0, \ud53c\ubd80\uc5d0 \ub2ff\ub294 \ub290\ub08c\uc774 \uac00\ubccd\uace0 \uc0c8\ud2f4 \uac19\uc740 \ub290\ub08c\uc774 \uc815\ub9d0 \ub9c8\uc74c\uc5d0 \ub4e4\uc5c8\uc2b5\ub2c8\ub2e4. \uc0ac\uc6a9\uac10\ub3c4 \ub9e4\uc6b0 \ubd80\ub4dc\ub7ec\uc6cc\uc11c \ubd89\uc5b4\uc9d0\uc774\ub098 \ub530\uac00\uc6c0\ub3c4 \ub290\uaef4\uc9c0\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \ub098\ub294 \ubc24\uc5d0 \uc138\ub7fc \ub2e8\uacc4\ub85c 3\ubc88 \ub8e8\ud2f4\uc5d0 \uc27d\uac8c \ud3ec\ud568\uc2dc\ucf30\uc2b5\ub2c8\ub2e4. \ud655\uc2e4\ud788 \uacc4\uc18d \uc0ac\uc6a9\ud558\uace0 \uc2dc\ub3c4\ud574 \ubcfc \uac83\uc744 \uad8c\uc7a5\ud569\ub2c8\ub2e4. ",
+". \uc548\ud2f0\uc5d0\uc774\uc9d5 \ucf00\uc5b4\uc640 \ud568\uaed8 \uc8fc\ub984 \uac1c\uc120\uc5d0 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+"- \ud558\uc774\ub4dc\ub85d\uc2dc\ud53c\ub098\ucf5c\ub860 \ub808\ud2f0\ub178\uc5d0\uc774\ud2b8, \ub808\ud2f0\ub2d0 \ud504\ub85c\ud53c\uc624\ub124\uc774\ud2b8, \ud4e8\uc5b4 \ub808\ud2f0\ub180, 150Da \uc800\ubd84\uc790 \ucf5c\ub77c\uac90\uc774 \ud568\uc720\ub41c \ub2ec\ud33d\uc774 \ub808\ud2f0\ub180+ 1.0%\ub97c \ud568\uc720\ud574 \uc794\uc8fc\ub984\uacfc \uc8fc\ub984\uc744 \ucd5c\uc18c\ud654\ud558\uace0 \ud53c\ubd80 \ud0c4\ub825\uc744 \ub418\ucc3e\uc544 4D \ub9ac\ud504\ud305 \ud6a8\uacfc\ub97c \uc120\uc0ac\ud569\ub2c8\ub2e4.",
+"- \ub9e4\ub044\ub7ec\uc6b4 \uc9c8\uac10\uc73c\ub85c \ub048\uc801\uc784 \uc5c6\uc774 \uc0b0\ub73b\ud55c \ub9c8\ubb34\ub9ac\uac10\uc744 \uc120\uc0ac\ud558\uba70, \ud53c\ubd80\uc5d0 \ube60\ub974\uac8c \ud761\uc218\ub418\uc5b4 \uc790\uadf9\uc744 \ucd5c\uc18c\ud654\ud558\uba74\uc11c \ud53c\ubd80 \uc7a5\ubcbd\uc744 \uac15\ud654\ud574\uc90d\ub2c8\ub2e4.",
+"- \uc801\ub2f9\ub7c9\uc744 \ud53c\ubd80\uc5d0 \ubc14\ub974\uace0 \uac00\ubccd\uac8c \ub450\ub4dc\ub824 \ud761\uc218\uc2dc\ucf1c \uc90d\ub2c8\ub2e4.\"",
+"\ud558\uc774\ub4dc\ub85d\uc2dc\ud53c\ub098\ucf5c\ub860 \ub808\ud2f0\ub178\uc5d0\uc774\ud2b8, \ub808\ud2f0\ub2d0\ud504\ub85c\ud53c\uc624\ub124\uc774\ud2b8, \ud4e8\uc5b4 \ub808\ud2f0\ub180, 150Da \uc800\ubd84\uc790 \ucf5c\ub77c\uac90\uc774 \ud568\uc720\ub41c \ub2ec\ud33d\uc774 \ub808\ud2f0\ub180+ 1.0%\ub97c \ud568\uc720\ud574 \uc794\uc8fc\ub984\uacfc \uc8fc\ub984\uc744 \ucd5c\uc18c\ud654\ud558\uace0 \ud53c\ubd80 \ud0c4\ub825\uc744 \ub418\ucc3e\uc544 4D \ub9ac\ud504\ud305 \ud6a8\uacfc\ub97c \uc120\uc0ac\ud569\ub2c8\ub2e4.",
+"\ud558\uc774\ub4dc\ub85d\uc2dc\ud53c\ub098\ucf5c\ub860 \ub808\ud2f0\ub178\uc5d0\uc774\ud2b8, \ub808\ud2f0\ub2d0\ud504\ub85c\ud53c\uc624\ub124\uc774\ud2b8, \ud4e8\uc5b4 \ub808\ud2f0\ub180, 150Da \uc800\ubd84\uc790 \ucf5c\ub77c\uac90\uc774 \ud568\uc720\ub41c \ub2ec\ud33d\uc774 \ub808\ud2f0\ub180+ 1.0%\ub97c \ud568\uc720\ud558\uc5ec \uc794\uc8fc\ub984\uacfc \uc8fc\ub984\uc744 \ucd5c\uc18c\ud654\ud558\uace0 \ud53c\ubd80 \ud0c4\ub825\uc744 \ub418\ucc3e\uc544\uc90d\ub2c8\ub2e4. ",
+"- \uc801\ub2f9\ub7c9\uc744 \ud53c\ubd80\uc5d0 \ubc14\ub974\uace0 \uac00\ubccd\uac8c \ub450\ub4dc\ub824 \ud761\uc218\uc2dc\ucf1c \uc90d\ub2c8\ub2e4.",
+"\ube14\ub799\uc2a4\ub124\uc77c \ub9c1\ud074 \ub9ac\ud504\ud305 \ub9c8\uc2a4\ud06c 28ml 1piece",
+"\ud0c4\ub825, \ub9ac\ud504\ud305, \uad11\ucc44\ub97c \uc704\ud55c 10\ubd84 \uc9d1\uc911 \ucf00\uc5b4 \uc2dc\ud2b8 \ub9c8\uc2a4\ud06c\uc785\ub2c8\ub2e4. \uc800\uc790\uadf9 ",
+"\uc774 \ub4e4\uc5b4 \uc788\uc5b4 \ubbfc\uac10\ud55c \ud53c\ubd80\uc5d0\ub3c4 \uc0ac\uc6a9\ud558\uae30 \uc88b\uc2b5\ub2c8\ub2e4.",
+"\ub3c5\uc790\uc801\uc778 \uc131\ubd84\uc73c\ub85c \uac15\ub825\ud55c \ub9ac\ud504\ud305\uacfc \uad11\ucc44\ub97c \uc120\uc0ac\ud558\ub294 \uc2dc\ud2b8 \ub9c8\uc2a4\ud06c ",
+", \ub2e8 10\ubd84 \ub9cc\uc5d0 \uc784\uc0c1\uc801\uc73c\ub85c \uc785\uc99d\ub41c \ub178\ud654 \ubc29\uc9c0 \uacb0\uacfc\ub97c \uc81c\uacf5\ud558\ub294 \ub3d9\uc2dc\uc5d0 \ubbfc\uac10\ud55c \ud53c\ubd80\uc5d0\ub3c4 \ucda9\ubd84\ud788 \uc21c\ud568\uc744 \uc720\uc9c0\ud569\ub2c8\ub2e4.",
+" \ub9c1\ud074 \ub9c8\uc2a4\ud06c\ub294 \ucd08\uadf9\uc138 \ud3ec\uc7a5\uc9c0\ub97c \uacb0\ud569\ud55c \uac83\uc785\ub2c8\ub2e4 \u2014 ",
+" \uba38\ub9ac\uce74\ub77d \ud55c \uac00\ub2e5\ubcf4\ub2e4 \uc587\uc740 \ub18d\ucd95\ub41c \uc774\uc911 \ub9ac\ud3ec\uc880 \uc570\ud50c-\ud22c-\ud06c\ub9bc \ud14d\uc2a4\ucc98\ub85c \ud65c\uc131 \uc131\ubd84\uc774 \ud53c\ubd80 \uae4a\uc219\uc774 \uce68\ud22c\ud558\uc5ec \ube60\ub974\uace0 \ub208\uc5d0 \ub744\ub294 \uacb0\uacfc\ub97c \uc120\uc0ac\ud569\ub2c8\ub2e4.",
+"\uc794\uc8fc\ub984\ubd80\ud130 \uae4a\uc740 \uc8fc\ub984\uae4c\uc9c0 5\uac00\uc9c0 \uc8fc\uc694 \uc8fc\ub984 \ubd80\uc704\ub97c \uc9d1\uc911\uc801\uc73c\ub85c \ud0c0\uac9f\ud558\uc5ec \uc885\ud569\uc801\uc778 \ub9ac\ud504\ud305\uacfc \uc2a4\ubb34\ub529 \ucf00\uc5b4\ub97c \uc81c\uacf5\ud558\ub294 \uc2f1\uae00 \uc2dc\ud2b8\uc785\ub2c8\ub2e4.",
+" \uae4a\uc740 \uc8fc\ub984\uc744 \uc989\uac01\uc801\uc73c\ub85c \ucf00\uc5b4\ud574\uc8fc\ub294 \ub2ec\ud33d\uc774\uc810\uc561\uc5ec\uacfc\ubb3c\uacfc ",
+" \ud55c \ubc88 \uc0ac\uc6a9\uc73c\ub85c \uc989\uac01\uc801\uc778 \uae4a\uc740 \uc8fc\ub984 \uac1c\uc120 \ud6a8\uacfc\ub97c \uc120\uc0ac\ud569\ub2c8\ub2e4. ",
+", \ud558\uc774\ub4dc\ub85d\uc2dc\ud53c\ub098\ucf5c\ub860 \ub808\ud2f0\ub178\uc5d0\uc774\ud2b8, \ub2ec\ud33d\uc774\uc810\uc561\uc5ec\uacfc\ubb3c, \ub098\uc774\uc544\uc2e0\uc544\ubbf8\ub4dc \ubc0f ",
+" \ub208\uc5d0 \ub744\ub294 \uc8fc\ub984 \ucf00\uc5b4\uc640 \ud53c\ubd80 \ud0c4\ub825\uc744 \ub3c4\uc640\uc90d\ub2c8\ub2e4.",
+" \ucd08\uadf9\uc138\uc0ac \uc2dc\ud2b8\uac00 \ud53c\ubd80 \uad74\uace1\uc5d0 \ubc00\ucc29\ub418\ub3c4\ub85d \uc124\uacc4\ub418\uc5b4, \ubc14\ub974\ub294 \ub3d9\uc548 \ubc00\ub3c4 \ub192\uc740 \uc570\ud50c \uc5d0\uc13c\uc2a4\uac00 \uc5bc\uad74\uc5d0 \uace0\ub974\uac8c \ub2ff\ub3c4\ub85d \ub3c4\uc640\uc90d\ub2c8\ub2e4.",
+" \ub208\uc5d0 \ub744\ub294 \ub9ac\ud504\ud305 \ud6a8\uacfc\uc640 \ud53c\ubd80\uc5d0 \ub9e4\ub044\ub7fd\uace0 \ubc00\ucc29\ub418\ub294 \ub290\ub08c\uc73c\ub85c \ud53c\ubd80\uac00 \uc989\uc2dc \ub9e4\ub044\ub7ec\uc6cc\uc9c0\uace0 \ud0c4\ub825 \uc788\ub294 \ub290\ub08c\uc744 \ubc1b\uc2b5\ub2c8\ub2e4.",
+" \ubca0\uac1c \uc790\uad6d\uc744 \uc904\uc774\uace0 \uae4a\uc740 \uc8fc\ub984\uc744 \uac1c\uc120\ud569\ub2c8\ub2e4.",
+" \uc8fc\ub984 \uc644\ud654 \ubc0f \ub9ac\ud504\ud305 \ud6a8\uacfc\uac00 \uc9c0\uc18d\ub418\uba70 \uae4a\uc740 \uc8fc\ub984\uc774 \ub208\uc5d0 \ub744\uac8c \uac1c\uc120\ub429\ub2c8\ub2e4. ",
+" \uc124\ubb38\uc870\uc0ac\uc5d0 \ucc38\uc5ec\ud55c \uc0ac\uc6a9\uc790 \uc911 \uc218\ubd84, \ud0c4\ub825, \uc9c8\uac10, \ud53c\ubd80 \uc0c1\ud0dc \ubc0f \uae4a\uc740 \uc8fc\ub984\uc774 \uac1c\uc120\ub418\uc5c8\ub2e4\uace0 \ubcf4\uace0\ud588\uc2b5\ub2c8\ub2e4.***",
+" \ubbfc\uac10\uc131 \ud53c\ubd80\uc5d0\ub3c4 \uc0ac\uc6a9\uc774 \uac00\ub2a5\ud558\ub3c4\ub85d \ud53c\ubd80\uc790\uadf9 \ud14c\uc2a4\ud2b8\ub97c \uc9c4\ud589\ud558\uc600\uc2b5\ub2c8\ub2e4.",
+"*\uc9c0\uc815\ub41c \uc5f0\uad6c \uc870\uac74\uc5d0\uc11c \ub0b4\ubd80 \uc784\uc0c1 \ubc0f \uc18c\ube44\uc790 \ud14c\uc2a4\ud2b8\ub97c \ubc14\ud0d5\uc73c\ub85c \ud55c \uacb0\uacfc\uc785\ub2c8\ub2e4. **\uc784\uc0c1 \uc5f0\uad6c(PNK-24513-K3R, 24/05/13~24/05/24; P&amp;K), 20~59\uc138 \uc5ec\uc131. ***",
+"1\ub2e8\uacc4: \uc138\uc548 \ud6c4 \ud1a0\ub108\ub85c \ud53c\ubd80\ub97c \uc815\ub3c8\ud55c \ud6c4 \ucd08\uadf9\uc138 \ub7a9\ud551 \uc2dc\ud2b8 \ub9c8\uc2a4\ud06c\ub97c \uaebc\ub0c5\ub2c8\ub2e4.",
+" \ubd80\ub4dc\ub7fd\uac8c \ud3b4\uc11c \uc5bc\uad74 \uc804\uccb4\uc5d0 \uace0\ub974\uac8c \ud3b4 \ubc1c\ub77c\uc8fc\uba74 \ucd08\uadf9\uc138 \uc2dc\ud2b8\uac00 \uc81c2\uc758 \ud53c\ubd80\ucc98\ub7fc \uace1\uc120\uc744 \uac10\uc2f8\uc90d\ub2c8\ub2e4.",
+" \ud48d\ubd80\ud55c \uc570\ud50c-\ud22c-\ud06c\ub9bc \ud3ec\ubbac\ub7ec\uac00 \ud53c\ubd80 \uae4a\uc219\uc774 \uc2a4\uba70\ub4dc\ub294 \ub3d9\uc548 \ub2e8 10\ubd84\ub9cc \ud734\uc2dd\uc744 \ucde8\ud574 \ubcf4\uc138\uc694.",
+" \ub9c8\uc2a4\ud06c\ub97c \ub5bc\uc5b4\ub0b4\uace0 \ub0a8\uc740 \ud3ec\ubbac\ub7ec\ub97c \ud53c\ubd80\uc5d0 \uac00\ubccd\uac8c \ub450\ub4dc\ub824 \uad11\ucc44\ub97c \uc720\uc9c0\ud558\uc138\uc694.",
+"Ideal for anyone dealing with dryness, loss of firmness, or wrinkles. \ubaa8\ub4e0 \ud53c\ubd80, \ud2b9\ud788 \ud6a8\uacfc\uc801\uc778 \uc9d1\uc911 \uc548\ud2f0\uc5d0\uc774\uc9d5 \ucf00\uc5b4\ub97c \uc6d0\ud558\ub294 \ubbfc\uac10\ud55c \ud53c\ubd80\ub97c \uc704\ud574 \uace0\uc548\ub41c \uc800\uc790\uadf9 \ub808\ud2f0\ub180 \ud398\uc774\uc15c \ub9c8\uc2a4\ud06c\uc785\ub2c8\ub2e4.",
+"\uc601\uc591\uc774 \ud48d\ubd80\ud55c \ube14\ub799\uc2a4\ub124\uc77c\uacfc \uc21c\ud55c \ub808\ud2f0\ub180\uc744 \uacb0\ud569\ud574 1.5\ubc30 \ub354 \uac15\ub825\ud55c \uc548\ud2f0\uc5d0\uc774\uc9d5 \ud30c\uc6cc\ub97c \uc804\ub2ec\ud558\uba70, \ucca8\ub2e8 \ub354\ube14 \ub9ac\ud3ec\uc19c \uc2dc\uc2a4\ud15c\uc744 \uc0ac\uc6a9\ud574 \ud53c\ubd80 \uae4a\uc219\uc774 \ud65c\ub825\uc744 \uc804\ub2ec\ud55c\ub2e4.",
+"10\ubd84\ub9cc \ub193\uc544\ub450\uba74 \uc724\uae30\uc640 \ud0c4\ub825\uc774 \ub118\uce58\ub294 \ud53c\ubd80 \ubcc0\ud654\ub97c \ud655\uc778\ud558\uc2e4 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+"\uba38\ub9ac\uce74\ub77d \uad75\uae30\uc758 1/100\uc5d0 \ubd88\uacfc\ud55c \ucd08\uadf9\uc138 \ub7a9\ud551 \uc2dc\ud2b8\uac00 \uc81c2\uc758 \ud53c\ubd80\ucc98\ub7fc \uc5bc\uad74\uc744 \ud3b8\uc548\ud558\uac8c \uac10\uc2f8 \ud761\uc218\ub825\uc744 \uadf9\ub300\ud654\ud574\uc90d\ub2c8\ub2e4.",
+"\uc774 \ub9c8\uc2a4\ud06c\ub294 \uc5b4\ub5a4 \ud2b9\uc815 \ud53c\ubd80 \ubb38\uc81c\ub97c \ud574\uacb0\ud569\ub2c8\uae4c?",
+"5\uac1c \uad6c\uc5ed\uc758 \uc794\uc8fc\ub984\uacfc \uc8fc\ub984\uc744 \uc904\uc5ec\uc8fc\uba70, \ud0c4\ub825 \uc788\uace0 \uc624\ub798 \uc9c0\uc18d\ub418\ub294 \ud0c4\ub825\uc744 3\uc77c \ub3d9\uc548 \uc720\uc9c0\ud574\uc90d\ub2c8\ub2e4.",
+"\uc800\ub294 \uc774 \ub9c8\uc2a4\ud06c\ub97c \ub108\ubb34 \uc88b\uc544\ud574\uc11c \uce5c\ud55c \uce5c\uad6c\ub4e4\uacfc \uacf5\uc720\ud558\ub824\uace0 \ub354 \ub9ce\uc774 \uc7ac\uad6c\ub9e4\ud588\uc2b5\ub2c8\ub2e4.",
+"\ud53c\ubd80\uac00 \uc815\ub9d0 \ucd09\ucd09\ud558\uace0 \ub9e4\ub048\ud574\uc9c0\ub294 \ub180\ub77c\uc6b4 \ubcf4\uc2b5\ud329\uc774\uc5d0\uc694 ",
+"\ub098\ub97c \uba87 \ub144 \ub354 \uc80a\uc5b4 \ubcf4\uc774\uac8c \ub9cc\ub4e4\uc5b4\uc694. \uc801\uadf9 \ucd94\ucc9c\ud569\ub2c8\ub2e4!! ",
+"\uc744 \ub2f4\uc740 \uc21c\ud55c \ub370\uc77c\ub9ac \uc548\ud2f0\uc5d0\uc774\uc9d5 \ud1a0\ub108\uc785\ub2c8\ub2e4. \uae4a\uace0 \uc624\ub798\uac00\ub294 \uc218\ubd84\uacfc \ud0f1\ud0f1\ud55c \ud53c\ubd80\uacb0\uc744 \uc120\uc0ac\ud569\ub2c8\ub2e4.",
+"\ud53c\ubd80\ub97c \ud0f1\ud0f1\ud558\uace0 \ud0c4\ub825\uc788\uace0 \uc0b0\ub73b\ud558\uac8c \uac00\uafb8\uc5b4 \uc8fc\ub294 \uae4a\uc740 \uc218\ubd84 \uacf5\uae09 \ub370\uc77c\ub9ac \ud1a0\ub108\uc785\ub2c8\ub2e4.",
+"\uc989, \uc774 \uc218\ubd84\uc774 \ud48d\ubd80\ud55c \ud3ec\ubbac\ub7ec\ub294 \uc9c0\uc18d\uc801\uc778 \uc218\ubd84 \uacf5\uae09\uc744 \uc81c\uacf5\ud558\ub294 \ub3d9\uc2dc\uc5d0 \ub354 \ub9e4\ub044\ub7fd\uace0 \ud0c4\ud0c4\ud574 \ubcf4\uc774\ub294 \uc548\uc0c9\uc744 \uc720\uc9c0\ud558\ub294 \ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+"\ubd80\ub4dc\ub7ec\uc6b0\uba74\uc11c\ub3c4 \ud6a8\uacfc\uc801\uc778 \uc774 \uc81c\ud488\uc740 \ub9e4\uc77c\uc758 \ud3b8\uc548\ud568\uacfc \ub208\uc5d0 \ub744\ub294 \ub178\ud654 \uc9d5\ud6c4\uc5d0 \ub300\ud55c \uc9d1\uc911\uc801\uc778 \uad00\ub9ac\ub97c \ud568\uaed8 \uc81c\uacf5\ud569\ub2c8\ub2e4.",
+" \ud1a0\ub108\ub294 \ucd18\ucd18\ud558\uace0 \ucfe0\uc158\uac10 \uc788\ub294 \uc6cc\ud130 \ud14d\uc2a4\ucc98\uac00 \ud53c\ubd80\uc5d0 \ubd80\ub4dc\ub7fd\uac8c \ubbf8\ub044\ub7ec\uc9c0\ub4ef \ubc1c\ub9ac\uba70 \ubb34\uac81\uac70\ub098 \ub048\uc801\uc774\ub294 \ub290\ub08c \uc5c6\uc774 \ud3b8\uc548\ud558\uac8c \ud761\uc218\ub418\ub294 \uac83\uc774 \ud2b9\uc9d5\uc785\ub2c8\ub2e4.",
+"\uc2a4\ud0a8\ucf00\uc5b4 \uccab \ub2e8\uacc4\ubd80\ud130 \uc218\ubd84\uc744 \ucc44\uc6cc\uc8fc\uc5b4 \ub2e4\uc74c \ub2e8\uacc4\ub97c \uc704\ud55c \ucd09\ucd09\ud55c \ubca0\uc774\uc2a4\ub97c \ub9cc\ub4e4\uc5b4\uc90d\ub2c8\ub2e4.",
+" \uae4a\uc740 \uc218\ubd84\uc744 \uacf5\uae09\ud558\uc5ec \ud53c\ubd80\ub97c \ubd80\ub4dc\ub7fd\uace0 \ud3b8\uc548\ud558\uac8c \uac00\uafd4\uc8fc\uba70, \uac74\uac15\ud574 \ubcf4\uc774\ub294 \uad11\ucc44\uc640 \ud568\uaed8 \ub208\uc5d0 \ub744\uac8c \ud1b5\ud1b5\ud574\uc9d1\ub2c8\ub2e4.",
+" \ud53c\ubd80 \ud0c4\ub825\uacfc \ubc00\ub3c4\ub97c \uac1c\uc120\ud558\uc5ec \ub354\uc6b1 \ud0c4\ud0c4\ud55c \ud53c\ubd80\ub97c \uac00\uafb8\ub294\ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+"\ud0f1\ud0f1\ud558\uace0 \ud0c4\ub825 \uc788\ub294 \ud53c\ubd80\ub97c \uc704\ud55c \uae4a\uc740 \uc218\ubd84 \uacf5\uae09 -",
+"*\uc2a4\ud0a8\uba54\ub4dc(SkinMed)\uc5d0\uc11c \uc9c4\ud589\ud55c 4\uc8fc\uac04\uc758 \uc784\uc0c1 \uc5f0\uad6c\uc5d0 \uadfc\uac70\ud568 ",
+" 2023\ub144 5\uc6d4 15\uc77c\ubd80\ud130 6\uc6d4 14\uc77c\uae4c\uc9c0 30~60\uc138 \uc5ec\uc131 21\uba85\uc744 \ub300\uc0c1\uc73c\ub85c \uc13c\ud130\ub97c \uc6b4\uc601\ud588\uc2b5\ub2c8\ub2e4. ",
+"\ucd18\ucd18\ud558\uace0 \ucfe0\uc158\uac10 \uc788\ub294 \uc6cc\ud130 \ud14d\uc2a4\ucc98\uac00 \ubd80\ub4dc\ub7fd\uac8c \ubc1c\ub9ac\uace0 \ub048\uc801\uc784 \uc5c6\uc774 \ud3b8\uc548\ud558\uac8c \ud761\uc218\ub418\ub294 \ub370\uc77c\ub9ac \ud1a0\ub108\uc785\ub2c8\ub2e4. \uc190\ubc14\ub2e5\uc774\ub098 \ud654\uc7a5\uc19c\uc744 \uc0ac\uc6a9\ud558\uc5ec \ubc14\ub974\uace0, \uac74\uc870\ud55c \ubd80\uc704\uc5d0 \uacb9\uacb9\uc774 \ubc1c\ub77c \uc218\ubd84 \uacf5\uae09\uc744 \ub354\uc6b1 \uac15\ud654\ud558\uc138\uc694.",
+"\uac74\uc870\ud568, \uce59\uce59\ud568 \ub610\ub294 \ud0c4\ub825 \uc0c1\uc2e4\uc744 \uacbd\ud5d8\ud558\ub294 \ud53c\ubd80\uc5d0 \uc774\uc0c1\uc801\uc774\uba70 \ud53c\ubd80\uc5d0 \uc218\ubd84\uc744 \uacf5\uae09\ud558\uace0 \ubd80\ub4dc\ub7fd\uace0 \ud1b5\ud1b5\ud558\uba70 \uc0c1\ucf8c\ud574 \ubcf4\uc785\ub2c8\ub2e4.",
+"\ube14\ub799\uc2a4\ub124\uc77c \ubba4\uc2e0\uc774 \ud53c\ubd80\ub97c \ud0c4\ud0c4\ud558\uac8c \uac00\uafb8\ub294\ub370 \ub3c4\uc6c0\uc744 \uc8fc\uba70, 5\uac00\uc9c0 \ud574\uc870\ucd94\ucd9c\ubb3c\uc774 \uc218\ubd84\uc744 \ucc44\uc6cc\uc90d\ub2c8\ub2e4. \ub098\uc774\uc544\uc2e0\uc544\ub9c8\uc774\ub4dc\uc640 \uc544\ub370\ub178\uc2e0\uc740 \uace0\ub974\uc9c0 \ubabb\ud55c \ud53c\ubd80 \ud1a4\uacfc \ub208\uc5d0 \ub744\ub294 \ub178\ud654 \uc9d5\ud6c4\ub97c \ucf00\uc5b4\ud558\ub294 \ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+"\ub124, \uc218\ubd84\uc774 \ud48d\ubd80\ud55c \ud3ec\ubbac\ub7ec\uac00 \uc218\ubd84\uc744 \ubcf4\ucda9\ud558\uace0 \uc218\ubd84 \uc7a5\ubcbd\uc744 \uac15\ud654\ud558\uc5ec \ud53c\ubd80\ub97c \ubd80\ub4dc\ub7fd\uace0 \ud3b8\uc548\ud558\uba70 \ud0c4\ub825\uc788\uac8c \ub9cc\ub4e4\uc5b4\uc90d\ub2c8\ub2e4.",
+"\ucd18\ucd18\ud558\uace0 \ucfe0\uc158\uac10 \uc788\ub294 \uc5d0\uc13c\uc2a4-\uc6cc\ud130 \ud14d\uc2a4\ucc98\uac00 \ud53c\ubd80\uc5d0 \ubd80\ub4dc\ub7fd\uac8c \ubbf8\ub044\ub7ec\uc9c0\uba70 \ubb34\uac81\uac70\ub098 \ub048\uc801\uc774\ub294 \ub290\ub08c \uc5c6\uc774 \ud3b8\uc548\ud558\uac8c \ud761\uc218\ub418\uc5b4 \ud53c\ubd80\ub97c \ucd09\ucd09\ud558\uace0 \ubd80\ub4dc\ub7ec\uc6b0\uba70 \uc0b0\ub73b\ud558\uac8c \uac00\uafb8\uc5b4\uc90d\ub2c8\ub2e4.",
+"\uc138\uc548 \ud6c4 \uc190\ubc14\ub2e5\uc774\ub098 \ud654\uc7a5\uc19c\uc744 \uc774\uc6a9\ud574 \ubc1c\ub77c\uc90d\ub2c8\ub2e4. \ubd80\ub4dc\ub7fd\uac8c \ub450\ub4dc\ub824 \ud761\uc218\ub97c \ub3d5\uace0, \uac74\uc870\ud55c \ubd80\uc704\uc5d0 \ub367\ubc1c\ub77c \uc218\ubd84\uc744 \ub354 \uacf5\uae09\ud558\uc138\uc694. \uc2a4\ud0a8\ucf00\uc5b4 \ub8e8\ud2f4\uc758 \ub2e4\uc74c \ub2e8\uacc4\ub97c \ub530\ub974\uc138\uc694.",
+"\ub098\ub294 \uc774 \uc81c\ud488\uc744 \ub9e4\uc6b0 \uc88b\uc544\ud558\ub294\ub370, \ud53c\ubd80\uac00 \uc720\uc5f0\ud558\uace0 \uc0c1\ucf8c\ud574\uc9c0\ub294 \ub290\ub08c\uc744 \uc90d\ub2c8\ub2e4. \uc800\ub294 \uc9c0\uae08\uae4c\uc9c0 \uc804\ud600 \ud0c8\uc625\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \ud5a5\uc774 \uc788\uc5b4\ub3c4 \ub290\uaef4\uc9c0\uc9c0 \uc54a\uace0 \ud5a5\uc774 \uc88b\uace0 \uc804\ud600 \ubd88\ucf8c\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+" \ub9c8\uc77c\ub4dc \uace0\ub9c8\uc8fc \ud544\ub9c1 \uc194\ub8e8\uc158\uc785\ub2c8\ub2e4. \ubbf8\uc138\ud558\uace0 \ubb35\uc740 \uac01\uc9c8\uc744 \ubd80\ub4dc\ub7fd\uac8c \uc81c\uac70\ud558\uace0 ",
+"\uc744 \uc9c0\ucf1c, \uba54\uc774\ud06c\uc5c5\uc774 \uc798 \ubc1b\ub294 \ub9d1\uace0 \uc724\uae30 \uc788\ub294 \ud53c\ubd80\ub85c \uac00\uafd4\uc90d\ub2c8\ub2e4.",
+", \uce59\uce59\ud55c \ud53c\ubd80\uc5d0 \uc0c1\ucf8c\ud568\uc744 \uc120\uc0ac\ud558\uace0 \ubd80\ub4dc\ub7fd\uace0 \ucd09\ucd09\ud558\uba70 \ube5b\ub098\ub294 \uc548\uc0c9\uc744 \uc9c0\uc6d0\ud558\ub3c4\ub85d \uace0\uc548\ub41c \uc21c\ud55c \ud55c\uad6d\uc2dd \ud398\uc774\uc15c \uac01\uc9c8 \uc81c\uac70\uc81c\uc785\ub2c8\ub2e4.",
+" \ud53c\ubd80 \uc7a5\ubcbd\uc744 \uac15\ud654\ud558\uace0 \uc790\uadf9\uc73c\ub85c\ubd80\ud130 \ubcf4\ud638\ud558\ub294 \ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+" \uc989\uac01\uc801\uc778 \ube0c\ub77c\uc774\ud2b8\ub2dd \ud6a8\uacfc\ub97c \uc120\uc0ac\ud558\uba70, \uc2dd\ubb3c \uc131\ubd84\uc774 \uc790\uadf9 \uc5c6\uc774 \ud6a8\uacfc\uc801\uc778 \uac01\uc9c8 \uc81c\uac70\ub97c \ub3c4\uc640\uc90d\ub2c8\ub2e4.",
+"\uc784\uc0c1\uc801\uc73c\ub85c \uc8fd\uc740 \ud53c\ubd80\ub97c \uac10\uc18c\uc2dc\ud0a4\ub294 \uac83\uc73c\ub85c \ub098\ud0c0\ub0ac\uc2b5\ub2c8\ub2e4. ",
+", \uace0\ub974\uc9c0 \ubabb\ud55c \ud53c\ubd80 \uacb0\uc744 \uac1c\uc120\ud558\ub294 \ub3d9\uc2dc\uc5d0 \uc0ac\uc6a9 \ud6c4 \ud53c\ubd80\uac00 \ub208\uc5d0 \ub744\uac8c \ubd80\ub4dc\ub7fd\uace0 \uc724\uae30 \uc788\uac8c \uc720\uc9c0\ub429\ub2c8\ub2e4.",
+" \ucd5c\uc0c1\uc758 \uacb0\uacfc\ub97c \uc704\ud574. \ubd80\ub4dc\ub7ec\uc6b4 \uac01\uc9c8 \uc81c\uac70\uc640 \uac00\ubcbc\uc6b4 \uc218\ubd84\uc744 \uc6d0\ud558\ub294 \uce59\uce59\ud558\uac70\ub098 \uace0\ub974\uc9c0 \ubabb\ud55c \ud53c\ubd80\uc5d0 \uc774\uc0c1\uc801\uc785\ub2c8\ub2e4.",
+" \uac01\uc9c8\uc744 \ubd80\ub4dc\ub7fd\uac8c \uc81c\uac70\ud558\uace0 \uc800\uc790\uadf9\uc73c\ub85c \ub354\uc6b1 \ubd80\ub4dc\ub7fd\uace0 \uade0\uc77c\ud55c \ud53c\ubd80\uacb0\uc744 \uc120\uc0ac\ud558\ub294 \ud55c\uad6d\ud615 \uace0\ub9c8\uc8fc \ud0c0\uc785 \ud544\ub9c1 \uc824",
+" \uc218\ubd84\uc744 \uac00\ub450\uc5b4 \uc0ac\uc6a9 \ud6c4 \ud53c\ubd80\uc5d0 \uae4a\uc740 \uc218\ubd84\uc744 \uacf5\uae09\ud558\uace0 \ub208\uc5d0 \ub744\uac8c \ub9e4\ub044\ub7ec\uc6cc\uc9c0\ub294 \ub290\ub08c\uc744 \uc90d\ub2c8\ub2e4.",
+" \uc989\uac01\uc801\uc73c\ub85c \ube0c\ub77c\uc774\ud2b8\ub2dd \ud6a8\uacfc\ub97c \uc8fc\uc5b4 \ub354\uc6b1 \ud654\uc0ac\ud55c \ud53c\ubd80\ub97c \uc5f0\ucd9c\ud558\ub294\ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+" \uc790\uadf9\uc73c\ub85c\ubd80\ud130 \ud53c\ubd80 \uc7a5\ubcbd\uc744 \ubcf4\ud638\ud558\ub294 \ub370 \ub3c4\uc6c0\uc744 \uc8fc\uba70, \uc2dd\ubb3c\uc131 \uc2dd\ubb3c \uc131\ubd84\uacfc \uacb0\ud569\ud558\uc5ec \ubd80\ub4dc\ub7ec\uc6b4 \uac01\uc9c8 \uc81c\uac70\ub97c \ub3c4\uc640\uc90d\ub2c8\ub2e4.",
+"\ub2e5\ud130\uc9c0 \u2013 KOREA'S NO. 1 \uc2a4\ud0a8\ucf00\uc5b4 \ube0c\ub79c\ub4dc:*",
+" 25\ub144 \uc804 \ud53c\ubd80\uacfc \uc804\ubb38\uc758 \uc548\uac74\uc601 \uc6d0\uc7a5\uc774 \uc124\ub9bd\ud55c \ub2e5\ud130\uc9c0\ub294 \uc5c4\uaca9\ud55c \ud53c\ubd80\uacfc\ud559\uc744 \ubc14\ud0d5\uc73c\ub85c \ud0c4\uc0dd\ud588\uc2b5\ub2c8\ub2e4. \ubaa8\ub4e0 \uc131\ubd84\uc740 \uacfc\ud559\uc801\uc73c\ub85c \uac80\uc99d\ub418\uc5b4 \ud53c\ubd80 \uc790\uadf9\uc744 \ucd5c\uc18c\ud654\ud558\uace0 \uc2e4\uc81c\uc801\uc774\uace0 \ub208\uc5d0 \ub744\ub294 \uacb0\uacfc\ub97c \uc81c\uacf5\ud569\ub2c8\ub2e4. *\uc544\ub2c8\uc694. \ub300\ud55c\ubbfc\uad6d \ub354\ubaa8\ucf54\uc2a4\uba54\ud2f1 1\uc704.",
+" P&amp;K \ud53c\ubd80\uc5f0\uad6c\uc18c\uc5d0\uc11c 2021\ub144 11\uc6d4 9\uc77c\ubd80\ud130 11\uc6d4 11\uc77c\uae4c\uc9c0 \uc131\uc778 \ub0a8\ub140 22\uba85\uc744 \ub300\uc0c1\uc73c\ub85c \uc2e4\uc2dc\ud588\uc2b5\ub2c8\ub2e4. \uacb0\uacfc\ub294 \uac1c\uc778\ubcc4\ub85c \ub2e4\ub97c \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+" \ubd80\ub4dc\ub7ec\uc6b4 \uace0\ub9c8\uc8fc \uc2dc\uc2a4\ud15c\uc744 \ud1b5\ud574 \ubbf8\uc138\ud558\uace0 \uc644\uace0\ud55c \uac01\uc9c8\uc744 \ubd80\ub4dc\ub7fd\uac8c \ub864\ub9c1\ud558\uace0 \ub4e4\uc5b4 \uc62c\ub824\uc8fc\ub294 \ub2e4\uc591\ud55c \ud06c\uae30\uc758 \uc140\ub8f0\ub85c\uc624\uc2a4 \uc785\uc790\uac00 \ud2b9\uc9d5\uc785\ub2c8\ub2e4.",
+" \ub9c8\ucc30\uc744 \ucd5c\uc18c\ud654\ud558\uba74\uc11c \ud6a8\uacfc\uc801\uc774\uace0 \ub9e4\uc6b0 \ubd80\ub4dc\ub7ec\uc6b4 \ubb3c\ub9ac\uc801 \uac01\uc9c8 \uc81c\uac70\ub97c \uc81c\uacf5\ud558\uc5ec \ubbfc\uac10\ud55c \ud53c\ubd80\ub97c \uc790\uadf9\ud558\uc9c0 \uc54a\uace0 \ub9e4\ub044\ub7ec\uc6b4 \ud53c\ubd80 \uc9c8\uac10\uc744 \ubcf4\uc7a5\ud569\ub2c8\ub2e4.",
+" \ud544\ub9c1 \uacfc\uc815 \uc911\uacfc \uc774\ud6c4\uc5d0 \ud53c\ubd80\uc758 \uc218\ubd84 \uc7a5\ubcbd\uc744 \uc801\uadf9\uc801\uc73c\ub85c \uad00\ub9ac\ud558\uace0 \uc9c0\uc6d0\ud569\ub2c8\ub2e4.",
+" \ucde8\uc57d\ud55c \uc218\ubd84 \uc7a5\ubcbd\uc744 \ubcf4\ud638, \uac15\ud654, \uac15\ud654\uc2dc\ucf1c \uac01\uc9c8 \uc81c\uac70 \ud6c4\uc5d0\ub3c4 \uac74\uac15\ud558\uace0 \uade0\ud615\uc7a1\ud78c \ud53c\ubd80 \uc0c1\ud0dc\ub97c \uc720\uc9c0\ud558\ub294\ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4.",
+"1\ub2e8\uacc4: \uc816\uc740 \ud53c\ubd80\uc5d0 \ub3d9\uc804 \ud06c\uae30\ub9cc\ud07c \ub35c\uc5b4 \ud3b4 \ubc1c\ub77c\uc90d\ub2c8\ub2e4.",
+" \ub208\uac00\uc640 \uc785\uac00\ub97c \ud53c\ud574 1\ubd84 \uc774\ub0b4\ub85c \uc6d0\uc744 \uadf8\ub9ac\ub4ef \ubd80\ub4dc\ub7fd\uac8c \ub9c8\uc0ac\uc9c0\ud574 \uc8fc\uc138\uc694.",
+" \uc77c\uc8fc\uc77c\uc5d0 1~2\ud68c \uc0ac\uc6a9\ud558\uba74 \ud53c\ubd80\ub97c \ub9e4\ub044\ub7fd\uace0 \ud654\uc0ac\ud558\uac8c \uc720\uc9c0\ud558\uc5ec \uacb0\uc810 \uc5c6\ub294 \uba54\uc774\ud06c\uc5c5\uc744 \uc704\ud55c \uc644\ubcbd\ud55c \uc900\ube44 \uc0c1\ud0dc\ub97c \uc720\uc9c0\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+"\uc774 \uc21c\ud55c \ud544\ub9c1 \uc824\uc740 \ubbfc\uac10\uc131 \ud53c\ubd80\uc640 \ud2b8\ub7ec\ube14\uc131 \ud53c\ubd80\ub97c \ud3ec\ud568\ud55c \ubaa8\ub4e0 \ud53c\ubd80 \ud0c0\uc785\uc5d0 \uc801\ud569\ud569\ub2c8\ub2e4. \uc800\uc790\uadf9 \ud3ec\ubbac\ub7ec\ub85c \ub514\uc790\uc778\ub418\uc5b4 \uc790\uadf9 \uc5c6\uc774 \ubd80\ub4dc\ub7fd\uac8c \uac01\uc9c8\uc744 \uc81c\uac70\ud558\uace0 \uc2f6\uc740 \ubd84\ub4e4\uc5d0\uac8c \uc774\uc0c1\uc801\uc785\ub2c8\ub2e4.",
+"\ud544\ub9c1\uc824\uc740 \uc5bc\ub9c8\ub098 \uc790\uc8fc \uc0ac\uc6a9\ud574\uc57c \ud558\ub098\uc694? \ub9e4\uc77c \uc0ac\uc6a9\ud574\ub3c4 \ub418\ub098\uc694?",
+"\ucd5c\uc0c1\uc758 \uacb0\uacfc\ub97c \uc5bb\uc73c\ub824\uba74 \uc77c\uc8fc\uc77c\uc5d0 1~2\ud68c \uc0ac\uc6a9\ud558\ub294 \uac83\uc774 \uc88b\uc2b5\ub2c8\ub2e4. \uacfc\ub3c4\ud55c \uac01\uc9c8 \uc81c\uac70\ub294 \ud53c\ubd80 \uc7a5\ubcbd\uc744 \ubb34\ub108\ub728\ub9b4 \uc218 \uc788\uc73c\ubbc0\ub85c \ub9e4\uc77c \uc0ac\uc6a9\ud558\ub294 \uac83\uc740 \uad8c\uc7a5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+"\uac01\uc9c8\uc744 \ud6a8\uacfc\uc801\uc73c\ub85c \uc81c\uac70\ud574\uc8fc\ub294 \uba40\ud2f0 \uc0ac\uc774\uc988 \uc140\ub8f0\ub85c\uc624\uc2a4\uc640 \uae4a\uc740 \ubcf4\uc2b5\uacfc \ube0c\ub77c\uc774\ud2b8\ub2dd \ucf00\uc5b4\ub97c \uc704\ud55c 8\uc885 \ud788\uc54c\ub8e8\ub860\uc0b0&amp;\ube44\ud0c0\ubbfcC, \ud53c\ubd80 \uc7a5\ubcbd\uc744 \ubcf4\ud638\ud558\uace0 \uac15\ud654\ud574\uc8fc\ub294 \uc544\ucfe0\uc544 \uc138\ub77c\ub9c8\uc774\ub4dc\uac00 \ud568\uc720\ub41c \uc21c\ud55c \ud3ec\ubbac\ub7ec\uc785\ub2c8\ub2e4.",
+"\uc544\ub2c8\uc694, \ud53c\ubd80\uac00 \uac74\uc870\ud568\uc744 \ub290\ub07c\uc9c0 \uc54a\uc744 \uac83\uc785\ub2c8\ub2e4! 8\uac00\uc9c0 \ud788\uc54c\ub8e8\ub860\uc0b0\uacfc \uc544\ucfe0\uc544 \uc138\ub77c\ub9c8\uc774\ub4dc\uac00 \ud568\uc720\ub418\uc5b4 \ud53c\ubd80 \uc18d \uae4a\uc740 \uacf3\uae4c\uc9c0 \uc218\ubd84\uc744 \uacf5\uae09\ud558\uace0 \uc7a5\ubcbd\uc744 \ubcf4\ud638\ud574\uc90d\ub2c8\ub2e4. \uac8c\ub2e4\uac00 \ud53c\ubd80\uac00 \uac74\uc870\ud574\uc9c0\uba74 \uc2e4\uc81c\ub85c \uace0\ub9c8\uc8fc \ud544\ub9c1\uc774 \ub354 \uc27d\uac8c \uc77c\uc5b4\ub098\uae30 \ub54c\ubb38\uc5d0 \uc8fd\uc740 \ud53c\ubd80 \uc138\ud3ec\ub97c \uc81c\uac70\ud558\ub294 \ub370 \ub3c4\uc6c0\uc774 \ub429\ub2c8\ub2e4."
+]
+
+codex
+[
+"달팽이 크림과 함께 사용하면 피부가 정말 부드러워져요. 정말 좋아요!!!!!",
+"이 세럼을 몇 주 동안 써봤는데, 가볍고 새틴처럼 매끄러운 발림성이 정말 마음에 들어요. 사용감도 부드럽고 피부가 붉어지거나 따갑지도 않았어요. 저녁 스킨케어 루틴의 3번 세럼 단계에 넣어 쓰기도 편해요. 앞으로도 계속 쓸 생각이고, 한번 써보시길 추천해요.",
+"안티에이징 케어와 함께 주름 개선에 도움을 줍니다.",
+"- 하이드록시피나콜론 레티노에이트, 레티닐 프로피오네이트, 퓨어 레티놀, 150Da 저분자 콜라겐으로 구성된 달팽이 레티놀+ 1.0%를 함유해 잔주름과 주름을 줄이고 피부 탄력을 되찾아주는 4D 리프팅 효과를 선사합니다.",
+"- 매끄럽게 발리고 끈적임 없이 산뜻하게 마무리되며, 피부에 빠르게 흡수되어 자극을 최소화하면서 피부 장벽을 강화해줍니다.",
+"- 적당량을 피부에 바르고 가볍게 두드려 흡수시켜 줍니다.\"",
+"하이드록시피나콜론 레티노에이트, 레티닐프로피오네이트, 퓨어 레티놀, 150Da 저분자 콜라겐으로 구성된 달팽이 레티놀+ 1.0%를 함유해 잔주름과 주름을 줄이고 피부 탄력을 되찾아주는 4D 리프팅 효과를 선사합니다.",
+"하이드록시피나콜론 레티노에이트, 레티닐프로피오네이트, 퓨어 레티놀, 150Da 저분자 콜라겐으로 구성된 달팽이 레티놀+ 1.0%를 함유해 잔주름과 주름을 줄이고 피부 탄력을 되찾아줍니다.",
+"- 적당량을 피부에 바르고 가볍게 두드려 흡수시켜 줍니다.",
+"블랙스네일 링클 리프팅 마스크 28ml 1piece",
+"탄력, 리프팅, 광채를 위한 10분 집중 케어 시트 마스크입니다. 저자극",
+"처방으로 민감한 피부에도 사용하기 좋습니다.",
+"독자적인 성분으로 강력한 리프팅 효과와 광채를 선사하는 시트 마스크입니다.",
+"단 10분 만에 임상으로 입증된 안티에이징 효과를 선사하며, 민감한 피부에도 순하게 사용할 수 있습니다.",
+"링클 마스크는 초극세 시트와 농축 제형을 결합했습니다.",
+"머리카락 한 가닥보다 얇은 시트와 농축된 이중 리포좀 앰플-투-크림 텍스처가 활성 성분을 피부 깊숙이 전달해 빠르고 눈에 띄는 효과를 선사합니다.",
+"시트 한 장으로 잔주름부터 깊은 주름까지 5가지 주요 주름 부위를 집중 관리하고, 리프팅과 매끄러운 피부결 케어를 함께 제공합니다.",
+"달팽이점액여과물이 깊은 주름을 즉각적으로 케어해줍니다.",
+"한 번 사용만으로도 깊은 주름의 즉각적인 개선 효과를 선사합니다.",
+"하이드록시피나콜론 레티노에이트, 달팽이점액여과물, 나이아신아미드 등의 성분이 함유되어 있습니다.",
+"눈에 띄는 주름 개선과 피부 탄력 관리에 도움을 줍니다.",
+"초극세사 시트가 피부 굴곡에 밀착되어, 붙이고 있는 동안 농축된 앰플 에센스가 얼굴에 고르게 닿도록 도와줍니다.",
+"피부에 매끄럽게 밀착되어 즉각적인 리프팅 효과를 선사하고, 피부가 한결 매끄럽고 탄력 있게 느껴집니다.",
+"베개 자국을 줄이고 깊은 주름을 개선합니다.",
+"주름 완화 및 리프팅 효과가 지속되며 깊은 주름이 눈에 띄게 개선됩니다.",
+"설문조사에 참여한 사용자들은 피부 수분, 탄력, 피부결, 전반적인 피부 상태와 깊은 주름이 개선되었다고 응답했습니다.***",
+"민감성 피부에도 사용할 수 있도록 피부 자극 테스트를 진행했습니다.",
+"*지정된 연구 조건에서 진행한 내부 임상 및 소비자 테스트를 바탕으로 한 결과입니다. **임상 연구(PNK-24513-K3R, 24/05/13~24/05/24; P&amp;K), 20~59세 여성. ***",
+"1단계: 세안 후 토너로 피부를 정돈하고 초극세 랩핑 시트 마스크를 꺼냅니다.",
+"시트를 부드럽게 펼쳐 얼굴 전체에 고르게 붙여주세요. 초극세 시트가 제2의 피부처럼 얼굴 굴곡을 감싸줍니다.",
+"풍부한 앰플-투-크림 포뮬러가 피부 깊숙이 스며들도록 10분 동안 편안하게 쉬어주세요.",
+"마스크를 떼어내고 피부에 남은 내용물을 가볍게 두드려 흡수시켜 광채를 유지해주세요.",
+"건조함, 탄력 저하, 주름이 고민인 분께 추천합니다. 모든 피부 타입에 적합하며, 특히 집중적인 안티에이징 케어를 원하는 민감한 피부를 위해 개발한 저자극 레티놀 페이셜 마스크입니다.",
+"영양이 풍부한 블랙스네일과 순한 레티놀을 결합해 1.5배 더 강력한 안티에이징 효과를 선사하며, 첨단 더블 리포솜 시스템으로 피부 깊숙이 활력을 전달합니다.",
+"10분만 붙이고 있으면 윤기와 탄력이 살아나는 피부 변화를 확인하실 수 있습니다.",
+"머리카락 굵기의 1/100에 불과한 초극세 랩핑 시트가 제2의 피부처럼 얼굴을 편안하게 감싸 흡수력을 극대화해줍니다.",
+"이 마스크는 어떤 피부 고민에 도움이 되나요?",
+"5개 부위의 잔주름과 주름을 줄여주며, 탄력 있는 피부를 3일 동안 유지해줍니다.",
+"이 마스크가 너무 좋아서 친한 친구들에게도 나눠주려고 넉넉하게 재구매했어요.",
+"피부가 정말 촉촉하고 매끈해져요. 보습력이 놀라운 팩이에요.",
+"몇 년은 더 젊어 보이는 것 같아요. 정말 추천해요!!",
+"순한 데일리 안티에이징 토너로, 피부 깊숙이 수분을 공급해 촉촉함을 오래 유지하고 피부결을 탱탱하게 가꿔줍니다.",
+"피부 깊숙이 수분을 공급해 탱탱하고 탄력 있게 가꿔주며, 산뜻한 사용감을 선사하는 데일리 토너입니다.",
+"수분이 풍부한 포뮬러가 피부에 꾸준히 수분을 공급하고, 매끄럽고 탄탄해 보이는 피부를 유지하는 데 도움을 줍니다.",
+"순하면서도 효과적인 데일리 케어로 피부를 편안하게 가꾸고, 눈에 띄는 노화 징후를 집중 관리해줍니다.",
+"쫀쫀하고 쿠션감 있는 워터 텍스처가 피부에 부드럽게 펴 발리며, 무겁거나 끈적이는 느낌 없이 편안하게 흡수됩니다.",
+"스킨케어 첫 단계부터 수분을 채워주어 다음 단계를 위한 촉촉한 베이스를 만들어줍니다.",
+"피부 깊숙이 수분을 공급해 부드럽고 편안하게 가꿔주며, 건강한 광채와 함께 탱탱하게 차오른 듯한 피부로 가꿔줍니다.",
+"피부 탄력과 밀도를 개선하여 더욱 탄탄한 피부로 가꾸는 데 도움을 줍니다.",
+"탱탱하고 탄력 있는 피부를 위한 깊은 수분 공급 -",
+"*스킨메드(SkinMed)에서 진행한 4주간의 임상 연구에 근거함",
+"2023년 5월 15일부터 6월 14일까지 30~60세 여성 21명을 대상으로 진행했습니다.",
+"쫀쫀하고 쿠션감 있는 워터 텍스처가 부드럽게 발리고 끈적임 없이 편안하게 흡수되는 데일리 토너입니다. 손바닥이나 화장솜으로 바르고, 건조한 부위에는 여러 번 덧발라 수분을 더욱 충분히 공급해주세요.",
+"건조함, 칙칙함, 탄력 저하가 고민인 피부에 추천합니다. 수분을 공급해 피부를 부드럽고 탱탱하게 가꾸고 생기 있는 피부로 만들어줍니다.",
+"블랙스네일 뮤신이 피부를 탄탄하게 가꾸는 데 도움을 주며, 5가지 해조추출물이 수분을 채워줍니다. 나이아신아마이드와 아데노신은 고르지 못한 피부 톤과 눈에 띄는 노화 징후를 케어하는 데 도움을 줍니다.",
+"네, 수분이 풍부한 포뮬러가 피부에 수분을 보충하고 수분 장벽을 강화해 부드럽고 편안하며 탄력 있는 피부로 가꿔줍니다.",
+"쫀쫀하고 쿠션감 있는 에센스-워터 텍스처가 피부에 부드럽게 펴 발리고, 무겁거나 끈적이는 느낌 없이 편안하게 흡수되어 촉촉하고 부드러운 피부와 산뜻한 마무리감을 선사합니다.",
+"세안 후 손바닥이나 화장솜으로 발라주세요. 부드럽게 두드려 흡수시키고, 건조한 부위에는 덧발라 수분을 더 공급해주세요. 이후 다음 단계의 스킨케어를 진행해주세요.",
+"이 제품 정말 마음에 들어요. 피부가 부드럽고 산뜻해지는 느낌이에요. 지금까지 트러블도 전혀 없었어요. 향도 거의 느껴지지 않을 만큼 은은하고 좋아서 부담스럽지 않아요.",
+"미세한 각질과 묵은 각질을 부드럽게 제거하는 순한 고마주 필링 솔루션입니다.",
+"피부를 보호하면서 메이크업이 잘 받는 맑고 윤기 있는 피부로 가꿔줍니다.",
+"칙칙한 피부에 산뜻함을 더하고, 부드럽고 촉촉하며 빛나는 피부로 가꿔주는 순한 한국형 얼굴용 각질 제거제입니다.",
+"피부 장벽을 강화하고 자극으로부터 보호하는 데 도움을 줍니다.",
+"즉각적인 브라이트닝 효과를 선사하며, 식물 성분이 자극 없이 효과적으로 각질을 제거하도록 도와줍니다.",
+"임상 시험을 통해 각질 감소 효과를 확인했습니다.",
+"고르지 못한 피부결을 개선하고, 사용 후에도 눈에 띄게 부드럽고 윤기 있는 피부를 유지해줍니다.",
+"칙칙하거나 피부결이 고르지 않아 순한 각질 제거와 가벼운 수분 공급을 원하는 분께 추천합니다.",
+"각질을 순하게 제거해 한층 부드럽고 균일한 피부결로 가꿔주는 저자극 한국형 고마주 타입 필링 젤",
+"피부의 수분을 지켜 사용 후에도 깊은 보습감을 선사하고, 눈에 띄게 매끄러워진 피부를 느낄 수 있습니다.",
+"즉각적인 브라이트닝 효과로 더욱 화사한 피부로 가꾸는 데 도움을 줍니다.",
+"피부 장벽을 자극으로부터 보호하는 데 도움을 주며, 식물성 성분으로 각질을 부드럽게 제거해줍니다.",
+"닥터지 – KOREA'S NO. 1 스킨케어 브랜드:*",
+"25년 전 피부과 전문의 안건영 원장이 설립한 닥터지는 엄격한 피부과학을 바탕으로 탄생했습니다. 모든 성분을 과학적으로 검증해 피부 자극을 최소화하고 눈에 띄는 실질적인 효과를 선사합니다. *대한민국 더모코스메틱 1위.",
+"P&amp;K 피부연구소에서 2021년 11월 9일부터 11월 11일까지 성인 남녀 22명을 대상으로 실시했습니다. 결과는 개인별로 다를 수 있습니다.",
+"다양한 크기의 셀룰로오스 입자가 부드러운 고마주 방식으로 미세한 각질부터 잘 떨어지지 않는 묵은 각질까지 부드럽게 밀어내 제거해줍니다.",
+"마찰을 최소화하면서 각질을 부드럽고 효과적으로 제거해 민감한 피부에도 자극 없이 매끄러운 피부결로 가꿔줍니다.",
+"필링하는 동안은 물론 사용 후에도 피부의 수분 장벽을 관리하고 지켜줍니다.",
+"약해진 수분 장벽을 보호하고 강화해 각질 제거 후에도 건강하고 균형 잡힌 피부 상태를 유지하는 데 도움을 줍니다.",
+"1단계: 동전 크기만큼 덜어 젖은 피부에 펴 발라줍니다.",
+"눈가와 입가를 피해 1분 이내로 원을 그리듯 부드럽게 마사지해 주세요.",
+"일주일에 1~2회 사용하면 피부를 매끄럽고 화사하게 유지해 메이크업이 빈틈없이 잘 받는 피부로 가꿀 수 있습니다.",
+"이 순한 필링 젤은 민감성 피부와 트러블성 피부를 포함한 모든 피부 타입에 적합합니다. 저자극 포뮬러로 자극 없이 부드럽게 각질을 제거하고 싶은 분께 추천합니다.",
+"필링젤은 얼마나 자주 사용해야 하나요? 매일 사용해도 되나요?",
+"효과적인 관리를 위해 일주일에 1~2회 사용하는 것이 좋습니다. 과도한 각질 제거는 피부 장벽을 무너뜨릴 수 있으므로 매일 사용하는 것은 권장하지 않습니다.",
+"각질을 효과적으로 제거해주는 멀티 사이즈 셀룰로오스, 깊은 보습과 브라이트닝 케어를 위한 8종 히알루론산&amp;비타민C, 피부 장벽을 보호하고 강화해주는 아쿠아 세라마이드가 함유된 순한 포뮬러입니다.",
+"아니요, 사용 후에도 피부가 건조해지지 않도록 도와줍니다! 8가지 히알루론산과 아쿠아 세라마이드가 피부 속 깊이 수분을 공급하고 장벽을 보호해줍니다. 또한 피부가 건조해질수록 고마주 필링이 더 쉽게 일어나 묵은 각질을 제거하는 데 도움을 줍니다."
+]
+tokens used
+55,545
+[
+"달팽이 크림과 함께 사용하면 피부가 정말 부드러워져요. 정말 좋아요!!!!!",
+"이 세럼을 몇 주 동안 써봤는데, 가볍고 새틴처럼 매끄러운 발림성이 정말 마음에 들어요. 사용감도 부드럽고 피부가 붉어지거나 따갑지도 않았어요. 저녁 스킨케어 루틴의 3번 세럼 단계에 넣어 쓰기도 편해요. 앞으로도 계속 쓸 생각이고, 한번 써보시길 추천해요.",
+"안티에이징 케어와 함께 주름 개선에 도움을 줍니다.",
+"- 하이드록시피나콜론 레티노에이트, 레티닐 프로피오네이트, 퓨어 레티놀, 150Da 저분자 콜라겐으로 구성된 달팽이 레티놀+ 1.0%를 함유해 잔주름과 주름을 줄이고 피부 탄력을 되찾아주는 4D 리프팅 효과를 선사합니다.",
+"- 매끄럽게 발리고 끈적임 없이 산뜻하게 마무리되며, 피부에 빠르게 흡수되어 자극을 최소화하면서 피부 장벽을 강화해줍니다.",
+"- 적당량을 피부에 바르고 가볍게 두드려 흡수시켜 줍니다.\"",
+"하이드록시피나콜론 레티노에이트, 레티닐프로피오네이트, 퓨어 레티놀, 150Da 저분자 콜라겐으로 구성된 달팽이 레티놀+ 1.0%를 함유해 잔주름과 주름을 줄이고 피부 탄력을 되찾아주는 4D 리프팅 효과를 선사합니다.",
+"하이드록시피나콜론 레티노에이트, 레티닐프로피오네이트, 퓨어 레티놀, 150Da 저분자 콜라겐으로 구성된 달팽이 레티놀+ 1.0%를 함유해 잔주름과 주름을 줄이고 피부 탄력을 되찾아줍니다.",
+"- 적당량을 피부에 바르고 가볍게 두드려 흡수시켜 줍니다.",
+"블랙스네일 링클 리프팅 마스크 28ml 1piece",
+"탄력, 리프팅, 광채를 위한 10분 집중 케어 시트 마스크입니다. 저자극",
+"처방으로 민감한 피부에도 사용하기 좋습니다.",
+"독자적인 성분으로 강력한 리프팅 효과와 광채를 선사하는 시트 마스크입니다.",
+"단 10분 만에 임상으로 입증된 안티에이징 효과를 선사하며, 민감한 피부에도 순하게 사용할 수 있습니다.",
+"링클 마스크는 초극세 시트와 농축 제형을 결합했습니다.",
+"머리카락 한 가닥보다 얇은 시트와 농축된 이중 리포좀 앰플-투-크림 텍스처가 활성 성분을 피부 깊숙이 전달해 빠르고 눈에 띄는 효과를 선사합니다.",
+"시트 한 장으로 잔주름부터 깊은 주름까지 5가지 주요 주름 부위를 집중 관리하고, 리프팅과 매끄러운 피부결 케어를 함께 제공합니다.",
+"달팽이점액여과물이 깊은 주름을 즉각적으로 케어해줍니다.",
+"한 번 사용만으로도 깊은 주름의 즉각적인 개선 효과를 선사합니다.",
+"하이드록시피나콜론 레티노에이트, 달팽이점액여과물, 나이아신아미드 등의 성분이 함유되어 있습니다.",
+"눈에 띄는 주름 개선과 피부 탄력 관리에 도움을 줍니다.",
+"초극세사 시트가 피부 굴곡에 밀착되어, 붙이고 있는 동안 농축된 앰플 에센스가 얼굴에 고르게 닿도록 도와줍니다.",
+"피부에 매끄럽게 밀착되어 즉각적인 리프팅 효과를 선사하고, 피부가 한결 매끄럽고 탄력 있게 느껴집니다.",
+"베개 자국을 줄이고 깊은 주름을 개선합니다.",
+"주름 완화 및 리프팅 효과가 지속되며 깊은 주름이 눈에 띄게 개선됩니다.",
+"설문조사에 참여한 사용자들은 피부 수분, 탄력, 피부결, 전반적인 피부 상태와 깊은 주름이 개선되었다고 응답했습니다.***",
+"민감성 피부에도 사용할 수 있도록 피부 자극 테스트를 진행했습니다.",
+"*지정된 연구 조건에서 진행한 내부 임상 및 소비자 테스트를 바탕으로 한 결과입니다. **임상 연구(PNK-24513-K3R, 24/05/13~24/05/24; P&amp;K), 20~59세 여성. ***",
+"1단계: 세안 후 토너로 피부를 정돈하고 초극세 랩핑 시트 마스크를 꺼냅니다.",
+"시트를 부드럽게 펼쳐 얼굴 전체에 고르게 붙여주세요. 초극세 시트가 제2의 피부처럼 얼굴 굴곡을 감싸줍니다.",
+"풍부한 앰플-투-크림 포뮬러가 피부 깊숙이 스며들도록 10분 동안 편안하게 쉬어주세요.",
+"마스크를 떼어내고 피부에 남은 내용물을 가볍게 두드려 흡수시켜 광채를 유지해주세요.",
+"건조함, 탄력 저하, 주름이 고민인 분께 추천합니다. 모든 피부 타입에 적합하며, 특히 집중적인 안티에이징 케어를 원하는 민감한 피부를 위해 개발한 저자극 레티놀 페이셜 마스크입니다.",
+"영양이 풍부한 블랙스네일과 순한 레티놀을 결합해 1.5배 더 강력한 안티에이징 효과를 선사하며, 첨단 더블 리포솜 시스템으로 피부 깊숙이 활력을 전달합니다.",
+"10분만 붙이고 있으면 윤기와 탄력이 살아나는 피부 변화를 확인하실 수 있습니다.",
+"머리카락 굵기의 1/100에 불과한 초극세 랩핑 시트가 제2의 피부처럼 얼굴을 편안하게 감싸 흡수력을 극대화해줍니다.",
+"이 마스크는 어떤 피부 고민에 도움이 되나요?",
+"5개 부위의 잔주름과 주름을 줄여주며, 탄력 있는 피부를 3일 동안 유지해줍니다.",
+"이 마스크가 너무 좋아서 친한 친구들에게도 나눠주려고 넉넉하게 재구매했어요.",
+"피부가 정말 촉촉하고 매끈해져요. 보습력이 놀라운 팩이에요.",
+"몇 년은 더 젊어 보이는 것 같아요. 정말 추천해요!!",
+"순한 데일리 안티에이징 토너로, 피부 깊숙이 수분을 공급해 촉촉함을 오래 유지하고 피부결을 탱탱하게 가꿔줍니다.",
+"피부 깊숙이 수분을 공급해 탱탱하고 탄력 있게 가꿔주며, 산뜻한 사용감을 선사하는 데일리 토너입니다.",
+"수분이 풍부한 포뮬러가 피부에 꾸준히 수분을 공급하고, 매끄럽고 탄탄해 보이는 피부를 유지하는 데 도움을 줍니다.",
+"순하면서도 효과적인 데일리 케어로 피부를 편안하게 가꾸고, 눈에 띄는 노화 징후를 집중 관리해줍니다.",
+"쫀쫀하고 쿠션감 있는 워터 텍스처가 피부에 부드럽게 펴 발리며, 무겁거나 끈적이는 느낌 없이 편안하게 흡수됩니다.",
+"스킨케어 첫 단계부터 수분을 채워주어 다음 단계를 위한 촉촉한 베이스를 만들어줍니다.",
+"피부 깊숙이 수분을 공급해 부드럽고 편안하게 가꿔주며, 건강한 광채와 함께 탱탱하게 차오른 듯한 피부로 가꿔줍니다.",
+"피부 탄력과 밀도를 개선하여 더욱 탄탄한 피부로 가꾸는 데 도움을 줍니다.",
+"탱탱하고 탄력 있는 피부를 위한 깊은 수분 공급 -",
+"*스킨메드(SkinMed)에서 진행한 4주간의 임상 연구에 근거함",
+"2023년 5월 15일부터 6월 14일까지 30~60세 여성 21명을 대상으로 진행했습니다.",
+"쫀쫀하고 쿠션감 있는 워터 텍스처가 부드럽게 발리고 끈적임 없이 편안하게 흡수되는 데일리 토너입니다. 손바닥이나 화장솜으로 바르고, 건조한 부위에는 여러 번 덧발라 수분을 더욱 충분히 공급해주세요.",
+"건조함, 칙칙함, 탄력 저하가 고민인 피부에 추천합니다. 수분을 공급해 피부를 부드럽고 탱탱하게 가꾸고 생기 있는 피부로 만들어줍니다.",
+"블랙스네일 뮤신이 피부를 탄탄하게 가꾸는 데 도움을 주며, 5가지 해조추출물이 수분을 채워줍니다. 나이아신아마이드와 아데노신은 고르지 못한 피부 톤과 눈에 띄는 노화 징후를 케어하는 데 도움을 줍니다.",
+"네, 수분이 풍부한 포뮬러가 피부에 수분을 보충하고 수분 장벽을 강화해 부드럽고 편안하며 탄력 있는 피부로 가꿔줍니다.",
+"쫀쫀하고 쿠션감 있는 에센스-워터 텍스처가 피부에 부드럽게 펴 발리고, 무겁거나 끈적이는 느낌 없이 편안하게 흡수되어 촉촉하고 부드러운 피부와 산뜻한 마무리감을 선사합니다.",
+"세안 후 손바닥이나 화장솜으로 발라주세요. 부드럽게 두드려 흡수시키고, 건조한 부위에는 덧발라 수분을 더 공급해주세요. 이후 다음 단계의 스킨케어를 진행해주세요.",
+"이 제품 정말 마음에 들어요. 피부가 부드럽고 산뜻해지는 느낌이에요. 지금까지 트러블도 전혀 없었어요. 향도 거의 느껴지지 않을 만큼 은은하고 좋아서 부담스럽지 않아요.",
+"미세한 각질과 묵은 각질을 부드럽게 제거하는 순한 고마주 필링 솔루션입니다.",
+"피부를 보호하면서 메이크업이 잘 받는 맑고 윤기 있는 피부로 가꿔줍니다.",
+"칙칙한 피부에 산뜻함을 더하고, 부드럽고 촉촉하며 빛나는 피부로 가꿔주는 순한 한국형 얼굴용 각질 제거제입니다.",
+"피부 장벽을 강화하고 자극으로부터 보호하는 데 도움을 줍니다.",
+"즉각적인 브라이트닝 효과를 선사하며, 식물 성분이 자극 없이 효과적으로 각질을 제거하도록 도와줍니다.",
+"임상 시험을 통해 각질 감소 효과를 확인했습니다.",
+"고르지 못한 피부결을 개선하고, 사용 후에도 눈에 띄게 부드럽고 윤기 있는 피부를 유지해줍니다.",
+"칙칙하거나 피부결이 고르지 않아 순한 각질 제거와 가벼운 수분 공급을 원하는 분께 추천합니다.",
+"각질을 순하게 제거해 한층 부드럽고 균일한 피부결로 가꿔주는 저자극 한국형 고마주 타입 필링 젤",
+"피부의 수분을 지켜 사용 후에도 깊은 보습감을 선사하고, 눈에 띄게 매끄러워진 피부를 느낄 수 있습니다.",
+"즉각적인 브라이트닝 효과로 더욱 화사한 피부로 가꾸는 데 도움을 줍니다.",
+"피부 장벽을 자극으로부터 보호하는 데 도움을 주며, 식물성 성분으로 각질을 부드럽게 제거해줍니다.",
+"닥터지 – KOREA'S NO. 1 스킨케어 브랜드:*",
+"25년 전 피부과 전문의 안건영 원장이 설립한 닥터지는 엄격한 피부과학을 바탕으로 탄생했습니다. 모든 성분을 과학적으로 검증해 피부 자극을 최소화하고 눈에 띄는 실질적인 효과를 선사합니다. *대한민국 더모코스메틱 1위.",
+"P&amp;K 피부연구소에서 2021년 11월 9일부터 11월 11일까지 성인 남녀 22명을 대상으로 실시했습니다. 결과는 개인별로 다를 수 있습니다.",
+"다양한 크기의 셀룰로오스 입자가 부드러운 고마주 방식으로 미세한 각질부터 잘 떨어지지 않는 묵은 각질까지 부드럽게 밀어내 제거해줍니다.",
+"마찰을 최소화하면서 각질을 부드럽고 효과적으로 제거해 민감한 피부에도 자극 없이 매끄러운 피부결로 가꿔줍니다.",
+"필링하는 동안은 물론 사용 후에도 피부의 수분 장벽을 관리하고 지켜줍니다.",
+"약해진 수분 장벽을 보호하고 강화해 각질 제거 후에도 건강하고 균형 잡힌 피부 상태를 유지하는 데 도움을 줍니다.",
+"1단계: 동전 크기만큼 덜어 젖은 피부에 펴 발라줍니다.",
+"눈가와 입가를 피해 1분 이내로 원을 그리듯 부드럽게 마사지해 주세요.",
+"일주일에 1~2회 사용하면 피부를 매끄럽고 화사하게 유지해 메이크업이 빈틈없이 잘 받는 피부로 가꿀 수 있습니다.",
+"이 순한 필링 젤은 민감성 피부와 트러블성 피부를 포함한 모든 피부 타입에 적합합니다. 저자극 포뮬러로 자극 없이 부드럽게 각질을 제거하고 싶은 분께 추천합니다.",
+"필링젤은 얼마나 자주 사용해야 하나요? 매일 사용해도 되나요?",
+"효과적인 관리를 위해 일주일에 1~2회 사용하는 것이 좋습니다. 과도한 각질 제거는 피부 장벽을 무너뜨릴 수 있으므로 매일 사용하는 것은 권장하지 않습니다.",
+"각질을 효과적으로 제거해주는 멀티 사이즈 셀룰로오스, 깊은 보습과 브라이트닝 케어를 위한 8종 히알루론산&amp;비타민C, 피부 장벽을 보호하고 강화해주는 아쿠아 세라마이드가 함유된 순한 포뮬러입니다.",
+"아니요, 사용 후에도 피부가 건조해지지 않도록 도와줍니다! 8가지 히알루론산과 아쿠아 세라마이드가 피부 속 깊이 수분을 공급하고 장벽을 보호해줍니다. 또한 피부가 건조해질수록 고마주 필링이 더 쉽게 일어나 묵은 각질을 제거하는 데 도움을 줍니다."
+]
