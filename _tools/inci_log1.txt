@@ -1,0 +1,116 @@
+OpenAI Codex v0.166.0
+--------
+workdir: C:\Users\sksml\Desktop\닥터지
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 01a1e0ca-d36b-71a0-ad72-74b9cc22d4e5
+--------
+user
+아래 JSON 배열은 화장품 전성분(INCI 영문 표기)입니다. 각 항목을 대한화장품협회·식품의약품안전처 '화장품 성분사전'에서 쓰는 한국어 표준 성분명(한글 표기)으로 바꿔 주세요.
+규칙:
+- 같은 순서, 같은 개수의 JSON 배열만 출력 (설명·코드블록 금지).
+- 'AQUA / WATER / EAU'는 '정제수', 'PARFUM / FRAGRANCE'는 '향료', 'CI 77492 / IRON OXIDES'는 '피이 77492 / 산화철' 식으로 표준명 사용.
+- 식물추출물은 표준 한글명(예: CENTELLA ASIATICA LEAF EXTRACT → 병풀잎추출물, GLYCERIN → 글리세린, BUTYLENE GLYCOL → 부틸렌글라이콜).
+- 이미 한글이 섞인 항목은 표준 표기로 다듬고, 단독 조각(예: LEAF EXTRACT, EXTRACT)은 '잎추출물','추출물'처럼 그대로 번역.
+- 확실하지 않은 항목은 가장 널리 쓰이는 한글 음역으로.
+
+["BHT", "TRIETHOXYCAPRYLYLSILANE", "CAESALPINIA SPINOSA FRUIT EXTRACT", "KAPPAPHYCUS ALVAREZII EXTRACT", "VITIS VINIFERA SEED OIL / GRAPE SEED OIL", "CAMELLIA SINENSIS LEAF EXTRACT", "DIOSPYROS KAKI LEAF EXTRACT", "BUDDLEJA OFFICINALIS FLOWER EXTRACT、PINUS PINASTER BARK EXTRACT", "POLYVINYL ALCOHOL", "PO LYGLYCERYL-3 DISTEARATE", "SILICA", "SORBITAN STEARATE", "CETEARYL OLIVATE,", "OLEA EUROPAEA OIL UNSAPONIFIABLES / OLIVE OIL UNSAPONIFIABLES", "POLYACRYLATE CROSSPOLYMER-6", "GLYCINE SOJA (SOYBEAN) OIL UNSAPONIFIABLES", "TRITICUM VULGARE GERM OIL UNSAPONIFIABLES / WHEAT GERM OIL UNSAPONIFIABLES", "GLYCERYL STEARATECITRATE", "ISOMALT", "SUCROSE COCOATE,", "GLUCONOLACTONE", "POLLEN EXTRACT", "XYLITYLGLUCOSIDE", "ANHYDROXYLITOL", "POLYGLYCERYL-10 OLEATE", "POLYGLYCERYL-10STEARATE", "XYLITOL", "TREMELLA FUCIFORMIS POLYSACCHARIDE", "SODIUM STEAROYL GLUTAMATE", "7-DEHYDRO", "SODIUM ASCORBYL PHOSPHATE", "CALCIUM CHLORIDE", "VITIS VINIFERA JUICE EXTRACT / GRAPEUICE EXTRACT", "PHYTOL", "BUTYLENE GLYCOL DICAPRYLATE/DICAPRATE", "PENTAERYTHRITYL TETRAISOSTEARATE", "ARACHIDYL ALCOHOL", "CETEARYL ALCOHOL,", "BEHENYL ALCOHOL", "POTASSIUM CETYL PHOSPHATE", "ARACHIDYL GLUCOSIDE", "TRITICUM VULGARE GERM OIL UNSAPONIFIABLES / WHEAT GERM OIL UNSAPONIFIABLES,", "ECTOIN", "POTASSIUM HYALURONATE", "SODIUM HYALURONATE CROSSPOLYMER,", "HYDROLYZED SODIUM HYALURONATE", "DIPHENYL DIMETHICONE", "CAPRYLIC/CAPRIC TRIGLYCERIDE,", "LECITHIN", "LYCIUM BARBARUM FRUIT EXTRACT", "DICAPRYLYL ETHER", "DIPENTAERYTHRITYL HEXAHYDROXYSTEARATE/HEXASTEARATE/HEXAROSINATE", "PALMITIC ACID,", "DIMETHICONOL", "ECLIPTA PROSTRATA LEAF EXTRACT", "CETEARYL GLUCOSIDE", "ETHYLHEXYLGLYCERIN,", "GLUCOSE", "FRUCTOOLIGOSACCHARIDES", "LINALYL ACETATE,", "디소듐EDTA,", "CAMPHOR", "OLEA EUROPAEA OIL UNSAPONIFIABLES / OLIVE OIL UNSAPONIFIABLES,", "FICUS CARICA FRUIT EXTRACT / FIG FRUIT EXTRACT", "TERPINEOL", "GLYCINE SOJA STEROLS / SOYBEAN STEROLS", "LINOLEIC ACID", "PHOSPHOLIPIDS", "SUCROSE PALMITATE", "MACADAMIA INTEGRIFOLIA SEED OIL", "OLEA EUROPAEA FRUIT OIL / OLIVE FRUIT OIL", "SIMMONDSIA CHINENSIS SEED OIL / JOJOBA SEED OIL", "SORBETH-30 TETRAOLEATE", "BRASSICA CAMPESTRIS SEED OIL / RAPESEED SEED OIL", "PERSEA GRATISSIMA OIL / AVOCADO OIL", "CAMELLIA SINENSIS SEED OIL", "CANDIDA BOMBICOLA/GLUCOSE/METHYL RAPESEEDATE FERMENT", "HEXAMETHYLINDANOPYRAN", "BUTYL AVOCADATE", "QUILLAJA SAPONARIA BARK EXTRACT", "SAPONARIA OFFICINALIS LEAF EXTRACT", "SALIX ALBA BARK EXTRACT / WILLOW BARK EXTRACT", "LACTOBACILLUS", "BIFIDA FERMENT LYSATE", "BUTYLOCTYL SALICYLATE", "PROPYLHEPTYL CAPRYLATE", "ISODODECANE", "POLYGLYCERYL-3POLYDIMETHYLSILOXYETHYL DIMETHICONE", "METHYL TRIMETHICONE", "METHYL METHACRYLATE CROSSPOLYMER", "LAURYL POLYGLYCERYL-3 POLYDIMETHYLSILOXYETHYL DIMETHICONE", "GLYCERYLCAPRYLATE", "SODIUMHYALURONATE", "CAESALPINIA SPINOSA FRUIT EXTRACT、PINUS PINASTER BARK EXTRACT", "7-DEHYDROCHOLESTEROL,", "HOUTTUYNIA CORDATA EXTRACT", "BUDDLEJAOFFICINALIS FLOWER EXTRACT、LACTOBACILLUS FERMENT", "HYDROXYCINNAMIC ACID", "RUTIN", "DISODIUM COCOAMPHODIACETATE", "DISODIUM COCOYL GLUTAMATE", "CITRIC ACID", "HYDROXYPROPYL STARCH PHOSPHATE", "SODIUM METHYL OLEOYL TAURATE", "COCO-BETAINE", "SODIUM CHLORIDE", "COCO-GLUCOSIDE", "STREPTOCOCCUS THERMOPHILUS FERMENT", "SODIUM COCOYL ISETHIONATE", "SODIUM METHYL COCOYL TAURATE", "POTASSIUM COCOYL GLYCINATE", "SALICYLIC ACID", "SODIUM PHYTATE", "BUTYL AVOCADATE,", "LEAF EXTRACT", "YEAST FERMENT EXTRACT", "LACTOBACILLUS FERMENT", "LACTOBACILLUS/SOYBEAN FERMENT EXTRACT", "MADECASSOSIDE", "HYDROXYPROPYLTRIMONIUM HYALURONATE,", "GAULTHERIA PROCUMBENS LEAF EXTRACT / WINTERGREEN LEAF EXTRACT", "ASIATIC ACID", "ASIATICOSIDE", "MADECASSIC ACID", "OXYGEN", "2,3-BUTANEDIOL", "BETAINE,", "CETYL ETHYLH EXANOATE", "JOJOBA ESTERS", "HYDRO XYETHYL ACRYLATE/SODIUM ACRYLOYLDIMETHYL TAURATE COPOLYMER", "HEXYLDECANOL", "HEXYLDECYL LAURATE", "HYDROGENATED RAPESEED OIL", "DISODIUM EDTA,", "SUCROSE DISTEARATE", "MYRISTIC ACID,", "SODIUM HY ALURONATE", "ASIATIC ACID,", "MACADAMIATERNIFOLIA SEED OIL", "PHYTOSPHINGOSINE", "DICAPRYLYL ETHER,", "DICAPRYLYL CARBONATE", "HYDROXYETHYL ACRYLATE/SODIUM ACRYLOYLDIMETHYL TAURATE COPOLYMER", "CAPRYLYL METHICONE,", "GLYCERYL ACRYLATE/ACRYLIC ACID COPOLYMER", "XANTHAN GUM,", "EPIGALLOCATECHIN GALLATE", "MADECASSOSIDE,", "PENTYLENE GLYCOL,", "RAFFINOSE", "ETHYL HEXANEDIOL,", "PYRUS MALUS FRUIT EXTRACT / APPLE FRUIT EXTRA CT", "SACCHARUM OFFICINARUM EXTRACT / SUGARCANE EXTRACT / EXTRAIT DE CANNE A SUCRE,", "METHYLPROPANEDIOL", "ISOPENTYLDIOL", "TREHALOSE", "PROPANEDIOL,", "ALOE BARBADENSIS LEAF EXTRACT", "METHYL DIISOPROPYL PROPIONAMIDE", "VIOLA MANDSHURICA FLOWER EXTRACT", "ULMUS DAVIDIANA ROOT EXTRACT", "ACMELLA OLERACEA EXTRACT,", "SODIUM HYALURONATE CROSSPOLYMER", "[Ingredients] AQUA / WATER / EAU", "COCOS NUCIFERA OIL / COCONUT OIL", "BUTYLENE GLYCOL,", "CHONDRUS CRISPUS POWDER", "CERATONIA SILIQUA GUM / CAROB GUM,", "POLYGLYCERYL-3 METHYLGLUCOSE DISTEARATE", "POLYSORBATE 80", "POTASSIUM CHLORIDE", "GLUCOMANNAN", "POLYGLYCERYL-10 ISOSTEARATE", "DEXTRIN,", "GELLAN GUM", "POLYACRYLATE-13", "HYDROLYZED GARDENIA FLORIDA EXTRACT", "MALTODEXTRIN", "GLYCOLIPIDS", "GARDENIA FLORIDA FRUIT EXTRACT,", "DIPROPYLENE GLYCOL,", "SODIUM POLYACRYLOYLDIMETHYL TAURATE", "SODIUM HYALUR ONATE", "PHOSPH ATIDYLCHOLINE", "ASIATICOSIDE,", "GLYCOLIPIDS,", "YEAST FE RMENT EXTRACT", "MADECAS SOSIDE,", "PALMITOYL TRIPEPTIDE-5", "HYDROXYPROPYLTRIMONIUM HYALURO NATE", "BETAINE SALICYLATE", "SUCCINIC ACID", "ZINC PCA", "HYDROXYETHYLCELLULOSE", "ERYTHRITOL", "ALBATRELLUS CONFLUENS EXTRACT / MUSHROOM EXTRACT", "HEXAPEPTIDE-9", "SACCHAROMYCES FERMENT FILTRATE", "DIBUTYL ADIPATE", "ETHYLHEXYL TRIAZONE", "TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID,", "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE", "POLYSILICONE-15", "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE", "ECHIUM PLANTAGINEUM SEED OIL", "HELIANTHUS ANNUUS SEED OIL UNSAPONIFIABLES / SUNFLOWER SEED OIL UNSAPONIFIABLES", "AMMONIUM ACRYLOYLDIMETHYLTAURATE/VP COPOLYMER,", "CARDIOSPERMUM HALICACABUM FLOWER/LEAF/VINE EXTRACT", "MORINDA CITRIFOLIA FRUIT EXTRACT", "ARTEMISIA PRINCEPS LEAF EXTRACT,", "FLOWER/LEAF/STEM EXTRACT", "CYNARA SCOLYMUS LEAF EXTRACT / ARTICHOKE LEAF EXTRACT", "SACCHAROMYCES FERMENT", "PRUNUS PERSICA FLOWER EXTRACT / PEACH FLOWER EXTRACT,", "ROOT EXTRACT", "NASTURTIUM OFFICINALE EXTRACT", "7-DEHYDROCHOLESTEROL", "BUDDLEJA OFFICINALIS FLOWER EXTRACT", "PINUS PINASTER BARK EXTRACT"]
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -LiteralPath 'C:\\Users\\sksml\\.codex\\RTK.md'; Get-Content -LiteralPath 'C:\\Users\\sksml\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\7.0.1\\skills\\using-superpowers\\SKILL.md'" in C:\Users\sksml\Desktop\닥터지
+ succeeded in 367ms:
+<!-- rtk-owned: written by `rtk init --codex`, removed by `rtk init --codex --uninstall` -->
+
+# Command output
+
+Command output here is condensed to save tokens, keeping every signal and
+dropping costly noise. Treat it as the complete result: run commands
+normally, and batch related commands into one call to avoid extra turns.
+Truncated results state their recovery path in their own output. Re-run a
+command as `rtk bypass <cmd>` only when its result is unusable: empty when
+output was clearly expected, contradicting its exit code, or garbled.
+---
+name: using-superpowers
+description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, ignore this skill.
+</SUBAGENT-STOP>
+
+<EXTREMELY-IMPORTANT>
+If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+
+IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+
+This is not negotiable. You cannot rationalize your way out of this.
+</EXTREMELY-IMPORTANT>
+
+## The Rule
+
+**Invoke relevant or requested skills BEFORE any response or action** ??including clarifying questions, exploring the codebase, or checking files. If it turns out wrong for the situation, you don't have to use it.
+
+**Before entering plan mode:** if you haven't already brainstormed, invoke the brainstorming skill first.
+
+Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
+
+## Skill Priority
+
+When multiple skills apply, process skills come first ??they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Superpowers' most common process skills, but the rule holds for any of them.
+
+- "Let's build X" ??superpowers:brainstorming first, then implementation skills.
+- "Fix this bug" ??superpowers:systematic-debugging first, then domain skills.
+
+## Red Flags
+
+These thoughts mean STOP?�you're rationalizing:
+
+| Thought | Reality |
+|---------|---------|
+| "This is just a simple question" | Questions are tasks. Check for skills. |
+| "I need more context first" | Skill check comes BEFORE clarifying questions. |
+| "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
+| "I can check git/files quickly" | Files lack conversation context. Check for skills. |
+| "Let me gather information first" | Skills tell you HOW to gather information. |
+| "This doesn't need a formal skill" | If a skill exists, use it. |
+| "I remember this skill" | Skills evolve. Read current version. |
+| "This doesn't count as a task" | Action = task. Check for skills. |
+| "The skill is overkill" | Simple things become complex. Use it. |
+| "I'll just do this one thing first" | Check BEFORE doing anything. |
+| "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
+| "I know what that means" | Knowing the concept ??using the skill. Invoke it. |
+
+## Platform Adaptation
+
+If your harness appears here, read its reference file for special instructions:
+
+- Claude Code: `references/claude-code-tools.md`
+- Codex: `references/codex-tools.md`
+- Pi: `references/pi-tools.md`
+- Antigravity: `references/antigravity-tools.md`
+- Hermes Agent: `references/hermes-tools.md`
+- Muse: `references/muse-tools.md`
+
+## User Instructions
+
+User instructions (CLAUDE.md, AGENTS.md, GEMINI.md, etc, direct requests) take precedence over skills, which in turn override default behavior. Only skip skill workflows or instructions when your human partner has explicitly told you to.
+
+codex
+표준 성분명을 확인하고, 원래 배열의 순서와 항목 수를 유지해 변환하겠습니다.
+
+web search: 
+web search: site.kcia.or.kr/cid "KAPPAPHYCUS ALVAREZII" ...
+web search: 
+web search: "Kappaphycus Alvarezii Extract" "추출물" ...
+web search: 
+web search: "카파피쿠스" 추출물 ...
+web search: 
+web search: "Buddleja Officinalis" "성분명" ...
+codex
+["비에이치티", "트라이에톡시카프릴릴실레인", "타라열매추출물", "코토니추출물", "포도씨오일", "녹차추출물", "감나무잎추출물", "밀몽화꽃추출물、프랑스해안송껍질추출물", "폴리비닐알코올", "폴리글리세릴-3다이스테아레이트", "실리카", "솔비탄스테아레이트", "세테아릴올리베이트", "올리브오일불검화물", "폴리아크릴레이트크로스폴리머-6", "돌콩오일불검화물", "밀배아오일불검화물", "글리세릴스테아레이트시트레이트", "아이소말트", "수크로오스코코에이트", "글루코노락톤", "꽃가루추출물", "자일리틸글루코사이드", "안하이드로자일리톨", "폴리글리세릴-10올리에이트", "폴리글리세릴-10스테아레이트", "자일리톨", "흰목이버섯폴리사카라이드", "소듐스테아로일글루타메이트", "7-데하이드로", "소듐아스코빌포스페이트", "칼슘클로라이드", "포도즙추출물", "파이톨", "부틸렌글라이콜다이카프릴레이트/다이카프레이트", "펜타에리스리틸테트라아이소스테아레이트", "아라키딜알코올", "세테아릴알코올", "베헤닐알코올", "포타슘세틸포스페이트", "아라키딜글루코사이드", "밀배아오일불검화물", "엑토인", "포타슘하이알루로네이트", "소듐하이알루로네이트크로스폴리머", "하이드롤라이즈드소듐하이알루로네이트", "다이페닐다이메티콘", "카프릴릭/카프릭트라이글리세라이드", "레시틴", "구기자추출물", "다이카프릴릴에터", "다이펜타에리스리틸헥사하이드록시스테아레이트/헥사스테아레이트/헥사로지네이트", "팔미틱애씨드", "다이메티콘올", "한련초잎추출물", "세테아릴글루코사이드", "에틸헥실글리세린", "글루코오스", "프룩토올리고사카라이드", "리날릴아세테이트", "다이소듐이디티에이", "캠퍼", "올리브오일불검화물", "무화과추출물", "터피네올", "돌콩스테롤", "리놀레익애씨드", "포스포리피드", "수크로오스팔미테이트", "마카다미아씨오일", "올리브오일", "호호바씨오일", "소르베스-30테트라올리에이트", "유채씨오일", "아보카도오일", "녹차씨오일", "칸디다 봄비콜라/글루코오스/메틸레이프씨데이트발효물", "헥사메틸인다노피란", "부틸아보카데이트", "퀼라자껍질추출물", "비누풀잎추출물", "흰버드나무껍질추출물", "락토바실러스", "비피다발효용해물", "부틸옥틸살리실레이트", "프로필헵틸카프릴레이트", "아이소도데케인", "폴리글리세릴-3폴리다이메틸실록시에틸다이메티콘", "메틸트라이메티콘", "메틸메타크릴레이트크로스폴리머", "라우릴폴리글리세릴-3폴리다이메틸실록시에틸다이메티콘", "글리세릴카프릴레이트", "소듐하이알루로네이트", "타라열매추출물、프랑스해안송껍질추출물", "7-데하이드로콜레스테롤", "약모밀추출물", "밀몽화꽃추출물、락토바실러스발효물", "하이드록시신나믹애씨드", "루틴", "다이소듐코코암포다이아세테이트", "다이소듐코코일글루타메이트", "시트릭애씨드", "하이드록시프로필스타치포스페이트", "소듐메틸올레오일타우레이트", "코코-베타인", "소듐클로라이드", "코코-글루코사이드", "스트렙토코쿠스 테르모필루스발효물", "소듐코코일이세티오네이트", "소듐메틸코코일타우레이트", "포타슘코코일글리시네이트", "살리실릭애씨드", "소듐파이테이트", "부틸아보카데이트", "잎추출물", "효모발효추출물", "락토바실러스발효물", "락토바실러스/콩발효추출물", "마데카소사이드", "하이드록시프로필트라이모늄하이알루로네이트", "윈터그린잎추출물", "아시아틱애씨드", "아시아티코사이드", "마데카식애씨드", "산소", "2,3-부탄다이올", "베타인", "세틸에틸헥사노에이트", "호호바에스터", "하이드록시에틸아크릴레이트/소듐아크릴로일다이메틸타우레이트코폴리머", "헥실데칸올", "헥실데실라우레이트", "하이드로제네이티드유채씨오일", "다이소듐이디티에이", "수크로오스다이스테아레이트", "미리스틱애씨드", "소듐하이알루로네이트", "아시아틱애씨드", "마카다미아씨오일", "피토스핑고신", "다이카프릴릴에터", "다이카프릴릴카보네이트", "하이드록시에틸아크릴레이트/소듐아크릴로일다이메틸타우레이트코폴리머", "카프릴릴메티콘", "글리세릴아크릴레이트/아크릴릭애씨드코폴리머", "잔탄검", "에피갈로카테킨갈레이트", "마데카소사이드", "펜틸렌글라이콜", "라피노오스", "에틸헥산다이올", "사과추출물", "사탕수수추출물", "메틸프로판다이올", "아이소펜틸다이올", "트레할로오스", "프로판다이올", "알로에베라잎추출물", "메틸다이아이소프로필프로피온아마이드", "제비꽃꽃추출물", "느릅나무뿌리추출물", "아크멜라 올레라케아추출물", "소듐하이알루로네이트크로스폴리머", "정제수", "코코넛야자오일", "부틸렌글라이콜", "카라기난가루", "캐롭검", "폴리글리세릴-3메틸글루코오스다이스테아레이트", "폴리솔베이트80", "포타슘클로라이드", "글루코만난", "폴리글리세릴-10아이소스테아레이트", "덱스트린", "젤란검", "폴리아크릴레이트-13", "하이드롤라이즈드치자추출물", "말토덱스트린", "글라이코리피드", "치자추출물", "다이프로필렌글라이콜", "소듐폴리아크릴로일다이메틸타우레이트", "소듐하이알루로네이트", "포스파티딜콜린", "아시아티코사이드", "글라이코리피드", "효모발효추출물", "마데카소사이드", "팔미토일트라이펩타이드-5", "하이드록시프로필트라이모늄하이알루로네이트", "베타인살리실레이트", "석시닉애씨드", "징크피씨에이", "하이드록시에틸셀룰로오스", "에리스리톨", "다발방패버섯추출물", "헥사펩타이드-9", "사카라이드발효여과물", "다이부틸아디페이트", "에틸헥실트리아존", "테레프탈릴리덴다이캠퍼설포닉애씨드", "다이에틸아미노하이드록시벤조일헥실벤조에이트", "폴리실리콘-15", "비스-에틸헥실옥시페놀메톡시페닐트리아진", "에키움 플란타기네움씨오일", "해바라기씨오일불검화물", "암모늄아크릴로일다이메틸타우레이트/브이피코폴리머", "풍선덩굴꽃/잎/덩굴추출물", "노니열매추출물", "쑥잎추출물", "꽃/잎/줄기추출물", "아티초크잎추출물", "사카라이드발효물", "복사나무꽃추출물", "뿌리추출물", "물냉이추출물", "7-데하이드로콜레스테롤", "밀몽화꽃추출물", "프랑스해안송껍질추출물"]
+tokens used
+32,970
+["비에이치티", "트라이에톡시카프릴릴실레인", "타라열매추출물", "코토니추출물", "포도씨오일", "녹차추출물", "감나무잎추출물", "밀몽화꽃추출물、프랑스해안송껍질추출물", "폴리비닐알코올", "폴리글리세릴-3다이스테아레이트", "실리카", "솔비탄스테아레이트", "세테아릴올리베이트", "올리브오일불검화물", "폴리아크릴레이트크로스폴리머-6", "돌콩오일불검화물", "밀배아오일불검화물", "글리세릴스테아레이트시트레이트", "아이소말트", "수크로오스코코에이트", "글루코노락톤", "꽃가루추출물", "자일리틸글루코사이드", "안하이드로자일리톨", "폴리글리세릴-10올리에이트", "폴리글리세릴-10스테아레이트", "자일리톨", "흰목이버섯폴리사카라이드", "소듐스테아로일글루타메이트", "7-데하이드로", "소듐아스코빌포스페이트", "칼슘클로라이드", "포도즙추출물", "파이톨", "부틸렌글라이콜다이카프릴레이트/다이카프레이트", "펜타에리스리틸테트라아이소스테아레이트", "아라키딜알코올", "세테아릴알코올", "베헤닐알코올", "포타슘세틸포스페이트", "아라키딜글루코사이드", "밀배아오일불검화물", "엑토인", "포타슘하이알루로네이트", "소듐하이알루로네이트크로스폴리머", "하이드롤라이즈드소듐하이알루로네이트", "다이페닐다이메티콘", "카프릴릭/카프릭트라이글리세라이드", "레시틴", "구기자추출물", "다이카프릴릴에터", "다이펜타에리스리틸헥사하이드록시스테아레이트/헥사스테아레이트/헥사로지네이트", "팔미틱애씨드", "다이메티콘올", "한련초잎추출물", "세테아릴글루코사이드", "에틸헥실글리세린", "글루코오스", "프룩토올리고사카라이드", "리날릴아세테이트", "다이소듐이디티에이", "캠퍼", "올리브오일불검화물", "무화과추출물", "터피네올", "돌콩스테롤", "리놀레익애씨드", "포스포리피드", "수크로오스팔미테이트", "마카다미아씨오일", "올리브오일", "호호바씨오일", "소르베스-30테트라올리에이트", "유채씨오일", "아보카도오일", "녹차씨오일", "칸디다 봄비콜라/글루코오스/메틸레이프씨데이트발효물", "헥사메틸인다노피란", "부틸아보카데이트", "퀼라자껍질추출물", "비누풀잎추출물", "흰버드나무껍질추출물", "락토바실러스", "비피다발효용해물", "부틸옥틸살리실레이트", "프로필헵틸카프릴레이트", "아이소도데케인", "폴리글리세릴-3폴리다이메틸실록시에틸다이메티콘", "메틸트라이메티콘", "메틸메타크릴레이트크로스폴리머", "라우릴폴리글리세릴-3폴리다이메틸실록시에틸다이메티콘", "글리세릴카프릴레이트", "소듐하이알루로네이트", "타라열매추출물、프랑스해안송껍질추출물", "7-데하이드로콜레스테롤", "약모밀추출물", "밀몽화꽃추출물、락토바실러스발효물", "하이드록시신나믹애씨드", "루틴", "다이소듐코코암포다이아세테이트", "다이소듐코코일글루타메이트", "시트릭애씨드", "하이드록시프로필스타치포스페이트", "소듐메틸올레오일타우레이트", "코코-베타인", "소듐클로라이드", "코코-글루코사이드", "스트렙토코쿠스 테르모필루스발효물", "소듐코코일이세티오네이트", "소듐메틸코코일타우레이트", "포타슘코코일글리시네이트", "살리실릭애씨드", "소듐파이테이트", "부틸아보카데이트", "잎추출물", "효모발효추출물", "락토바실러스발효물", "락토바실러스/콩발효추출물", "마데카소사이드", "하이드록시프로필트라이모늄하이알루로네이트", "윈터그린잎추출물", "아시아틱애씨드", "아시아티코사이드", "마데카식애씨드", "산소", "2,3-부탄다이올", "베타인", "세틸에틸헥사노에이트", "호호바에스터", "하이드록시에틸아크릴레이트/소듐아크릴로일다이메틸타우레이트코폴리머", "헥실데칸올", "헥실데실라우레이트", "하이드로제네이티드유채씨오일", "다이소듐이디티에이", "수크로오스다이스테아레이트", "미리스틱애씨드", "소듐하이알루로네이트", "아시아틱애씨드", "마카다미아씨오일", "피토스핑고신", "다이카프릴릴에터", "다이카프릴릴카보네이트", "하이드록시에틸아크릴레이트/소듐아크릴로일다이메틸타우레이트코폴리머", "카프릴릴메티콘", "글리세릴아크릴레이트/아크릴릭애씨드코폴리머", "잔탄검", "에피갈로카테킨갈레이트", "마데카소사이드", "펜틸렌글라이콜", "라피노오스", "에틸헥산다이올", "사과추출물", "사탕수수추출물", "메틸프로판다이올", "아이소펜틸다이올", "트레할로오스", "프로판다이올", "알로에베라잎추출물", "메틸다이아이소프로필프로피온아마이드", "제비꽃꽃추출물", "느릅나무뿌리추출물", "아크멜라 올레라케아추출물", "소듐하이알루로네이트크로스폴리머", "정제수", "코코넛야자오일", "부틸렌글라이콜", "카라기난가루", "캐롭검", "폴리글리세릴-3메틸글루코오스다이스테아레이트", "폴리솔베이트80", "포타슘클로라이드", "글루코만난", "폴리글리세릴-10아이소스테아레이트", "덱스트린", "젤란검", "폴리아크릴레이트-13", "하이드롤라이즈드치자추출물", "말토덱스트린", "글라이코리피드", "치자추출물", "다이프로필렌글라이콜", "소듐폴리아크릴로일다이메틸타우레이트", "소듐하이알루로네이트", "포스파티딜콜린", "아시아티코사이드", "글라이코리피드", "효모발효추출물", "마데카소사이드", "팔미토일트라이펩타이드-5", "하이드록시프로필트라이모늄하이알루로네이트", "베타인살리실레이트", "석시닉애씨드", "징크피씨에이", "하이드록시에틸셀룰로오스", "에리스리톨", "다발방패버섯추출물", "헥사펩타이드-9", "사카라이드발효여과물", "다이부틸아디페이트", "에틸헥실트리아존", "테레프탈릴리덴다이캠퍼설포닉애씨드", "다이에틸아미노하이드록시벤조일헥실벤조에이트", "폴리실리콘-15", "비스-에틸헥실옥시페놀메톡시페닐트리아진", "에키움 플란타기네움씨오일", "해바라기씨오일불검화물", "암모늄아크릴로일다이메틸타우레이트/브이피코폴리머", "풍선덩굴꽃/잎/덩굴추출물", "노니열매추출물", "쑥잎추출물", "꽃/잎/줄기추출물", "아티초크잎추출물", "사카라이드발효물", "복사나무꽃추출물", "뿌리추출물", "물냉이추출물", "7-데하이드로콜레스테롤", "밀몽화꽃추출물", "프랑스해안송껍질추출물"]
