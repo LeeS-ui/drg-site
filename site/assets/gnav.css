@@ -94,3 +94,7 @@ html,body,button,input,textarea,select{font-family:"Pretendard Variable",Pretend
 
 /* 모든 텍스트에 Pretendard 강제 적용 (원본의 Poppins 등 덮어쓰기) */
 body *:not(svg):not(svg *):not(code):not(pre){font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif!important}
+
+/* 제품 이미지: 칸을 가득 채움(FILL) */
+.product-summary__current-img__img,.product-list__item__img,.product__img,.product-list__item__imgHover,.product__imgHover{width:100%;height:100%;object-fit:cover!important}
+.product-summary__thumbnails_img{width:100%;height:100%;object-fit:cover!important}
