@@ -283,3 +283,10 @@ body.gp {
 .gp-grow-bg { position: relative; overflow: hidden; background: #005031 url("0f2ef9a2f6_banner-best-sellers.jpg") center / cover no-repeat; min-height: 436px; display: flex; align-items: center; }
 .gp-grow-bg::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,80,49,.66) 0%, rgba(0,80,49,0) 100%); }
 .gp-grow-bg > .gp-wrap { position: relative; z-index: 1; width: 100%; }
+
+/* G:ROW 히어로: 전체 폭 배경 + 앱 화면 (Figma 구현본 기준) */
+.gp-growhero-full { background: #11453b url("grow-hero-bg.jpg") center / cover no-repeat; min-height: 564px; display: flex; align-items: center; color: #fff; }
+.gp-growhero-full > .gp-wrap { width: 100%; }
+.gp-growhero--img { background: transparent; padding: 0 64px; justify-content: space-between; }
+.gp-app-img { display: block; width: 220px; height: auto; flex: none; margin-right: 9px; }
+@media (max-width: 720px) { .gp-growhero-full { min-height: 0; padding: 48px 0; } .gp-growhero--img { padding: 0 28px; } .gp-app-img { margin: 0 auto; } }
