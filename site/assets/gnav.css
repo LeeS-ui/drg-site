@@ -86,3 +86,8 @@ body{word-break:keep-all;overflow-wrap:break-word}
 .gdr-header--sub .gdr-header__link { color: #737373; font-weight: 300; }
 .gdr-header--sub .gdr-header__link.is-active { color: #005031; font-weight: 700; }
 .gdr-header--sub .gdr-header__link:hover { color: #005031; }
+
+/* Pretendard (한글 기본 폰트, 사이트에 포함) */
+@font-face{font-family:"Pretendard Variable";src:url("PretendardVariable.woff2") format("woff2-variations"),url("PretendardVariable.woff2") format("woff2");font-weight:45 920;font-style:normal;font-display:swap}
+:root{--fonts-title:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif!important;--fonts-sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif!important}
+html,body,button,input,textarea,select{font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif}
