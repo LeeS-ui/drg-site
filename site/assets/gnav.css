@@ -91,3 +91,6 @@ body{word-break:keep-all;overflow-wrap:break-word}
 @font-face{font-family:"Pretendard Variable";src:url("PretendardVariable.woff2") format("woff2-variations"),url("PretendardVariable.woff2") format("woff2");font-weight:45 920;font-style:normal;font-display:swap}
 :root{--fonts-title:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif!important;--fonts-sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif!important}
 html,body,button,input,textarea,select{font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif}
+
+/* 모든 텍스트에 Pretendard 강제 적용 (원본의 Poppins 등 덮어쓰기) */
+body *:not(svg):not(svg *):not(code):not(pre){font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif!important}
