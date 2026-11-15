@@ -1,3 +1,4 @@
+import { ICON } from './concern_icons.mjs';
 // Figma "WEP > 최종" 섹션의 페이지들을 site/ 아래에 생성한다.
 // 실행: node build_pages.mjs ../site && node apply_gnav.mjs ../site
 import fs from 'node:fs';
@@ -124,7 +125,7 @@ const KNOW_SLUG = 'skin-knowledge/dry-skin-care';
 {
   const F = '';
   const concerns = `<div class="gp-grid gp-grid--6">${CONCERNS.map(([ic, name]) =>
-    `<a class="gp-concern" href="${rel(F, 'skin-concerns/dry')}"><div class="gp-concern__icon">${ic}</div><span>${name}</span></a>`).join('')}</div>`;
+    `<a class="gp-concern" href="${rel(F, 'skin-concerns/dry')}"><div class="gp-concern__icon">${ICON[ic] || ic}</div><span>${name}</span></a>`).join('')}</div>`;
   const season = `<div class="gp-grid gp-grid--3">${[
     ['WINTER', ['건조하고 당김'], '겨울 · 한파와 난방', '찬 바람과 실내 난방으로 약해지기 쉬운 장벽을 지키는 보습 관리.'],
     ['INDOOR', ['유수분 밸런스'], '실내 난방이 강할 때', '공기가 건조한 실내에서 수분 손실을 줄이는 방법.'],
