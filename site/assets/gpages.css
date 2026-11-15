@@ -278,3 +278,8 @@ body.gp {
 
 /* 사진 썸네일 위 재생 아이콘이 잘 보이도록 */
 .gp-vcard__thumb[style*="photos"], .gp-video__thumb[style*="photos"], .gp-feature__thumb[style*="photos"] { box-shadow: inset 0 0 0 100vmax rgba(0,0,0,.18); color: #fff; }
+
+/* 홈 G:ROW 구간: 배경 사진 + 왼쪽→오른쪽 초록 그라데이션 (Figma 구현본 기준) */
+.gp-grow-bg { position: relative; overflow: hidden; background: #005031 url("0f2ef9a2f6_banner-best-sellers.jpg") center / cover no-repeat; min-height: 436px; display: flex; align-items: center; }
+.gp-grow-bg::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,80,49,.66) 0%, rgba(0,80,49,0) 100%); }
+.gp-grow-bg > .gp-wrap { position: relative; z-index: 1; width: 100%; }
