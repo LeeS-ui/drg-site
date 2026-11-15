@@ -275,3 +275,6 @@ body.gp {
   .gp-table { display: block; overflow-x: auto; }
   .gp-search, .gp-search--on { padding-left: 16px; }
 }
+
+/* 사진 썸네일 위 재생 아이콘이 잘 보이도록 */
+.gp-vcard__thumb[style*="photos"], .gp-video__thumb[style*="photos"], .gp-feature__thumb[style*="photos"] { box-shadow: inset 0 0 0 100vmax rgba(0,0,0,.18); color: #fff; }
