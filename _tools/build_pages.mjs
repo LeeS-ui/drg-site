@@ -53,7 +53,7 @@ const LINES = (from, active) => subnav(from, [['전체 제품', 'our-products'],
 const productItems = (from, names) =>
   `<div class="gp-grid gp-grid--3 gp-grid--g32">${names.map((n) => {
     const p = prod(n);
-    return `<div class="gp-item"><a href="${rel(from, p.page)}"><img src="${img(from, p.img)}" alt="${esc(n)}" loading="lazy"></a><h3>${esc(n)}</h3><div class="gp-btns gp-btns--center">${btn('제품 보기', rel(from, p.page), 'gp-btn--sm')}${btn('구매처 보기', '#', 'gp-btn--line gp-btn--sm')}</div></div>`;
+    return `<div class="gp-item"><a href="${rel(from, p.page)}"><img src="${img(from, p.img)}" alt="${esc(n)}" loading="lazy"></a><h3>${esc(n)}</h3><div class="gp-btns gp-btns--center">${btn('제품 보기', rel(from, p.page), 'gp-btn--sm')}</div></div>`;
   }).join('')}</div>`;
 
 const ingCards = (from, items, cls = '') =>
@@ -137,7 +137,7 @@ const KNOW_SLUG = 'skin-knowledge/dry-skin-care';
     ['선크림', '레드 블레미쉬 수딩 업 선', '자외선 차단에 수분 진정 케어를 더한 선크림', ['칙칙한 피부톤'], 'red-blemish-soothing-up-sun.jpg', 'our-products/red-blemish-soothing-up-sun'],
   ].map(([cat, name, d, t, im, pg]) => {
     const src = img(F, im) || img(F, 'red-blemish-soothing-cream.jpg');
-    return `<div class="gp-card"><img class="gp-product__img" src="${src}" alt="${name}" loading="lazy"><div class="gp-card__body"><span class="gp-product__cat">${cat}</span><h3>${name}</h3><p>${d}</p>${tags(t)}<div class="gp-btns">${btn('제품 상세', rel(F, pg), 'gp-btn--sm')}${btn('구매처 보기', '#', 'gp-btn--line gp-btn--sm')}</div></div></div>`;
+    return `<div class="gp-card"><img class="gp-product__img" src="${src}" alt="${name}" loading="lazy"><div class="gp-card__body"><span class="gp-product__cat">${cat}</span><h3>${name}</h3><p>${d}</p>${tags(t)}<div class="gp-btns">${btn('제품 상세', rel(F, pg), 'gp-btn--sm')}</div></div></div>`;
   }).join('')}</div>`;
   const ingr = `<div class="gp-grid gp-grid--4">${ING.slice(0, 3).concat([['병풀 추출물', '피부 진정 성분']]).map(([n, d], i) => {
     const desc = ['보습·진정 성분', '피부 장벽 보습 성분', '수분을 머금는 보습 성분', '피부 진정 성분'][i];
@@ -178,7 +178,7 @@ ${sec(`${shead('라인 제품', '사용 순서대로 만나보세요')}<div clas
     ['STEP 2', '닥터지 레드 블레미쉬 클리어 히알 시카 수딩 세럼 50ml'],
     ['STEP 3', '닥터지 레드 블레미쉬 수딩 업 선 50ml']].map(([s, n]) => {
     const p = prod(n);
-    return `<div class="gp-item"><img src="${img(F, p.img)}" alt="${n}" loading="lazy"><span class="gp-eyebrow gp-eyebrow--red">${s}</span><h3>${n}</h3><div class="gp-btns gp-btns--center">${btn('제품 보기', rel(F, p.page), 'gp-btn--sm')}${btn('구매처 보기', '#', 'gp-btn--line gp-btn--sm')}</div></div>`;
+    return `<div class="gp-item"><img src="${img(F, p.img)}" alt="${n}" loading="lazy"><span class="gp-eyebrow gp-eyebrow--red">${s}</span><h3>${n}</h3><div class="gp-btns gp-btns--center">${btn('제품 보기', rel(F, p.page), 'gp-btn--sm')}</div></div>`;
   }).join('')}</div>`)}
 ${sec(`${shead('이 라인으로 만든 루틴', '고민별 관리에서 아침·저녁 루틴을 확인하세요.')}<div class="gp-btns gp-btns--center">${btn('루틴 보기', rel(F, 'skin-concerns/dry') + '#routine', 'gp-btn--lg')}</div>`, { bg: 'mint', pt: 56, pb: 56 })}`;
   write(F, '라인별 제품', body, '닥터지 제품 라인과 사용 순서를 확인하세요.');
@@ -325,7 +325,7 @@ ${sec(`<p class="gp-sub" style="font-size:14px">답변까지는 영업일 기준
 {
   const F = 'support/faq';
   const faq = [
-    ['제품은 어디에서 구매할 수 있나요?', '구매처 보기에서 외부 판매처를 확인하세요.'],
+    ['제품은 어디에서 구매할 수 있나요?', '제품별 판매처는 각 구매처에서 확인해 주세요.'],
     ['G:ROW 앱은 무료인가요?', '기본 기능은 무료로 이용할 수 있습니다.'],
     ['피부가 민감한데 어떤 제품부터 써야 할까요?', '고민별 관리에서 고민을 선택해 확인하세요.'],
     ['제품 사용 중 피부가 붉어지면 어떻게 하나요?', '사용을 중단하고 증상이 계속되면 전문의와 상담하세요.'],
